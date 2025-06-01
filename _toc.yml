@@ -1,0 +1,48 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: 00_Introduccion
+
+  
+
+chapters:
+
+- file: 01_SistemasDeEcuacionesLineales
+  sections:
+    - file: 01_SistemasDeEcuacionesLineales_01
+    - file: 01_SistemasDeEcuacionesLineales_02
+    - file: 01_SistemasDeEcuacionesLineales_03
+- file: 02_VectoresMatricesYDeterminantes
+
+  sections:
+    - file: 02_VectoresMatricesYDeterminantes_01
+    - file: 02_VectoresMatricesYDeterminantes_02
+    - file: 02_VectoresMatricesYDeterminantes_03
+
+- file: 03_EspaciosVectoriales
+  sections:
+    - file: 03_EspaciosVectoriales_01
+    - file: 03_EspaciosVectoriales_02
+    - file: 03_EspaciosVectoriales_03
+    - file: 03_EspaciosVectoriales_04
+    - file: 03_EspaciosVectoriales_05
+    - file: 03_EspaciosVectoriales_06
+    - file: 03_EspaciosVectoriales_07
+    - file: 03_EspaciosVectoriales_08
+
+- file: 04_TransformacionesLineales
+  sections:
+    - file: 04_TransformacionesLineales_01
+    - file: 04_TransformacionesLineales_02
+    - file: 04_TransformacionesLineales_03
+
+
+- file: 05_ValoresPropiosYVectoresPropios
+  sections:
+    - file: 05_ValoresPropiosYVectoresPropios_01
+    - file: 05_ValoresPropiosYVectoresPropios_02
+    - file: 05_ValoresPropiosYVectoresPropios_03
+    - file: 05_ValoresPropiosYVectoresPropios_04
+
+- file: 06_referencias

@@ -16,6 +16,7 @@ chapters:
 - file: 02_VectoresMatricesYDeterminantes
 
   sections:
+    - file: 02_VectoresMatricesYDeterminantes_00
     - file: 02_VectoresMatricesYDeterminantes_01
     - file: 02_VectoresMatricesYDeterminantes_02
     - file: 02_VectoresMatricesYDeterminantes_03

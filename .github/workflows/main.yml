@@ -44,11 +44,11 @@ jobs:
         key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
     # Build the book
-    - name: Build the book
-      run: |
-        jupyter-book build . --path-output _build/html
-        echo "Contenido después del build:"
-        ls -R .
+    #- name: Build the book
+    #  run: |
+    #    jupyter-book build . --path-output _build/html
+    #    echo "Contenido después del build:"
+    #    ls -R .
 
     # Upload the book's HTML as an artifact
     - name: Upload artifact

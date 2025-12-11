@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -413,6 +413,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-span-o-conjunto-generado">3.3.1 Definición de Span o conjunto generado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-del-span-de-2-vectores-en-mathbb-r-3">Ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-ejemplo-del-span-de-2-vectores-en-mathbb-r-3">Otro ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-detonadoras">Preguntas detonadoras</a></li>
 </ul>
 </li>
@@ -446,16 +447,25 @@ document.write(`
 <p>El span de <span class="math notranslate nohighlight">\( S \)</span> es el <strong>subespacio vectorial más pequeño que contiene a <span class="math notranslate nohighlight">\( S \)</span></strong>.</p>
 <section id="ejemplo-del-span-de-2-vectores-en-mathbb-r-3">
 <h3>Ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span><a class="headerlink" href="#ejemplo-del-span-de-2-vectores-en-mathbb-r-3" title="Link to this heading">#</a></h3>
-<p>Sean
-$$</p>
-<p>v_1 = (1, 0, 0), \quad v_2 = (0, 1, 0)</p>
+<p>Sean</p>
 <div class="math notranslate nohighlight">
-\[Entonces\]</div>
-<p>\text{span}{v_1, v_2} = { \alpha_1 (1, 0, 0) + \alpha_2 (0, 1, 0) \mid \alpha_1, \alpha_2 \in \mathbb{R} } = { (a, b, 0) \mid a, b \in \mathbb{R} }</p>
+\[
+v_1 = (1, 0, 0), \quad v_2 = (0, 1, 0)
+\]</div>
+<p>Entonces</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}Es decir, todas las combinaciones lineales de $ v_1 $ y $ v_2 $ llenan el **plano $ xy $** en $ \mathbb{R}^3 $.\\### Otro ejemplo del span de 2 vectores en $ \mathbb{R}^3 $\\Sean\end{aligned}\end{align} \]</div>
-<p>u_1 = (1, 2, 3), \quad u_2 = (2, 4, 6)
-$$</p>
+\[
+\text{span}\{v_1, v_2\} = \{ \alpha_1 (1, 0, 0) + \alpha_2 (0, 1, 0) \mid \alpha_1, \alpha_2 \in \mathbb{R} \} = \{ (a, b, 0) \mid a, b \in \mathbb{R} \}
+\]</div>
+<p>Es decir, todas las combinaciones lineales de <span class="math notranslate nohighlight">\( v_1 \)</span> y <span class="math notranslate nohighlight">\( v_2 \)</span> llenan el <strong>plano <span class="math notranslate nohighlight">\( xy \)</span></strong> en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span>.</p>
+</section>
+<section id="otro-ejemplo-del-span-de-2-vectores-en-mathbb-r-3">
+<h3>Otro ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span><a class="headerlink" href="#otro-ejemplo-del-span-de-2-vectores-en-mathbb-r-3" title="Link to this heading">#</a></h3>
+<p>Sean</p>
+<div class="math notranslate nohighlight">
+\[
+u_1 = (1, 2, 3), \quad u_2 = (2, 4, 6)
+\]</div>
 <p>Observa que <span class="math notranslate nohighlight">\( u_2 = 2u_1 \)</span>, así que son linealmente dependientes.</p>
 <p>Entonces</p>
 <div class="math notranslate nohighlight">
@@ -618,6 +628,7 @@ c &amp; 0 \\
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-span-o-conjunto-generado">3.3.1 Definición de Span o conjunto generado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-del-span-de-2-vectores-en-mathbb-r-3">Ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-ejemplo-del-span-de-2-vectores-en-mathbb-r-3">Otro ejemplo del span de 2 vectores en <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-detonadoras">Preguntas detonadoras</a></li>
 </ul>
 </li>

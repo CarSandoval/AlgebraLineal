@@ -47,6 +47,8 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build .
+        echo "Contenido después del build:"
+        ls -R .
 
     # Upload the book's HTML as an artifact
     - name: Upload artifact

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -478,10 +478,11 @@ Cualquier vector <span class="math notranslate nohighlight">\( (a, b, c) \in \ma
 </section>
 <section id="ejemplo-3-una-base-no-estandar-en-mathbb-r-3">
 <h3>Ejemplo 3: Una base no estándar en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span><a class="headerlink" href="#ejemplo-3-una-base-no-estandar-en-mathbb-r-3" title="Link to this heading">#</a></h3>
-<p>Considera los vectores:
-$<span class="math notranslate nohighlight">\(
+<p>Considera los vectores:</p>
+<div class="math notranslate nohighlight">
+\[
 u_1 = (1, 1, 0),\quad u_2 = (0, 1, 1),\quad u_3 = (1, 0, 1)
-\)</span>$</p>
+\]</div>
 <p>Podemos comprobar que estos tres vectores son linealmente independientes y que cualquier vector <span class="math notranslate nohighlight">\((a, b, c) \in \mathbb{R}^3\)</span> se puede expresar de manera única como combinación lineal de ellos.<br />
 Por lo tanto, <span class="math notranslate nohighlight">\(\{u_1, u_2, u_3\}\)</span> es <strong>una base alternativa</strong> de <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
 </section>
@@ -502,7 +503,11 @@ S = \left\{
 \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
 \right\}
 \end{split}\]</div>
-<p>Cualquier matriz simétrica <span class="math notranslate nohighlight">\(A = \begin{pmatrix} a &amp; b \\ b &amp; c \end{pmatrix}\)</span> se puede escribir de forma única como <span class="math notranslate nohighlight">\(a\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + b\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} + c\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\)</span>.</p>
+<p>Cualquier matriz simétrica <span class="math notranslate nohighlight">\(A = \begin{pmatrix} a &amp; b \\ b &amp; c \end{pmatrix}\)</span> se puede escribir de forma única como:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + b\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} + c\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}
+\end{split}\]</div>
 </section>
 <section id="ejemplo-6-una-base-en-el-espacio-de-funciones">
 <h3>Ejemplo 6: Una base en el espacio de funciones<a class="headerlink" href="#ejemplo-6-una-base-en-el-espacio-de-funciones" title="Link to this heading">#</a></h3>
@@ -531,27 +536,31 @@ El subconjunto de vectores linealmente independientes encontrado en el paso ante
 <h3>Ejemplo con filas<a class="headerlink" href="#ejemplo-con-filas" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p><strong>Reúne tu conjunto de vectores:</strong><br />
-Supongamos los siguientes vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>:
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-v_1 &amp;= (1, 2, 3, 4) \\
-v_2 &amp;= (2, 4, 6, 8) \\
-v_3 &amp;= (3, 6, 9, 12) \\
-v_4 &amp;= (0, 0, 0, 0) \\
-v_5 &amp;= (1, 0, 1, 0) \\
-\end{aligned}
-\)</span>$</p></li>
-<li><p><strong>Escribe los vectores como filas de una matriz:</strong><br />
-$<span class="math notranslate nohighlight">\(
-M = 
-\begin{pmatrix}
-1 &amp; 2 &amp; 3 &amp; 4 \\
-2 &amp; 4 &amp; 6 &amp; 8 \\
-3 &amp; 6 &amp; 9 &amp; 12 \\
-0 &amp; 0 &amp; 0 &amp; 0 \\
-1 &amp; 0 &amp; 1 &amp; 0 \\
-\end{pmatrix}
-\)</span>$</p></li>
+Supongamos los siguientes vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{aligned}
+   v_1 &amp;= (1, 2, 3, 4) \\
+   v_2 &amp;= (2, 4, 6, 8) \\
+   v_3 &amp;= (3, 6, 9, 12) \\
+   v_4 &amp;= (0, 0, 0, 0) \\
+   v_5 &amp;= (1, 0, 1, 0) \\
+   \end{aligned}
+   \end{split}\]</div>
+</li>
+<li><p><strong>Escribe los vectores como filas de una matriz:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   M = 
+   \begin{pmatrix}
+   1 &amp; 2 &amp; 3 &amp; 4 \\
+   2 &amp; 4 &amp; 6 &amp; 8 \\
+   3 &amp; 6 &amp; 9 &amp; 12 \\
+   0 &amp; 0 &amp; 0 &amp; 0 \\
+   1 &amp; 0 &amp; 1 &amp; 0 \\
+   \end{pmatrix}
+   \end{split}\]</div>
+</li>
 <li><p><strong>Aplica reducción por filas (Gauss-Jordan):</strong></p>
 <ul>
 <li><p><strong>Paso 1:</strong> La primera fila ya tiene un 1 en la primera posición (pivote).<br />
@@ -730,11 +739,12 @@ Procedemos por inducción sobre <span class="math notranslate nohighlight">\(m\)
 <h4>Paso inductivo: Supón cierto para <span class="math notranslate nohighlight">\(m-1\)</span>, demuestra para <span class="math notranslate nohighlight">\(m\)</span><a class="headerlink" href="#paso-inductivo-supon-cierto-para-m-1-demuestra-para-m" title="Link to this heading">#</a></h4>
 <p>Supón que <span class="math notranslate nohighlight">\(w_1, ..., w_m\)</span> son linealmente independientes y <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> generan <span class="math notranslate nohighlight">\(V\)</span>.<br />
 Por hipótesis de inducción, <span class="math notranslate nohighlight">\(m-1 \leq n\)</span> y se puede reemplazar <span class="math notranslate nohighlight">\(m-1\)</span> de los <span class="math notranslate nohighlight">\(v_j\)</span> por <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span>, de modo que el nuevo conjunto todavía genera <span class="math notranslate nohighlight">\(V\)</span>.</p>
-<p>Así que, <strong>podemos suponer</strong> que ya hemos reemplazado <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span> por <span class="math notranslate nohighlight">\(v_1, ..., v_{m-1}\)</span> y tenemos el conjunto<br />
-$<span class="math notranslate nohighlight">\(
+<p>Así que, <strong>podemos suponer</strong> que ya hemos reemplazado <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span> por <span class="math notranslate nohighlight">\(v_1, ..., v_{m-1}\)</span> y tenemos el conjunto</p>
+<div class="math notranslate nohighlight">
+\[
 \mathcal{S}' = \{w_1, ..., w_{m-1}, v_{m}, ..., v_n\}
-\)</span><span class="math notranslate nohighlight">\(
-que genera \)</span>V$.</p>
+\]</div>
+<p>que genera <span class="math notranslate nohighlight">\(V\)</span>.</p>
 <p><strong>Paso 3.</strong><br />
 Como <span class="math notranslate nohighlight">\(w_m \in V\)</span> y <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> genera <span class="math notranslate nohighlight">\(V\)</span>, <span class="math notranslate nohighlight">\(w_m\)</span> puede escribirse como combinación lineal de los elementos de <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -757,13 +767,8 @@ v_r = \frac{1}{b_r} w_m - \frac{a_1}{b_r} w_1 - ... - \frac{a_{m-1}}{b_r} w_{m-1
 \]</div>
 <p><strong>Paso 5.</strong><br />
 Reemplaza <span class="math notranslate nohighlight">\(v_r\)</span> por <span class="math notranslate nohighlight">\(w_m\)</span> en <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span>:</p>
-<p>El conjunto
-$<span class="math notranslate nohighlight">\(
-\mathcal{S}'' = \{w_1, ..., w_{m-1}, w_m, v_m, ..., v_{r-1}, v_{r+1}, ..., v_n\}
-\)</span><span class="math notranslate nohighlight">\(
-(tiene los mismos elementos que \)</span>\mathcal{S}’<span class="math notranslate nohighlight">\( pero \)</span>v_r<span class="math notranslate nohighlight">\( es reemplazado por \)</span>w_m<span class="math notranslate nohighlight">\()
-**genera \)</span>V<span class="math notranslate nohighlight">\(**.  
-Se puede verificar que \)</span>\mathcal{S}’’<span class="math notranslate nohighlight">\( genera \)</span>V<span class="math notranslate nohighlight">\( porque cualquier \)</span>v_r$ puede ser expresado como combinación lineal de los nuevos generadores, como se mostró arriba.</p>
+<p>El conjunto <span class="math notranslate nohighlight">\(\mathcal{S}'' = \{w_1, ..., w_{m-1}, w_m, v_m, ..., v_{r-1}, v_{r+1}, ..., v_n\} \)</span> (tiene los mismos elementos que <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> pero <span class="math notranslate nohighlight">\(v_r\)</span> es reemplazado por <span class="math notranslate nohighlight">\(w_m\)</span>) genera <span class="math notranslate nohighlight">\(V\)</span>.<br />
+Se puede verificar que <span class="math notranslate nohighlight">\(\mathcal{S}''\)</span> genera <span class="math notranslate nohighlight">\(V\)</span> porque cualquier <span class="math notranslate nohighlight">\(v_r\)</span> puede ser expresado como combinación lineal de los nuevos generadores, como se mostró arriba.</p>
 <p><strong>Paso 6.</strong><br />
 Esto completa el paso inductivo: hemos reemplazado uno de los <span class="math notranslate nohighlight">\(v_j\)</span> por <span class="math notranslate nohighlight">\(w_m\)</span> y mantenido la propiedad de ser un conjunto generador.</p>
 <p><strong>Conclusión:</strong><br />
@@ -807,7 +812,6 @@ Por eso, <strong>la dimensión de un espacio vectorial está bien definida</stro
 \[
 W = \{ (x, y, 0) \mid x, y \in \mathbb{R} \}
 \]</div>
-<hr class="docutils" />
 <section id="base-estandar">
 <h4>Base estándar<a class="headerlink" href="#base-estandar" title="Link to this heading">#</a></h4>
 <p>Una base natural es:</p>
@@ -815,46 +819,54 @@ W = \{ (x, y, 0) \mid x, y \in \mathbb{R} \}
 \[
 B_1 = \{ (1, 0, 0),\ (0, 1, 0) \}
 \]</div>
-<p>Cualquier vector en <span class="math notranslate nohighlight">\(W\)</span> se puede escribir como:
-$<span class="math notranslate nohighlight">\(
+<p>Cualquier vector en <span class="math notranslate nohighlight">\(W\)</span> se puede escribir como:</p>
+<div class="math notranslate nohighlight">
+\[
 (x, y, 0) = x(1,0,0) + y(0,1,0)
-\)</span>$</p>
+\]</div>
 </section>
-<hr class="docutils" />
 <section id="otra-base-distinta">
 <h4>Otra base distinta<a class="headerlink" href="#otra-base-distinta" title="Link to this heading">#</a></h4>
-<p>Considera el conjunto:
-$<span class="math notranslate nohighlight">\(
+<p>Considera el conjunto:</p>
+<div class="math notranslate nohighlight">
+\[
 B_2 = \{ (1,1,0),\ (2,-1,0) \}
-\)</span>$</p>
+\]</div>
 <p>Queremos expresar un vector cualquiera <span class="math notranslate nohighlight">\((x, y, 0)\)</span> como combinación lineal de los vectores de <span class="math notranslate nohighlight">\(B_2\)</span>, es decir, encontrar <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{R}\)</span> tales que:</p>
 <div class="math notranslate nohighlight">
 \[
 \alpha (1, 1, 0) + \beta (2, -1, 0) = (x, y, 0)
 \]</div>
-<p>Esto da el sistema:
-$<span class="math notranslate nohighlight">\(
+<p>Esto da el sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{cases}
 \alpha + 2\beta = x \\
 \alpha - \beta = y
 \end{cases}
-\)</span>$</p>
+\end{split}\]</div>
 <p><strong>Resolución del sistema:</strong></p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>De la segunda ecuación:<br />
 <span class="math notranslate nohighlight">\(\alpha = y + \beta\)</span></p></li>
-<li><p>Sustituimos en la primera ecuación:<br />
-$<span class="math notranslate nohighlight">\((y + \beta) + 2\beta = x\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(y + 3\beta = x\)</span>$</p></li>
-<li><p>Despejamos <span class="math notranslate nohighlight">\(\beta\)</span>:<br />
-$<span class="math notranslate nohighlight">\(3\beta = x - y \implies \beta = \frac{x - y}{3}\)</span>$</p></li>
+<li><p>Sustituimos en la primera ecuación:</p>
+<p><span class="math notranslate nohighlight">\((y + \beta) + 2\beta = x\)</span></p>
+<p><span class="math notranslate nohighlight">\(y + 3\beta = x\)</span></p>
+</li>
+<li><p>Despejamos <span class="math notranslate nohighlight">\(\beta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   3\beta = x - y \implies \beta = \frac{x - y}{3}
+   \]</div>
+</li>
 <li><p>Ahora, <span class="math notranslate nohighlight">\(\alpha = y + \beta = y + \frac{x - y}{3} = \frac{3y + x - y}{3} = \frac{x + 2y}{3}\)</span></p></li>
 </ol>
 <p><strong>Por lo tanto:</strong></p>
-<p>Para cualquier <span class="math notranslate nohighlight">\((x, y, 0) \in W\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>Para cualquier <span class="math notranslate nohighlight">\((x, y, 0) \in W\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 (x, y, 0) = \frac{x + 2y}{3}(1,1,0) + \frac{x - y}{3}(2,-1,0)
-\)</span>$</p>
+\]</div>
 <p>Esto muestra <strong>explícitamente</strong> que <span class="math notranslate nohighlight">\(B_2\)</span> también genera <span class="math notranslate nohighlight">\(W\)</span> y es una base alternativa al conjunto estándar.</p>
 <p><strong>Conclusión:</strong><br />
 El mismo subespacio de dimensión 2 puede ser generado por distintas bases, y la forma de escribir cualquier vector usando la base alternativa es constructiva y única.</p>

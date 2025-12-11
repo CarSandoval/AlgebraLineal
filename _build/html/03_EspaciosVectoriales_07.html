@@ -1,0 +1,1036 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.7 Cambio de base &#8212; Algebra Lineal</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_EspaciosVectoriales_07';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.8 Bases ortonormales" href="03_EspaciosVectoriales_08.html" />
+    <link rel="prev" title="3.6 Propiedades de las matrices" href="03_EspaciosVectoriales_06.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/escudo.png" class="logo__image only-light" alt="Algebra Lineal - Home"/>
+    <script>document.write(`<img src="_static/escudo.png" class="logo__image only-dark" alt="Algebra Lineal - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_SistemasDeEcuacionesLineales.html">1 Sistemas de Ecuaciones Lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_01.html">1.1 Metodo De Gauss y Gauss-Jordan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_02.html">1.2 Interpretación Geométrica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_03.html">1.3 Existencia y unicidad de la solución de ecuaciones lineales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_VectoresMatricesYDeterminantes.html">2 Vectores Matrices y Determinantes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_00.html">2.1 El conjunto de permutaciones  <span class="math notranslate nohighlight">\( S_n \)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_01.html">2.2 Definición de determinante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_02.html">2.3 Propiedades y aplicaciones de determinantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_03.html">2.4 Propiedades y aplicaciones de matrices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="03_EspaciosVectoriales.html">3 Espacios vectoriales</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_01.html">3.1 Introducción a los Espacios vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_02.html">3.2 Combinación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_03.html">3.3 Conjunto generador (span)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_04.html">3.4 Vectores linealmente dependientes e independientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_05.html">3.5 Base y dimensión de un espacio vectorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_06.html">3.6 Propiedades de las matrices</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.7 Cambio de base</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_08.html">3.8 Bases ortonormales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_TransformacionesLineales.html">4 Transformaciones lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_01.html">4.1 Definición de transformación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_02.html">4.2 Representación matricial de una transformación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_03.html">4.3 Algunas transformaciones lineales de aplicación común.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="06_referencias.html">6 Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal/issues/new?title=Issue%20on%20page%20%2F03_EspaciosVectoriales_07.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_EspaciosVectoriales_07.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3.7 Cambio de base</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3.7 Cambio de base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion-de-cambio-de-base">Notación de cambio de base</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-coordenadas-dada-una-base-mathcal-b">3.7.1 Definición de coordenadas dada una base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicacion">Explicación.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicidad-de-la-representacion-en-coordenadas-respecto-a-una-base">Unicidad de la representación en coordenadas respecto a una base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-canonica-a-no-canonica">3.7.2 De canónica a no canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-python-usando-matplotlib">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-no-canonica-a-canonica">3.7.3 De no canónica a canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-no-canonica-a-no-canonica">3.7.4 De no canónica a no canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cambio-de-base">
+<h1>3.7 Cambio de base<a class="headerlink" href="#cambio-de-base" title="Link to this heading">#</a></h1>
+<p><strong>Base Canonica</strong></p>
+<p>En <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, la <strong>base canónica</strong> es el conjunto formado por los vectores estándar:
+$<span class="math notranslate nohighlight">\(
+\mathcal{B}_{\text{can}} = \{ e_1, e_2, \dots, e_n \}
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>e_i<span class="math notranslate nohighlight">\( es el vector que tiene un \)</span>1<span class="math notranslate nohighlight">\( en la posición \)</span>i<span class="math notranslate nohighlight">\( y ceros en las demás.  
+Por ejemplo, en \)</span>\mathbb{R}^3<span class="math notranslate nohighlight">\(:
+\)</span><span class="math notranslate nohighlight">\(
+e_1 = (1,0,0), \quad e_2 = (0,1,0), \quad e_3 = (0,0,1)
+\)</span>$
+La base canónica tiene la propiedad de que las coordenadas de un vector respecto a ella son sus componentes usuales.</p>
+<p><strong>Cambio de Base</strong></p>
+<p>Un <strong>cambio de base</strong> es el proceso mediante el cual representamos un mismo vector o transformación lineal en diferentes bases de un espacio vectorial.<br />
+El objetivo principal es traducir las coordenadas de un vector desde una base original <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a una base nueva <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>.<br />
+Esto es fundamental en álgebra lineal porque algunas bases hacen que ciertos problemas sean más fáciles de resolver o interpretar.</p>
+<p><strong>Notación de cambio de base</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notacion-de-cambio-de-base">
+<h1>Notación de cambio de base<a class="headerlink" href="#notacion-de-cambio-de-base" title="Link to this heading">#</a></h1>
+<ul>
+<li><p>Si <span class="math notranslate nohighlight">\([x]_{\mathcal{B}}\)</span> son las coordenadas del vector <span class="math notranslate nohighlight">\(x\)</span> en la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, y <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'}\)</span> son sus coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>, entonces el <strong>cambio de base</strong> de <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span> se representa usando una <strong>matriz de cambio de base</strong> <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{B}}\)</span>.</p></li>
+<li><p>La relación es:
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{B}'} = P_{\mathcal{B}' \leftarrow \mathcal{B}} [x]_{\mathcal{B}}
+\)</span>$</p>
+<p>donde <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{B}}\)</span> es la matriz que lleva coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>.</p>
+</li>
+<li><p><strong>Si quieres expresar el cambio de coordenadas de una base cualquiera <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a la base canónica</strong>, la matriz de cambio de base se denota como:</p>
+<div class="math notranslate nohighlight">
+\[
+  P_{\mathcal{E} \leftarrow \mathcal{B}}
+  \]</div>
+<p>Esto significa: “La matriz que convierte las coordenadas desde la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a la base canónica <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>”.</p>
+</li>
+<li><p><strong>Si quieres expresar el cambio desde la base canónica <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> a otra base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+  P_{\mathcal{B} \leftarrow \mathcal{E}}
+  \]</div>
+<p>Esto significa: “La matriz que convierte las coordenadas desde la base canónica <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> a la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>”.</p>
+</li>
+</ul>
+<section id="definicion-de-coordenadas-dada-una-base-mathcal-b">
+<h2>3.7.1 Definición de coordenadas dada una base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span><a class="headerlink" href="#definicion-de-coordenadas-dada-una-base-mathcal-b" title="Link to this heading">#</a></h2>
+<p>Dado un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre un campo <span class="math notranslate nohighlight">\(K\)</span> y una base <span class="math notranslate nohighlight">\(\mathcal{B} = \{v_1, v_2, \ldots, v_n\}\)</span> de <span class="math notranslate nohighlight">\(V\)</span>,<br />
+<strong>las coordenadas</strong> de un vector <span class="math notranslate nohighlight">\(x \in V\)</span> respecto a la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> son los escalares únicos <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n \in K\)</span> tales que:</p>
+<div class="math notranslate nohighlight">
+\[
+x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n
+\]</div>
+<p>El vector de coordenadas de <span class="math notranslate nohighlight">\(x\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> se denota como:
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{B}} = 
+\begin{pmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n
+\end{pmatrix}
+\)</span>$</p>
+<section id="explicacion">
+<h3>Explicación.<a class="headerlink" href="#explicacion" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Para <strong>cada</strong> vector <span class="math notranslate nohighlight">\(x\)</span> del espacio <span class="math notranslate nohighlight">\(V\)</span>, existe <strong>una única</strong> combinación lineal de los vectores de la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> que da como resultado <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>Los coeficientes de esa combinación son <strong>las coordenadas</strong> de <span class="math notranslate nohighlight">\(x\)</span> respecto a la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p></li>
+<li><p>El proceso de obtener estas coordenadas se llama “expresar <span class="math notranslate nohighlight">\(x\)</span> en la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>”.</p></li>
+</ul>
+</section>
+<section id="unicidad-de-la-representacion-en-coordenadas-respecto-a-una-base">
+<h3>Unicidad de la representación en coordenadas respecto a una base<a class="headerlink" href="#unicidad-de-la-representacion-en-coordenadas-respecto-a-una-base" title="Link to this heading">#</a></h3>
+<p><strong>Enunciado:</strong><br />
+Si <span class="math notranslate nohighlight">\(\mathcal{B} = \{v_1, v_2, ..., v_n\}\)</span> es una base de un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> y <span class="math notranslate nohighlight">\(x \in V\)</span>,<br />
+entonces <strong>existe una única</strong> manera de expresar <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>:
+$<span class="math notranslate nohighlight">\(
+x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n
+\)</span><span class="math notranslate nohighlight">\(
+con \)</span>a_1, …, a_n$ únicos.</p>
+<p><strong>Demostración:</strong></p>
+<p>Supón que existen dos formas de escribir <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de la base:
+$<span class="math notranslate nohighlight">\(
+x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n \\
+x = b_1 v_1 + b_2 v_2 + \cdots + b_n v_n
+\)</span>$</p>
+<p>Restando ambas igualdades:
+$<span class="math notranslate nohighlight">\(
+0 = (a_1 - b_1)v_1 + (a_2 - b_2)v_2 + \cdots + (a_n - b_n)v_n
+\)</span>$</p>
+<p>Pero los vectores <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> son <strong>linealmente independientes</strong> (por ser base),<br />
+así que la única combinación lineal que da el vector cero es aquella donde <strong>todos los coeficientes son cero</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a_1 - b_1 = 0 \\
+a_2 - b_2 = 0 \\
+\vdots \\
+a_n - b_n = 0
+\end{split}\]</div>
+<p>Por lo tanto, <span class="math notranslate nohighlight">\(a_i = b_i\)</span> para todo <span class="math notranslate nohighlight">\(i=1, ..., n\)</span>.</p>
+<p><strong>Conclusión:</strong><br />
+Las coordenadas de cualquier vector respecto a una base están <strong>bien definidas y son únicas</strong>.</p>
+</section>
+<section id="ejemplo">
+<h3>Ejemplo:<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(\mathcal{B} = \{(1,1),\, (2,1)\}\)</span> una base de <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> y <span class="math notranslate nohighlight">\(x = (5, 3)\)</span>.<br />
+Queremos <span class="math notranslate nohighlight">\(a_1, a_2\)</span> tales que:
+$<span class="math notranslate nohighlight">\(
+(5,3) = a_1 (1,1) + a_2 (2,1)
+\)</span>$</p>
+<p>Resolviendo:
+$<span class="math notranslate nohighlight">\(
+\begin{cases}
+a_1 + 2a_2 = 5 \\
+a_1 + a_2 = 3
+\end{cases}
+\)</span>$</p>
+<p>Obtenemos <span class="math notranslate nohighlight">\(a_2 = 2\)</span>, <span class="math notranslate nohighlight">\(a_1 = 1\)</span>.</p>
+<p>Por lo tanto,<br />
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{B}} = 
+\begin{pmatrix}
+1 \\
+2
+\end{pmatrix}
+\)</span>$</p>
+</section>
+</section>
+<section id="de-canonica-a-no-canonica">
+<h2>3.7.2 De canónica a no canónica<a class="headerlink" href="#de-canonica-a-no-canonica" title="Link to this heading">#</a></h2>
+<section id="algoritmo">
+<h3>Algoritmo<a class="headerlink" href="#algoritmo" title="Link to this heading">#</a></h3>
+<p><strong>Dado:</strong></p>
+<ul class="simple">
+<li><p>Una base no canónica <span class="math notranslate nohighlight">\(\mathcal{B}' = \{v_1, v_2, \ldots, v_n\}\)</span></p></li>
+<li><p>Un vector <span class="math notranslate nohighlight">\(x\)</span> en coordenadas canónicas (respecto a la base canónica <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>)</p></li>
+</ul>
+<p><strong>Desarrollo:</strong></p>
+<p>Sea <span class="math notranslate nohighlight">\(P_{\mathcal{E} \leftarrow \mathcal{B}} = [v_1\ v_2\ \ldots\ v_n]\)</span> (cada <span class="math notranslate nohighlight">\(v_i\)</span> como columna). Entonces se debe cumplir que:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\mathcal{E}' \leftarrow \mathcal{B}'} [x]_{\mathcal{B}'} = [x]_{\mathcal{E}}
+\]</div>
+<p>Luego si multiplicamos por la izquierda de ambos lados de la ecuación por <span class="math notranslate nohighlight">\((P_{\mathcal{E} \leftarrow \mathcal{B}'})^{-1}\)</span> obtenemos que:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+(P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1} P_{\mathcal{E} \leftarrow \mathcal{B}'} [x]_{\mathcal{B}'} = (P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1} [x]_{\mathcal{E}}\\
+[x]_{\mathcal{B}'} = (P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1} [x]_{\mathcal{E}}
+\end{align*}
+\end{split}\]</div>
+<p>De aqui concluimos que <span class="math notranslate nohighlight">\((P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1}\)</span> debe ser la matriz de cambio de base de <span class="math notranslate nohighlight">\( [x]_\mathcal{E} \rightarrow [x]_\mathcal{B}' \)</span> , por lo que:</p>
+<div class="math notranslate nohighlight">
+\[
+ (P_{\mathcal{B}' \leftarrow \mathcal{E}'}) = (P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1} 
+\]</div>
+<p><strong>Pasos:</strong></p>
+<ol class="arabic simple">
+<li><p>Forma la matriz de cambio de base <span class="math notranslate nohighlight">\(P_{\mathcal{E}' \leftarrow \mathcal{B}} = [v_1\ v_2\ \ldots\ v_n]\)</span> (cada <span class="math notranslate nohighlight">\(v_i\)</span> como columna).</p></li>
+<li><p>Invertimos la matriz y obtenemos <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{E}} = (P_{\mathcal{E}' \leftarrow \mathcal{B}'})^{-1} \)</span></p></li>
+<li><p>Multiplicamos <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{E}}\ [x]_\mathcal{E} = [x]_\mathcal{B} \)</span></p></li>
+<li><p>El vector <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'}\)</span> son las coordenadas de <span class="math notranslate nohighlight">\(x\)</span> en la base <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>.</p></li>
+</ol>
+</section>
+<section id="ejemplo-numerico">
+<h3>Ejemplo numérico<a class="headerlink" href="#ejemplo-numerico" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span> y <span class="math notranslate nohighlight">\(x = (5, 3) = [x]_{\mathcal{E}}\)</span>.</p>
+<ol class="arabic">
+<li><p>La matriz de cambio de base es:
+$<span class="math notranslate nohighlight">\(
+P_{\mathcal{E} \leftarrow \mathcal{B}'} = 
+\begin{pmatrix}
+1 &amp; 2 \\
+1 &amp; 1
+\end{pmatrix}
+\)</span>$</p></li>
+<li><h1 class="rubric" id="su-inversa-es-p-mathcal-b-leftarrow-mathcal-e-begin-pmatrix-1-2-1-1-end-pmatrix-1">Su inversa es:
+$$
+P_{\mathcal{B}’ \leftarrow \mathcal{E}} =
+\begin{pmatrix}
+1 &amp; 2 \
+1 &amp; 1
+\end{pmatrix}^{-1}</h1>
+<p>\begin{pmatrix}
+-1 &amp; 2 \
+1 &amp; -1
+\end{pmatrix}
+$$</p>
+</li>
+<li><h1 class="rubric" id="multiplicamos-x-mathcal-b-p-mathcal-b-leftarrow-mathcal-e-x-mathcal-e">Multiplicamos:
+$$
+[x]<em>{\mathcal{B}’} = P</em>{\mathcal{B}’ \leftarrow \mathcal{E}} \ [x]_{\mathcal{E}}</h1>
+<p>\begin{pmatrix}
+-1 &amp; 2 \
+1 &amp; -1
+\end{pmatrix}
+\begin{pmatrix}
+5 \
+3
+\end{pmatrix}
+$<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= \begin{pmatrix}
+-1 \cdot 5 + 2 \cdot 3 \\
+1 \cdot 5 - 1 \cdot 3
+\end{pmatrix}
+= \begin{pmatrix}
+-5 + 6 \\
+5 - 3
+\end{pmatrix}
+= \begin{pmatrix}
+1 \\
+2
+\end{pmatrix}
+\)</span>$</p>
+</li>
+</ol>
+<p>Por lo tanto,
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{B}'} = (1, 2)
+\)</span>$</p>
+</section>
+<section id="ejemplo-con-python-usando-matplotlib">
+<h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#ejemplo-con-python-usando-matplotlib" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Paso 1: Definir la base no canónica</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Paso 2: Matriz de cambio de base de la base no canónica a la canónica</span>
+<span class="n">P_E_to_Bp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_{E &lt;- B&#39;} =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">P_E_to_Bp</span><span class="p">)</span>
+
+<span class="c1"># Paso 3: Calcular la inversa (de la canónica a la no canónica)</span>
+<span class="n">P_Bp_to_E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P_E_to_Bp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P_{B&#39; &lt;- E} =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">P_Bp_to_E</span><span class="p">)</span>
+
+<span class="c1"># Paso 4: Vector en la base canónica</span>
+<span class="n">x_E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Paso 5: Cambiar coordenadas</span>
+<span class="n">x_Bp</span> <span class="o">=</span> <span class="n">P_Bp_to_E</span> <span class="o">@</span> <span class="n">x_E</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[x]_{B&#39;} =&quot;</span><span class="p">,</span> <span class="n">x_Bp</span><span class="p">)</span>
+
+<span class="c1"># Dibujo</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Base no canónica</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v1</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v2</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v_2$&#39;</span><span class="p">)</span>
+<span class="c1"># Vector en base canónica</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">x_E</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x$ en canónica&#39;</span><span class="p">)</span>
+
+<span class="c1"># Coordenadas sobre la base no canónica (reconstrucción)</span>
+<span class="n">x_from_Bp</span> <span class="o">=</span> <span class="n">x_Bp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v1</span> <span class="o">+</span> <span class="n">x_Bp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">x_from_Bp</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x$ reconstruido&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cambio de base: canónica a base no canónica&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P_{E &lt;- B&#39;} =
+ [[1 2]
+ [1 1]]
+P_{B&#39; &lt;- E} =
+ [[-1.  2.]
+ [ 1. -1.]]
+[x]_{B&#39;} = [1. 2.]
+</pre></div>
+</div>
+<img alt="_images/390b3a1a34d3c0d409d733e297643c964422aec9a26c5043715f4307186be15c.png" src="_images/390b3a1a34d3c0d409d733e297643c964422aec9a26c5043715f4307186be15c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="de-no-canonica-a-canonica">
+<h2>3.7.3 De no canónica a canónica<a class="headerlink" href="#de-no-canonica-a-canonica" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Algoritmo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>Dado:</strong></p>
+<ul class="simple">
+<li><p>Una base no canónica <span class="math notranslate nohighlight">\(\mathcal{B}' = \{v_1, v_2, \ldots, v_n\}\)</span></p></li>
+<li><p>Coordenadas <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'} = (a_1, ..., a_n)\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span></p></li>
+</ul>
+<p><strong>Pasos:</strong></p>
+<ol class="arabic simple">
+<li><p>Forma la matriz de cambio de base <span class="math notranslate nohighlight">\(P_{\mathcal{E} \leftarrow \mathcal{B}'} = [v_1\ v_2\ \ldots\ v_n]\)</span> (cada <span class="math notranslate nohighlight">\(v_i\)</span> como columna).</p></li>
+<li><p>Calcula el vector en la base canónica:
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{E}} = P_{\mathcal{E} \leftarrow \mathcal{B}'} \cdot [x]_{\mathcal{B}'}
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="id2">
+<h3>Ejemplo numérico<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span> y <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'} = (1, 2)\)</span>.</p>
+<p>Entonces:
+$<span class="math notranslate nohighlight">\(
+[x]_{\mathcal{E}} = P_{\mathcal{E} \leftarrow \mathcal{B}'} \cdot [x]_{\mathcal{B}'} = 1 \cdot (1,1) + 2 \cdot (2,1) = (1+4,\ 1+2) = (5, 3)
+\)</span>$</p>
+</section>
+<section id="id3">
+<h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">P</span> <span class="o">@</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vector en la base canónica:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v1</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v2</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cambio de base: no canónica a canónica&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector en la base canónica: [5 3]
+</pre></div>
+</div>
+<img alt="_images/077a835c287855a9bbb98663619d076e623ff996d806d383577f538b87c190a2.png" src="_images/077a835c287855a9bbb98663619d076e623ff996d806d383577f538b87c190a2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="de-no-canonica-a-no-canonica">
+<h2>3.7.4 De no canónica a no canónica<a class="headerlink" href="#de-no-canonica-a-no-canonica" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>Algoritmo<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><strong>Dado:</strong></p>
+<ul class="simple">
+<li><p>Una base original <span class="math notranslate nohighlight">\(\mathcal{B} = \{u_1, ..., u_n\}\)</span> y una base destino <span class="math notranslate nohighlight">\(\mathcal{B}' = \{v_1, ..., v_n\}\)</span></p></li>
+<li><p>Coordenadas <span class="math notranslate nohighlight">\(a\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}\)</span></p></li>
+</ul>
+<p><strong>Pasos:</strong></p>
+<ol class="arabic simple">
+<li><p>Forma <span class="math notranslate nohighlight">\(Q = [u_1\ \ldots\ u_n]\)</span> y <span class="math notranslate nohighlight">\(P = [v_1\ \ldots\ v_n]\)</span></p></li>
+<li><p>Calcula <span class="math notranslate nohighlight">\(x = Q a\)</span> (vector en base canónica)</p></li>
+<li><p>Resuelve <span class="math notranslate nohighlight">\(P b = x\)</span> para <span class="math notranslate nohighlight">\(b\)</span> (coordenadas en la base destino)</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>Ejemplo numérico<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Sean <span class="math notranslate nohighlight">\(\mathcal{B} = \{ (1,0), (0,2) \}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span>, <span class="math notranslate nohighlight">\(a = (3,2)\)</span>.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(x = Q a = 3 \cdot (1,0) + 2 \cdot (0,2) = (3, 4)\)</span></p></li>
+<li><p>Busca <span class="math notranslate nohighlight">\(b_1, b_2\)</span> tales que:
+$<span class="math notranslate nohighlight">\(
+(3,4) = b_1(1,1) + b_2(2,1) = (b_1 + 2b_2,\, b_1 + b_2)
+\)</span>$</p></li>
+</ol>
+<p>Sistema:
+$<span class="math notranslate nohighlight">\(
+\begin{cases}
+b_1 + 2b_2 = 3 \\
+b_1 + b_2 = 4
+\end{cases}
+\)</span><span class="math notranslate nohighlight">\(
+Restando: \)</span>b_2 = -1<span class="math notranslate nohighlight">\(, \)</span>b_1 = 5$.</p>
+</section>
+<section id="id6">
+<h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">@</span> <span class="n">a</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordenadas en la base destino:&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="n">origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">u1</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;u1 (Base original)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">u2</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;u2 (Base original)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v1</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v1 (Base destino)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v2</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v2 (Base destino)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x (vector)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cambio de base: no canónica a no canónica&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordenadas en la base destino: [ 5. -1.]
+</pre></div>
+</div>
+<img alt="_images/0fbcb823468073fecbce29de9a9e6da724c373c611384633ba4f7859389cc5bc.png" src="_images/0fbcb823468073fecbce29de9a9e6da724c373c611384633ba4f7859389cc5bc.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_EspaciosVectoriales_06.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3.6 Propiedades de las matrices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_EspaciosVectoriales_08.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.8 Bases ortonormales</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3.7 Cambio de base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion-de-cambio-de-base">Notación de cambio de base</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-coordenadas-dada-una-base-mathcal-b">3.7.1 Definición de coordenadas dada una base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicacion">Explicación.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicidad-de-la-representacion-en-coordenadas-respecto-a-una-base">Unicidad de la representación en coordenadas respecto a una base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-canonica-a-no-canonica">3.7.2 De canónica a no canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-python-usando-matplotlib">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-no-canonica-a-canonica">3.7.3 De no canónica a canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-no-canonica-a-no-canonica">3.7.4 De no canónica a no canónica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Ejemplo con python usando matplotlib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Johnnatan Sandoval Arrayga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

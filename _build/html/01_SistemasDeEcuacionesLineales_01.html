@@ -1,0 +1,1488 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.1 Metodo De Gauss y Gauss-Jordan &#8212; Algebra Lineal</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_SistemasDeEcuacionesLineales_01';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1.2 Interpretación Geométrica" href="01_SistemasDeEcuacionesLineales_02.html" />
+    <link rel="prev" title="1 Sistemas de Ecuaciones Lineales" href="01_SistemasDeEcuacionesLineales.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/escudo.png" class="logo__image only-light" alt="Algebra Lineal - Home"/>
+    <script>document.write(`<img src="_static/escudo.png" class="logo__image only-dark" alt="Algebra Lineal - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_SistemasDeEcuacionesLineales.html">1 Sistemas de Ecuaciones Lineales</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1 Metodo De Gauss y Gauss-Jordan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_02.html">1.2 Interpretación Geométrica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_03.html">1.3 Existencia y unicidad de la solución de ecuaciones lineales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_VectoresMatricesYDeterminantes.html">2 Vectores Matrices y Determinantes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_00.html">2.1 El conjunto de permutaciones  <span class="math notranslate nohighlight">\( S_n \)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_01.html">2.2 Definición de determinante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_02.html">2.3 Propiedades y aplicaciones de determinantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_03.html">2.4 Propiedades y aplicaciones de matrices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="03_EspaciosVectoriales.html">3 Espacios vectoriales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_01.html">3.1 Introducción a los Espacios vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_02.html">3.2 Combinación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_03.html">3.3 Conjunto generador (span)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_04.html">3.4 Vectores linealmente dependientes e independientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_05.html">3.5 Base y dimensión de un espacio vectorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_06.html">3.6 Propiedades de las matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_07.html">3.7 Cambio de base</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_08.html">3.8 Bases ortonormales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_TransformacionesLineales.html">4 Transformaciones lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_01.html">4.1 Definición de transformación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_02.html">4.2 Representación matricial de una transformación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_03.html">4.3 Algunas transformaciones lineales de aplicación común.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="06_referencias.html">6 Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal/issues/new?title=Issue%20on%20page%20%2F01_SistemasDeEcuacionesLineales_01.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/01_SistemasDeEcuacionesLineales_01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1.1 Metodo De Gauss y Gauss-Jordan</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-con-matrices">1.1.1 Operaciones con matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion-de-elementos-de-una-matriz">Notación de elementos de una matriz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suma-de-matrices">Suma de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-una-matriz-por-un-escalar">Producto de una matriz por un escalar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-matrices">Producto de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-aumentada">Matriz aumentada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-elementales-por-renglon">Operaciones elementales por renglón</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-gauss">1.1.2 Método de Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-del-metodo-de-gauss"><strong>Instrucciones del método de Gauss:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-resolucion-de-un-sistema-de-ecuaciones-por-el-metodo-de-gauss">Ejemplo: Resolución de un sistema de ecuaciones por el método de Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#escribe-la-matriz-aumentada"><strong>1. Escribe la matriz aumentada:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#haz-ceros-debajo-del-primer-pivote-columna-1"><strong>2. Haz ceros debajo del primer pivote (columna 1):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#haz-cero-debajo-del-segundo-pivote-columna-2"><strong>2. Haz cero debajo del segundo pivote (columna 2):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resuelve-por-sustitucion-hacia-atras"><strong>3. Resuelve por sustitución hacia atrás:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion"><strong>5. Solución</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-gauss-jordan">1.1.3 Método de Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Método de Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-del-metodo-de-gauss-jordan"><strong>Instrucciones del método de Gauss-Jordan:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-resolver-el-sistema"><strong>Ejemplo:</strong> Resolver el sistema</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>1. Matriz aumentada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformacion-a-forma-escalonada-reducida"><strong>1. Transformación a forma escalonada reducida</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-directa"><strong>3. Solución directa</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-elementales">1.1.4 Matrices elementales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-inicial">Ejemplo inicial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forma-general-de-las-matrices-elementales">Forma general de las matrices elementales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-calculo-de-inversa-de-una-matriz-por-el-metodo-de-la-matriz-aumentada-a-mid-i">Ejemplo de calculo de inversa de una matriz por el método de la matriz aumentada <span class="math notranslate nohighlight">\( [A \mid I] \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demostracion-formal">Demostración formal</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="metodo-de-gauss-y-gauss-jordan">
+<h1>1.1 Metodo De Gauss y Gauss-Jordan<a class="headerlink" href="#metodo-de-gauss-y-gauss-jordan" title="Link to this heading">#</a></h1>
+<p>Además de los métodos tradicionales para resolver sistemas de ecuaciones, como el método de sustitución o el método de suma y resta, y el metodo gráfico, existen otras formas más estructuradas y eficientes, especialmente útiles cuando se trata de sistemas con muchas incógnitas. Una de estas formas consiste en utilizar una <strong>estructura matemática llamada matriz</strong>.</p>
+<p>En este contexto, <strong>una matriz</strong> es un arreglo rectangular de números dispuestos en filas y columnas. Las matrices nos permiten representar de manera compacta y ordenada la información de un sistema de ecuaciones lineales, lo que facilita la aplicación de métodos algorítmicos y el uso de herramientas computacionales.</p>
+<p>Para asociar un sistema de ecuaciones lineales con una matriz, asignamos cada coeficiente de las incógnitas y cada término independiente a un lugar específico dentro de la matriz. Por ejemplo, consideremos el siguiente sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+2x + 3y = 8 \\
+x - 4y = -2
+\end{cases}
+\end{split}\]</div>
+<p>Podemos representar los coeficientes de las incógnitas en la <strong>matriz de coeficientes</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+2 &amp; 3 \\
+1 &amp; -4
+\end{bmatrix}
+\end{split}\]</div>
+<p>y los términos independientes en el <strong>vector columna</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{b} = \begin{bmatrix}
+8 \\
+-2
+\end{bmatrix}
+\end{split}\]</div>
+<p>Así, el sistema se puede expresar de manera abreviada como:</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{x} = \mathbf{b}
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x} = \begin{bmatrix} x \\ y \end{bmatrix}
+\end{split}\]</div>
+<p>es el vector de incógnitas. Esta notación matricial es fundamental en álgebra lineal y nos permitirá estudiar métodos más generales y potentes para resolver sistemas de ecuaciones.</p>
+<section id="operaciones-con-matrices">
+<h2>1.1.1 Operaciones con matrices<a class="headerlink" href="#operaciones-con-matrices" title="Link to this heading">#</a></h2>
+<p>Para comprender la notación matricial utilizada en la expresión <span class="math notranslate nohighlight">\(A\mathbf{x} = \mathbf{b}\)</span>, es importante familiarizarse con algunas operaciones básicas que se pueden realizar con matrices. Las matrices son estructuras fundamentales en el álgebra lineal y proporcionan un marco ordenado para organizar y manipular conjuntos de números.</p>
+<p>Una <strong>matriz</strong> es un arreglo rectangular de números organizados en filas y columnas. Por ejemplo, una matriz de dos filas y tres columnas se puede escribir como:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{bmatrix}
+\end{split}\]</div>
+<p>Un <strong>vector</strong> es un caso especial de matriz que tiene solo una columna (vector columna) o una fila (vector fila). Por ejemplo, el siguiente es un vector columna de tres componentes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v} = \begin{bmatrix}
+2 \\
+-1 \\
+4
+\end{bmatrix}
+\end{split}\]</div>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+<section id="notacion-de-elementos-de-una-matriz">
+<h3>Notación de elementos de una matriz<a class="headerlink" href="#notacion-de-elementos-de-una-matriz" title="Link to this heading">#</a></h3>
+<p>Supongamos que <span class="math notranslate nohighlight">\(A\)</span> es una matriz de <span class="math notranslate nohighlight">\(m\)</span> filas y <span class="math notranslate nohighlight">\(n\)</span> columnas:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>El <strong>elemento <span class="math notranslate nohighlight">\(a_{ij}\)</span></strong> se refiere al elemento en la fila <span class="math notranslate nohighlight">\(i\)</span> y la columna <span class="math notranslate nohighlight">\(j\)</span> de la matriz <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>El <strong>renglón <span class="math notranslate nohighlight">\(i\)</span></strong> (también llamado <strong>fila <span class="math notranslate nohighlight">\(i\)</span></strong>) es el conjunto de elementos <span class="math notranslate nohighlight">\(a_{i1}, a_{i2}, \ldots, a_{in}\)</span>.</p></li>
+<li><p>La <strong>columna <span class="math notranslate nohighlight">\(j\)</span></strong> es el conjunto de elementos <span class="math notranslate nohighlight">\(a_{1j}, a_{2j}, \ldots, a_{mj}\)</span>.</p></li>
+</ul>
+<p><strong>Ejemplo:</strong></p>
+<p>Si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+2 &amp; 3 &amp; 5 \\
+4 &amp; 1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>El elemento <span class="math notranslate nohighlight">\(a_{21}\)</span> es el que está en la fila 2, columna 1: <span class="math notranslate nohighlight">\(a_{21} = 4\)</span>.</p></li>
+<li><p>El renglón 1 es <span class="math notranslate nohighlight">\([2, 3, 5]\)</span>.</p></li>
+<li><p>La columna 3 es <span class="math notranslate nohighlight">\([5, 0]\)</span>.</p></li>
+</ul>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+</section>
+<section id="suma-de-matrices">
+<h3>Suma de matrices<a class="headerlink" href="#suma-de-matrices" title="Link to this heading">#</a></h3>
+<p>Sean <span class="math notranslate nohighlight">\(A = [a_{ij}]\)</span> y <span class="math notranslate nohighlight">\(B = [b_{ij}]\)</span> dos matrices del mismo tamaño, es decir, ambas de orden <span class="math notranslate nohighlight">\(m \times n\)</span> (con <span class="math notranslate nohighlight">\(m\)</span> filas y <span class="math notranslate nohighlight">\(n\)</span> columnas).</p>
+<p>La <strong>suma de matrices</strong> <span class="math notranslate nohighlight">\(A + B\)</span> se define como la matriz <span class="math notranslate nohighlight">\(C = [c_{ij}]\)</span> también de orden <span class="math notranslate nohighlight">\(m \times n\)</span>, cuyos elementos se obtienen sumando los elementos correspondientes de <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+c_{ij} = a_{ij} + b_{ij} \qquad \text{para todo } 1 \leq i \leq m,\ 1 \leq j \leq n
+\]</div>
+<p>En otras palabras,</p>
+<div class="math notranslate nohighlight">
+\[
+A + B = [a_{ij}] + [b_{ij}] = [a_{ij} + b_{ij}]
+\]</div>
+<p><strong>Ejemplo:</strong></p>
+<p>La <strong>suma de matrices</strong> se define solo para matrices del mismo tamaño. Para sumar dos matrices, se suman sus elementos correspondientes. Por ejemplo, si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+1 &amp; 3 \\
+2 &amp; 4
+\end{bmatrix}, \quad
+B = \begin{bmatrix}
+5 &amp; 0 \\
+-1 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<p>entonces</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A + B = \begin{bmatrix}
+1 + 5 &amp; 3 + 0 \\
+2 + (-1) &amp; 4 + 2
+\end{bmatrix}
+= \begin{bmatrix}
+6 &amp; 3 \\
+1 &amp; 6
+\end{bmatrix}
+\end{split}\]</div>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+</section>
+<section id="producto-de-una-matriz-por-un-escalar">
+<h3>Producto de una matriz por un escalar<a class="headerlink" href="#producto-de-una-matriz-por-un-escalar" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(A = [a_{ij}]\)</span> una matriz de tamaño <span class="math notranslate nohighlight">\(m \times n\)</span>, y sea <span class="math notranslate nohighlight">\(\lambda\)</span> un número real (escalar).</p>
+<p>El <strong>producto de la matriz <span class="math notranslate nohighlight">\(A\)</span> por el escalar <span class="math notranslate nohighlight">\(\lambda\)</span></strong> es la matriz <span class="math notranslate nohighlight">\(\lambda A = [\lambda a_{ij}]\)</span> de tamaño <span class="math notranslate nohighlight">\(m \times n\)</span>, cuyos elementos se obtienen multiplicando cada elemento de <span class="math notranslate nohighlight">\(A\)</span> por <span class="math notranslate nohighlight">\(\lambda\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+(\lambda A)_{ij} = \lambda \cdot a_{ij}
+\]</div>
+<p>para todo <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span>, <span class="math notranslate nohighlight">\(1 \leq j \leq n\)</span>.</p>
+<p>Es decir, el <strong>producto de una matriz por un escalar</strong> consiste en multiplicar cada elemento de la matriz por ese número.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \begin{bmatrix}
+2 &amp; -3 \\
+0 &amp; 5
+\end{bmatrix}
+\end{split}\]</div>
+<p>entonces</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+3C = \begin{bmatrix}
+3 \times 2 &amp; 3 \times (-3) \\
+3 \times 0 &amp; 3 \times 5
+\end{bmatrix}
+= \begin{bmatrix}
+6 &amp; -9 \\
+0 &amp; 15
+\end{bmatrix}
+\end{split}\]</div>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+</section>
+<section id="producto-de-matrices">
+<h3>Producto de matrices<a class="headerlink" href="#producto-de-matrices" title="Link to this heading">#</a></h3>
+<p>Sean <span class="math notranslate nohighlight">\(A = [a_{ij}]\)</span> una matriz de tamaño <span class="math notranslate nohighlight">\(m \times n\)</span> y <span class="math notranslate nohighlight">\(B = [b_{jk}]\)</span> una matriz de tamaño <span class="math notranslate nohighlight">\(n \times p\)</span> (es decir, el número de columnas de <span class="math notranslate nohighlight">\(A\)</span> coincide con el número de filas de <span class="math notranslate nohighlight">\(B\)</span>).</p>
+<p>El <strong>producto de matrices</strong> <span class="math notranslate nohighlight">\(AB\)</span> es una nueva matriz <span class="math notranslate nohighlight">\(C = [c_{ik}]\)</span> de tamaño <span class="math notranslate nohighlight">\(m \times p\)</span>, cuyos elementos se definen así:</p>
+<div class="math notranslate nohighlight">
+\[
+c_{ik} = \sum_{j=1}^{n} a_{ij} b_{jk}
+\]</div>
+<p>para <span class="math notranslate nohighlight">\(1 \leq i \leq m\)</span> y <span class="math notranslate nohighlight">\(1 \leq k \leq p\)</span>.</p>
+<p>En otras palabras, el elemento en la fila <span class="math notranslate nohighlight">\(i\)</span> y columna <span class="math notranslate nohighlight">\(k\)</span> de <span class="math notranslate nohighlight">\(C\)</span> se obtiene multiplicando los elementos de la fila <span class="math notranslate nohighlight">\(i\)</span> de <span class="math notranslate nohighlight">\(A\)</span> por los elementos de la columna <span class="math notranslate nohighlight">\(k\)</span> de <span class="math notranslate nohighlight">\(B\)</span>, sumando los productos correspondientes.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{bmatrix}
+1 &amp; 0 &amp; 2 \\
+-1 &amp; 3 &amp; 1
+\end{bmatrix}, \quad
+B = \begin{bmatrix}
+3 &amp; 1 \\
+2 &amp; 1 \\
+1 &amp; 0
+\end{bmatrix}
+\end{split}\]</div>
+<p>entonces el producto <span class="math notranslate nohighlight">\(AB\)</span> es una matriz <span class="math notranslate nohighlight">\(2 \times 2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+AB = \begin{bmatrix}
+(1)(3) + (0)(2) + (2)(1) &amp; (1)(1) + (0)(1) + (2)(0) \\
+(-1)(3) + (3)(2) + (1)(1) &amp; (-1)(1) + (3)(1) + (1)(0)
+\end{bmatrix}
+= \begin{bmatrix}
+3 + 0 + 2 &amp; 1 + 0 + 0 \\
+-3 + 6 + 1 &amp; -1 + 3 + 0
+\end{bmatrix}
+= \begin{bmatrix}
+5 &amp; 1 \\
+4 &amp; 2
+\end{bmatrix}
+\end{split}\]</div>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+</section>
+<section id="matriz-aumentada">
+<h3>Matriz aumentada<a class="headerlink" href="#matriz-aumentada" title="Link to this heading">#</a></h3>
+<p>La <strong>matriz aumentada</strong> de un sistema de ecuaciones lineales es una matriz que incluye, junto a los coeficientes de las incógnitas, una columna adicional con los términos independientes (las constantes del lado derecho de las ecuaciones).</p>
+<p>Formalmente, si el sistema es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+\end{cases}
+\end{split}\]</div>
+<p>La <strong>matriz aumentada</strong> es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{cccc|c}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1 \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; b_2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} &amp; b_m
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Ejemplo:</strong></p>
+<p>Considera el sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + 2y = 5 \\
+3x - y = 4
+\end{cases}
+\end{split}\]</div>
+<p>La matriz aumentada correspondiente es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{cc|c}
+1 &amp; 2 &amp; 5 \\
+3 &amp; -1 &amp; 4
+\end{array}
+\right]
+\end{split}\]</div>
+<hr style="height:2px; border:none; border-top:2px dashed #888888; margin:20px 0;">
+</section>
+<section id="operaciones-elementales-por-renglon">
+<h3>Operaciones elementales por renglón<a class="headerlink" href="#operaciones-elementales-por-renglon" title="Link to this heading">#</a></h3>
+<p>Las <strong>operaciones elementales por renglón</strong> son transformaciones que se pueden aplicar a las filas de una matriz y que resultan fundamentales para resolver sistemas de ecuaciones y para llevar matrices a formas simplificadas, como la forma escalonada.</p>
+<p>Existen tres tipos principales de operaciones elementales por renglón:</p>
+<ol class="arabic">
+<li><p><strong>Intercambio de renglones:</strong><br />
+Consiste en intercambiar el lugar de dos filas de la matriz.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   A = \begin{bmatrix}
+   1 &amp; 2 \\
+   3 &amp; 4
+   \end{bmatrix}
+   \end{split}\]</div>
+<p>al intercambiar el renglón 1 y el renglón 2, obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{bmatrix}
+   3 &amp; 4 \\
+   1 &amp; 2
+   \end{bmatrix}
+   \end{split}\]</div>
+</li>
+<li><p><strong>Multiplicación de un renglón por un escalar no nulo:</strong><br />
+Consiste en multiplicar todos los elementos de una fila por un número distinto de cero.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   A = \begin{bmatrix}
+   2 &amp; -1 \\
+   5 &amp; 3
+   \end{bmatrix}
+   \end{split}\]</div>
+<p>al multiplicar el renglón 1 por 3, obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{bmatrix}
+   6 &amp; -3 \\
+   5 &amp; 3
+   \end{bmatrix}
+   \end{split}\]</div>
+</li>
+<li><p><strong>Sumar a un renglón un múltiplo de otro renglón:</strong><br />
+Consiste en reemplazar una fila por la suma de esa fila y un múltiplo de otra fila.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   A = \begin{bmatrix}
+   1 &amp; 4 \\
+   2 &amp; 5
+   \end{bmatrix}
+   \end{split}\]</div>
+<p>al sumar al renglón 2 el doble del renglón 1 (es decir, <span class="math notranslate nohighlight">\(R_2 \leftarrow R_2 + 2R_1\)</span>), obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \begin{bmatrix}
+   1 &amp; 4 \\
+   2 + 2 \times 1 &amp; 5 + 2 \times 4
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+   1 &amp; 4 \\
+   4 &amp; 13
+   \end{bmatrix}
+   \end{split}\]</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="metodo-de-gauss">
+<h2>1.1.2 Método de Gauss<a class="headerlink" href="#metodo-de-gauss" title="Link to this heading">#</a></h2>
+<p>El <strong>método de Gauss</strong> es una técnica sistemática para resolver sistemas de ecuaciones lineales. Consiste en aplicar operaciones elementales por renglón para transformar la matriz aumentada del sistema en una <strong>forma escalonada</strong> (todos los elementos debajo de la diagonal principal son ceros). Una vez en esa forma, la solución del sistema puede encontrarse fácilmente mediante sustitución hacia atrás.</p>
+<section id="instrucciones-del-metodo-de-gauss">
+<h3><strong>Instrucciones del método de Gauss:</strong><a class="headerlink" href="#instrucciones-del-metodo-de-gauss" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Escribe la matriz aumentada</strong> del sistema.</p></li>
+<li><p><strong>Utiliza operaciones elementales por renglón</strong> (intercambio de filas, multiplicar una fila por un escalar no nulo, sumar a una fila un múltiplo de otra) para obtener ceros debajo de la diagonal principal, formando una matriz en <strong>forma escalonada</strong>.</p></li>
+<li><p><strong>Realiza sustitución hacia atrás</strong>: empieza desde la última ecuación y resuelve hacia arriba para encontrar los valores de las incógnitas.</p></li>
+</ol>
+</section>
+<section id="ejemplo-resolucion-de-un-sistema-de-ecuaciones-por-el-metodo-de-gauss">
+<h3>Ejemplo: Resolución de un sistema de ecuaciones por el método de Gauss<a class="headerlink" href="#ejemplo-resolucion-de-un-sistema-de-ecuaciones-por-el-metodo-de-gauss" title="Link to this heading">#</a></h3>
+<p>Resuelve el siguiente sistema utilizando el método de Gauss:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + 2y + 3z = 14 \\
+2x + y + z = 10 \\
+x + y + z = 9
+\end{cases}
+\end{split}\]</div>
+<section id="escribe-la-matriz-aumentada">
+<h4><strong>1. Escribe la matriz aumentada:</strong><a class="headerlink" href="#escribe-la-matriz-aumentada" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+2 &amp; 1 &amp; 1 &amp; 10 \\
+1 &amp; 1 &amp; 1 &amp; 9
+\end{array}
+\right]
+\end{split}\]</div>
+</section>
+<section id="haz-ceros-debajo-del-primer-pivote-columna-1">
+<h4><strong>2. Haz ceros debajo del primer pivote (columna 1):</strong><a class="headerlink" href="#haz-ceros-debajo-del-primer-pivote-columna-1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_2 \leftarrow R_2 - 2R_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R_3 \leftarrow R_3 - R_1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{cccc}
+R_2: &amp; 2-2(1) &amp; 1-2(2) &amp; 1-2(3) &amp; 10-2(14) \\
+&amp; = 0 &amp; -3 &amp; -5 &amp; -18 \\
+R_3: &amp; 1-1(1) &amp; 1-1(2) &amp; 1-1(3) &amp; 9-1(14) \\
+&amp; = 0 &amp; -1 &amp; -2 &amp; -5 \\
+\end{array}
+\end{split}\]</div>
+<p>La matriz ahora es:</p>
+</section>
+<section id="haz-cero-debajo-del-segundo-pivote-columna-2">
+<h4><strong>2. Haz cero debajo del segundo pivote (columna 2):</strong><a class="headerlink" href="#haz-cero-debajo-del-segundo-pivote-columna-2" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(R_3 \leftarrow R_3 - \frac{1}{3}R_2\)</span></p>
+<p>La matriz es ahora:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+0 &amp; -3 &amp; -5 &amp; -18 \\
+0 &amp; 0 &amp; -\frac{1}{3} &amp; 1
+\end{array}
+\right]
+\end{split}\]</div>
+</section>
+<section id="resuelve-por-sustitucion-hacia-atras">
+<h4><strong>3. Resuelve por sustitución hacia atrás:</strong><a class="headerlink" href="#resuelve-por-sustitucion-hacia-atras" title="Link to this heading">#</a></h4>
+<ul>
+<li><p>De la última ecuación: <span class="math notranslate nohighlight">\(-\frac{1}{3}z = 1 \implies z = -3\)</span></p></li>
+<li><p>Segunda ecuación: <span class="math notranslate nohighlight">\(-3y - 5z = -18\)</span></p>
+<p><span class="math notranslate nohighlight">\(-3y -5(-3) = -18 \implies -3y + 15 = -18 \implies -3y = -33 \implies y = 11\)</span></p>
+</li>
+<li><p>Primera ecuación: <span class="math notranslate nohighlight">\(x + 2y + 3z = 14\)</span></p>
+<p><span class="math notranslate nohighlight">\(x + 2(11) + 3(-3) = 14 \implies x + 22 - 9 = 14 \implies x + 13 = 14 \implies x = 1\)</span></p>
+</li>
+</ul>
+</section>
+<section id="solucion">
+<h4><strong>5. Solución</strong><a class="headerlink" href="#solucion" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+x = 1, \quad y = 11, \quad z = -3
+\]</div>
+</section>
+</section>
+</section>
+<section id="metodo-de-gauss-jordan">
+<h2>1.1.3 Método de Gauss-Jordan<a class="headerlink" href="#metodo-de-gauss-jordan" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Método de Gauss-Jordan<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>El <strong>método de Gauss-Jordan</strong> es una extensión del método de Gauss para resolver sistemas de ecuaciones lineales. Este método transforma la matriz aumentada del sistema en su <strong>forma escalonada reducida por filas</strong> (también llamada forma canónica o forma de identidad), donde la diagonal principal está compuesta por unos y todos los demás elementos en esas columnas son ceros. Así, la solución del sistema se lee directamente de la matriz resultante, sin necesidad de sustitución hacia atrás.</p>
+<section id="instrucciones-del-metodo-de-gauss-jordan">
+<h4><strong>Instrucciones del método de Gauss-Jordan:</strong><a class="headerlink" href="#instrucciones-del-metodo-de-gauss-jordan" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Empieza como en el método de Gauss</strong>: escribe la matriz aumentada y haz ceros debajo de la diagonal principal.</p></li>
+<li><p><strong>Continúa</strong> aplicando operaciones elementales para hacer ceros también <strong>arriba de la diagonal principal</strong>, y asegura que la diagonal tenga unos.</p></li>
+<li><p><strong>Lee la solución directamente</strong> de la matriz resultante.</p></li>
+</ol>
+</section>
+</section>
+<section id="ejemplo-resolver-el-sistema">
+<h3><strong>Ejemplo:</strong> Resolver el sistema<a class="headerlink" href="#ejemplo-resolver-el-sistema" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+x + 2y + 3z = 14 \\
+2x + y + z = 10 \\
+x + y + z = 9
+\end{cases}
+\end{split}\]</div>
+<section id="id2">
+<h4><strong>1. Matriz aumentada</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+2 &amp; 1 &amp; 1 &amp; 10 \\
+1 &amp; 1 &amp; 1 &amp; 9
+\end{array}
+\right]
+\end{split}\]</div>
+</section>
+<section id="transformacion-a-forma-escalonada-reducida">
+<h4><strong>1. Transformación a forma escalonada reducida</strong><a class="headerlink" href="#transformacion-a-forma-escalonada-reducida" title="Link to this heading">#</a></h4>
+<p><strong>Paso 1:</strong> Restamos 2 veces la fila 1 a la fila 2 y la fila 1 a la fila 3:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_2 \leftarrow R_2 - 2R_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R_3 \leftarrow R_3 - R_1\)</span></p></li>
+</ul>
+<p>Hacemos que el pivote de la fila 2 sea 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_2 \leftarrow -\frac{1}{3}R_2\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+0 &amp; 1 &amp; \frac{5}{3} &amp; 6 \\
+0 &amp; -1 &amp; -2 &amp; -5
+\end{array}
+\right]
+\end{split}\]</div>
+<p>Eliminamos el término en la posición (3,2):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_3 \leftarrow R_3 + R_2\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+0 &amp; 1 &amp; \frac{5}{3} &amp; 6 \\
+0 &amp; 0 &amp; -\frac{1}{3} &amp; 1
+\end{array}
+\right]
+\end{split}\]</div>
+<p>Hacemos que el pivote de la fila 3 sea 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_3 \leftarrow -3R_3\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 3 &amp; 14 \\
+0 &amp; 1 &amp; \frac{5}{3} &amp; 6 \\
+0 &amp; 0 &amp; 1 &amp; -3
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Paso 2</strong> Eliminamos los términos arriba del pivote en la columna 3:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_2 \leftarrow R_2 - \frac{5}{3}R_3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R_1 \leftarrow R_1 - 3R_3\)</span></p></li>
+</ul>
+<p>Calculando:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_2\)</span>: <span class="math notranslate nohighlight">\(6 - \frac{5}{3} \cdot (-3) = 6 + 5 = 11\)</span>, y el coeficiente en <span class="math notranslate nohighlight">\(z\)</span> será <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_1\)</span>: <span class="math notranslate nohighlight">\(14 - 3 \cdot (-3) = 14 + 9 = 23\)</span>, el coeficiente en <span class="math notranslate nohighlight">\(z\)</span> será <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+</ul>
+<p>La matriz ahora:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 2 &amp; 0 &amp; 23 \\
+0 &amp; 1 &amp; 0 &amp; 11 \\
+0 &amp; 0 &amp; 1 &amp; -3
+\end{array}
+\right]
+\end{split}\]</div>
+<p>Eliminamos el término arriba del pivote en la columna 2 en la fila 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R_1 \leftarrow R_1 - 2R_2\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(23 - 2 \cdot 11 = 23 - 22 = 1\)</span>, y el coeficiente en <span class="math notranslate nohighlight">\(y\)</span> será <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|c}
+1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 11 \\
+0 &amp; 0 &amp; 1 &amp; -3
+\end{array}
+\right]
+\end{split}\]</div>
+</section>
+<section id="solucion-directa">
+<h4><strong>3. Solución directa</strong><a class="headerlink" href="#solucion-directa" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+x = 1, \quad y = 11, \quad z = -3
+\]</div>
+<p><strong>Con Gauss-Jordan, la solución se lee directamente de la matriz final sin sustitución.</strong></p>
+</section>
+</section>
+</section>
+<section id="matrices-elementales">
+<h2>1.1.4 Matrices elementales<a class="headerlink" href="#matrices-elementales" title="Link to this heading">#</a></h2>
+<p>En la sección anterior vimos que las <strong>operaciones elementales por renglón</strong> permiten transformar matrices hasta obtener formas más simples (como la forma escalonada).</p>
+<p>De manera análoga, podemos representar estas operaciones mediante <strong>matrices elementales</strong>.<br />
+Cada operación elemental tiene asociada una matriz elemental, y al multiplicar una matriz <span class="math notranslate nohighlight">\(A\)</span> por esa matriz elemental obtenemos el mismo resultado que aplicar la operación elemental a <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<section id="ejemplo-inicial">
+<h3>Ejemplo inicial<a class="headerlink" href="#ejemplo-inicial" title="Link to this heading">#</a></h3>
+<p>Sea la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = \begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{pmatrix}
+\end{split}\]</div>
+<p>Trata de adivinar la forma que deben tener las siguientes matrices elementales <span class="math notranslate nohighlight">\(E\)</span> para que:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(EA\)</span> multiplique solo el <strong>primer renglón</strong> de <span class="math notranslate nohighlight">\(A\)</span> por <span class="math notranslate nohighlight">\(3\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(EA\)</span> <strong>intercambie dos renglones</strong> de <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(EA\)</span> reemplace el <strong>segundo renglón</strong> por <span class="math notranslate nohighlight">\(R_2 + R_1\)</span> (es decir, sume al segundo renglón lo que tiene el primero).</p></li>
+</ol>
+<p><strong>Resolviendo en Python</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Matriz original</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz A original:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># 1. Multiplicar el primer renglón por 3</span>
+<span class="n">E1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">E1*A (primer renglón x3):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">E1</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># 2. Intercambiar el primer y segundo renglón</span>
+<span class="n">E2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">E2*A (intercambio de renglones 1 y 2):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">E2</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># 3. Reemplazar el segundo renglón por R2 + R1</span>
+<span class="n">E3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">E3*A (R2 -&gt; R2 + R1):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">E3</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz A original:
+ [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+E1*A (primer renglón x3):
+ [[3 6 9]
+ [4 5 6]
+ [7 8 9]]
+
+E2*A (intercambio de renglones 1 y 2):
+ [[4 5 6]
+ [1 2 3]
+ [7 8 9]]
+
+E3*A (R2 -&gt; R2 + R1):
+ [[1 2 3]
+ [5 7 9]
+ [7 8 9]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="forma-general-de-las-matrices-elementales">
+<h3>Forma general de las matrices elementales<a class="headerlink" href="#forma-general-de-las-matrices-elementales" title="Link to this heading">#</a></h3>
+<p>De los ejemplos anteriores, podemos extraer las <strong>formas generales</strong> de cada tipo de matriz elemental en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>:</p>
+<ul>
+<li><p><strong>Multiplicar un renglón <span class="math notranslate nohighlight">\(i\)</span> por un escalar <span class="math notranslate nohighlight">\(k \neq 0\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[E = I \quad \text{pero con } E_{ii} = k\]</div>
+</li>
+<li><p><strong>Intercambiar los renglones <span class="math notranslate nohighlight">\(i\)</span> y <span class="math notranslate nohighlight">\(j\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[E = I \quad \text{pero con las filas $i$ y $j$ intercambiadas}\]</div>
+</li>
+<li><p><strong>Reemplazar el renglón <span class="math notranslate nohighlight">\(i\)</span> por <span class="math notranslate nohighlight">\(R_i + kR_j\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[E = I \quad \text{pero con } E_{ij} = k\]</div>
+</li>
+</ul>
+<p>Las matrices elementales desempeñan un papel fundamental en el álgebra lineal porque permiten representar las operaciones elementales únicamente mediante multiplicaciones de matrices. Esto resulta especialmente importante en la práctica, dado que los GPUs son procesadores diseñados y altamente optimizados para realizar multiplicaciones matriciales de manera masiva y eficiente. Gracias a ello, algoritmos centrales como la eliminación gaussiana pueden implementarse de forma computacionalmente más rápida utilizando estas representaciones. Además, el concepto de matrices elementales constituye la base para el desarrollo de un algoritmo de cálculo de la inversa de una matriz, ya que esta puede obtenerse aplicando sucesivamente operaciones elementales representadas por dichas matrices.</p>
+</section>
+<section id="ejemplo-de-calculo-de-inversa-de-una-matriz-por-el-metodo-de-la-matriz-aumentada-a-mid-i">
+<h3>Ejemplo de calculo de inversa de una matriz por el método de la matriz aumentada <span class="math notranslate nohighlight">\( [A \mid I] \)</span><a class="headerlink" href="#ejemplo-de-calculo-de-inversa-de-una-matriz-por-el-metodo-de-la-matriz-aumentada-a-mid-i" title="Link to this heading">#</a></h3>
+<p>Sea</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 3 \\
+0 &amp; 1 &amp; 1
+\end{pmatrix}
+\end{split}\]</div>
+<p>Partimos de la matriz aumentada <span class="math notranslate nohighlight">\([A \mid I]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Paso 1. Anular la entrada debajo del pivote de la primera columna</strong></p>
+<p>Operación: <span class="math notranslate nohighlight">\( R_2 \leftarrow R_2 - R_1 \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 2 &amp; -1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Paso 2. Anular la entrada en la tercera fila, segunda columna</strong></p>
+<p>Operación: <span class="math notranslate nohighlight">\( R_3 \leftarrow R_3 - R_2 \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 2 &amp; -1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; -1 &amp; 1
+\end{array}
+\right].
+\end{split}\]</div>
+<p><strong>Paso 3. Anular la entrada en la primera fila, segunda columna</strong></p>
+<p>Operación: <span class="math notranslate nohighlight">\( R_1 \leftarrow R_1 - R_2 \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; -1 &amp; 2 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 2 &amp; -1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; -1 &amp; 1
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Paso 4. Normalizar el pivote de la tercera columna</strong></p>
+<p>Operación: <span class="math notranslate nohighlight">\( R_3 \leftarrow -\,R_3 \)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; -1 &amp; 2 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 2 &amp; -1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; -1
+\end{array}
+\right]
+\end{split}\]</div>
+<p><strong>Paso 5. Hacer ceros arriba del pivote de la tercera columna</strong></p>
+<p>Operaciones:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( R_2 \leftarrow R_2 - 2R_3 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( R_1 \leftarrow R_1 + R_3 \)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; -1 \\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; -1 &amp; 2 \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; -1
+\end{array}
+\right].
+\end{split}\]</div>
+<p><strong>Conclusión</strong>
+La parte izquierda quedó como la identidad; por tanto, la parte derecha es <span class="math notranslate nohighlight">\( A^{-1} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A^{-1} =
+\begin{pmatrix}
+1 &amp; 0 &amp; -1 \\
+1 &amp; -1 &amp; 2 \\
+-1 &amp; 1 &amp; -1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Verificación conceptual: se cumple <span class="math notranslate nohighlight">\( A\,A^{-1} = I \)</span> y <span class="math notranslate nohighlight">\( A^{-1}A = I \)</span>.</p>
+<p><strong>Verificación en Python (opcional)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">A_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+                  <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A @ A_inv =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">A_inv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A_inv @ A =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A_inv</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A @ A_inv =
+ [[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+A_inv @ A =
+ [[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="demostracion-formal">
+<h3>Demostración formal<a class="headerlink" href="#demostracion-formal" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\( A \in \mathbb{R}^{n \times n} \)</span>. Se forma la matriz aumentada <span class="math notranslate nohighlight">\( [A \mid I] \)</span>.<br />
+Si mediante <strong>operaciones elementales por renglón</strong> se transforma la parte izquierda en la identidad:</p>
+<div class="math notranslate nohighlight">
+\[
+[A \mid I] \;\;\underset{\text{operaciones elementales}}{\longrightarrow}\;\; [\, I \mid B \,],
+\]</div>
+<p>entonces <strong><span class="math notranslate nohighlight">\( A \)</span> es invertible</strong> y <strong><span class="math notranslate nohighlight">\( B = A^{-1} \)</span></strong>.<br />
+Si no es posible llevar la parte izquierda a <span class="math notranslate nohighlight">\( I \)</span>, entonces <span class="math notranslate nohighlight">\( A \)</span> <strong>no</strong> es invertible.</p>
+<p>A continuación se demuestra paso a paso utilizando la correspondencia entre <strong>operaciones elementales</strong> y <strong>matrices elementales</strong>.</p>
+<p><strong>Paso 1. Cada operación elemental por renglón es multiplicación por una matriz elemental</strong></p>
+<p>Llamaremos <strong>matriz elemental</strong> a la matriz que se obtiene de la identidad <span class="math notranslate nohighlight">\( I \)</span> aplicando <strong>una sola</strong> operación elemental por renglón. Existen tres tipos:</p>
+<ol class="arabic simple">
+<li><p><strong>Escalamiento de renglón</strong>: <span class="math notranslate nohighlight">\( R_i \leftarrow k\,R_i \)</span> con <span class="math notranslate nohighlight">\( k \neq 0 \)</span>.<br />
+La matriz elemental es <span class="math notranslate nohighlight">\( E = I \)</span> salvo que en la entrada <span class="math notranslate nohighlight">\( (i,i) \)</span> se coloca <span class="math notranslate nohighlight">\( k \)</span>.<br />
+Para cualquier matriz <span class="math notranslate nohighlight">\( M \)</span>, se cumple <span class="math notranslate nohighlight">\( EM \)</span> = “<span class="math notranslate nohighlight">\( M \)</span> con el renglón <span class="math notranslate nohighlight">\( i \)</span> multiplicado por <span class="math notranslate nohighlight">\( k \)</span>”.</p></li>
+<li><p><strong>Intercambio de renglones</strong>: <span class="math notranslate nohighlight">\( R_i \leftrightarrow R_j \)</span>.<br />
+La matriz elemental es <span class="math notranslate nohighlight">\( E = I \)</span> con las <strong>filas</strong> <span class="math notranslate nohighlight">\( i \)</span> y <span class="math notranslate nohighlight">\( j \)</span> permutadas.<br />
+Para cualquier <span class="math notranslate nohighlight">\( M \)</span>, se cumple <span class="math notranslate nohighlight">\( EM \)</span> = “<span class="math notranslate nohighlight">\( M \)</span> con los renglones <span class="math notranslate nohighlight">\( i \)</span> y <span class="math notranslate nohighlight">\( j \)</span> permutados”.</p></li>
+<li><p><strong>Suma de múltiplo de otro renglón</strong>: <span class="math notranslate nohighlight">\( R_i \leftarrow R_i + k\,R_j \)</span>.<br />
+La matriz elemental es <span class="math notranslate nohighlight">\( E = I \)</span> salvo que en la <strong>posición</strong> <span class="math notranslate nohighlight">\( (i,j) \)</span> se pone <span class="math notranslate nohighlight">\( k \)</span>.<br />
+Para cualquier <span class="math notranslate nohighlight">\( M \)</span>, se cumple <span class="math notranslate nohighlight">\( EM \)</span> = “<span class="math notranslate nohighlight">\( M \)</span> con el renglón <span class="math notranslate nohighlight">\( i \)</span> reemplazado por <span class="math notranslate nohighlight">\( R_i + k\,R_j \)</span>”.</p></li>
+</ol>
+<p><strong>Justificación</strong>: si denotamos por <span class="math notranslate nohighlight">\( e_1,\dots,e_n \)</span> a los vectores de la base canónica, la <strong>fila</strong> <span class="math notranslate nohighlight">\( i \)</span> de <span class="math notranslate nohighlight">\( EM \)</span> es precisamente la combinación lineal de filas de <span class="math notranslate nohighlight">\( M \)</span> definida por la <strong>fila</strong> <span class="math notranslate nohighlight">\( i \)</span> de <span class="math notranslate nohighlight">\( E \)</span>. Como en cada caso la fila de <span class="math notranslate nohighlight">\( E \)</span> codifica exactamente la operación elemental, se obtiene la igualdad deseada.</p>
+<p><strong>Paso 2. Encadenar operaciones elementales equivale a multiplicar por el producto de matrices elementales</strong></p>
+<p>Supongamos que desde <span class="math notranslate nohighlight">\( A \)</span> aplicamos una sucesión de <span class="math notranslate nohighlight">\( k \)</span> operaciones elementales por renglón, con matrices elementales asociadas <span class="math notranslate nohighlight">\( E_1, E_2, \dots, E_k \)</span>. Entonces:</p>
+<div class="math notranslate nohighlight">
+\[
+E_k \cdots E_2 E_1 \, A \;=\; A^{(k)},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\( A^{(k)} \)</span> es el resultado final tras esas operaciones.<br />
+En particular, si hemos reducido por renglones hasta la identidad, obtenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+E_k \cdots E_2 E_1 \, A \;=\; I.
+\]</div>
+<p>Denotemos:</p>
+<div class="math notranslate nohighlight">
+\[
+E \;=\; E_k \cdots E_2 E_1.
+\]</div>
+<p>Como cada <span class="math notranslate nohighlight">\( E_i \)</span> es invertible, su producto <span class="math notranslate nohighlight">\( E \)</span> también lo es. La igualdad anterior se reescribe como:</p>
+<div class="math notranslate nohighlight">
+\[
+E\,A \;=\; I.
+\]</div>
+<p><strong>Paso 3. Identificación de la inversa de <span class="math notranslate nohighlight">\( A \)</span></strong></p>
+<p>De <span class="math notranslate nohighlight">\( E\,A = I \)</span> se concluye (por unicidad de la inversa a izquierda de una matriz cuadrada) que <strong><span class="math notranslate nohighlight">\( E = A^{-1} \)</span></strong>.</p>
+<p>Es decir:</p>
+<div class="math notranslate nohighlight">
+\[
+A^{-1} \;=\; E_k \cdots E_2 E_1.
+\]</div>
+<p><strong>Paso 4. ¿Por qué aparece <span class="math notranslate nohighlight">\( A^{-1} \)</span> en el lado derecho de la aumentada?</strong></p>
+<p>Si partimos de la aumentada <span class="math notranslate nohighlight">\( [A \mid I] \)</span> y aplicamos <strong>las mismas</strong> operaciones elementales por renglón a <strong>ambos bloques</strong>, el efecto es multiplicar a izquierda por las mismas matrices elementales:</p>
+<div class="math notranslate nohighlight">
+\[
+[A \mid I] \;\;\underset{E_1}{\longrightarrow}\;\; [\, E_1 A \mid E_1 I \,]
+\;\;\underset{E_2}{\longrightarrow}\;\; [\, E_2 E_1 A \mid E_2 E_1 I \,]
+\;\;\cdots\;\;\underset{E_k}{\longrightarrow}\;\; [\, E A \mid E I \,].
+\]</div>
+<p>Si la parte izquierda llega a ser la identidad, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+[\, I \mid E \,].
+\]</div>
+<p>Pero por el Paso 3, <span class="math notranslate nohighlight">\( E = A^{-1} \)</span>. Por lo tanto, el <strong>bloque derecho</strong> al finalizar el proceso es precisamente <strong><span class="math notranslate nohighlight">\( A^{-1} \)</span></strong>.</p>
+<p><strong>Paso 5. ¿Y si no puedo llegar a <span class="math notranslate nohighlight">\( I \)</span>?</strong></p>
+<p>Si al reducir por renglones la parte izquierda de <span class="math notranslate nohighlight">\( [A \mid I] \)</span> aparece una fila nula antes de lograr pivotes en todas las columnas, entonces <strong><span class="math notranslate nohighlight">\( \operatorname{rango}(A) &lt; n \)</span></strong>.<br />
+En tal caso, <strong>no</strong> existe sucesión de matrices elementales que satisfaga <span class="math notranslate nohighlight">\( E A = I \)</span> y, por tanto, <strong><span class="math notranslate nohighlight">\( A \)</span> no es invertible</strong>.</p>
+<p><strong>Paso 6. Unicidad del resultado (independencia del camino)</strong></p>
+<p>Puede haber muchas secuencias distintas de operaciones elementales que lleven <span class="math notranslate nohighlight">\( A \)</span> a <span class="math notranslate nohighlight">\( I \)</span>.<br />
+Si se llega a <span class="math notranslate nohighlight">\( I \)</span>, el producto total <span class="math notranslate nohighlight">\( E \)</span> cumple siempre <span class="math notranslate nohighlight">\( E A = I \)</span>.<br />
+Por unicidad de la inversa, todas las secuencias producen el <strong>mismo</strong> <span class="math notranslate nohighlight">\( E = A^{-1} \)</span>.<br />
+De aquí que el método sea <strong>bien definido</strong>: el bloque derecho final no depende del camino de reducción.</p>
+<p><strong>Conclusión</strong></p>
+<ul class="simple">
+<li><p>Cada operación elemental por renglón es una multiplicación a izquierda por una matriz elemental invertible.</p></li>
+<li><p>Si una sucesión de tales operaciones transforma <span class="math notranslate nohighlight">\( A \)</span> en <span class="math notranslate nohighlight">\( I \)</span>, entonces el producto de las matrices elementales asociadas es <span class="math notranslate nohighlight">\( A^{-1} \)</span>.</p></li>
+<li><p>Aplicar esa misma sucesión al bloque identidad en <span class="math notranslate nohighlight">\( [A \mid I] \)</span> devuelve precisamente ese producto en el bloque derecho, es decir, <span class="math notranslate nohighlight">\( A^{-1} \)</span>.</p></li>
+<li><p>Si no se puede alcanzar <span class="math notranslate nohighlight">\( I \)</span>, entonces <span class="math notranslate nohighlight">\( A \)</span> no es invertible.</p></li>
+</ul>
+<p>Por ello, el procedimiento de <strong>Gauss–Jordan sobre la aumentada</strong> <span class="math notranslate nohighlight">\( [A \mid I] \)</span> es correcto y completo: finaliza en <span class="math notranslate nohighlight">\( [\, I \mid A^{-1} \,] \)</span> si y solo si <span class="math notranslate nohighlight">\( A \)</span> es invertible.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_SistemasDeEcuacionesLineales.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1 Sistemas de Ecuaciones Lineales</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_SistemasDeEcuacionesLineales_02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">1.2 Interpretación Geométrica</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-con-matrices">1.1.1 Operaciones con matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion-de-elementos-de-una-matriz">Notación de elementos de una matriz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suma-de-matrices">Suma de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-una-matriz-por-un-escalar">Producto de una matriz por un escalar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-matrices">Producto de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-aumentada">Matriz aumentada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-elementales-por-renglon">Operaciones elementales por renglón</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-gauss">1.1.2 Método de Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-del-metodo-de-gauss"><strong>Instrucciones del método de Gauss:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-resolucion-de-un-sistema-de-ecuaciones-por-el-metodo-de-gauss">Ejemplo: Resolución de un sistema de ecuaciones por el método de Gauss</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#escribe-la-matriz-aumentada"><strong>1. Escribe la matriz aumentada:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#haz-ceros-debajo-del-primer-pivote-columna-1"><strong>2. Haz ceros debajo del primer pivote (columna 1):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#haz-cero-debajo-del-segundo-pivote-columna-2"><strong>2. Haz cero debajo del segundo pivote (columna 2):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resuelve-por-sustitucion-hacia-atras"><strong>3. Resuelve por sustitución hacia atrás:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion"><strong>5. Solución</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-gauss-jordan">1.1.3 Método de Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Método de Gauss-Jordan</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-del-metodo-de-gauss-jordan"><strong>Instrucciones del método de Gauss-Jordan:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-resolver-el-sistema"><strong>Ejemplo:</strong> Resolver el sistema</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>1. Matriz aumentada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformacion-a-forma-escalonada-reducida"><strong>1. Transformación a forma escalonada reducida</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-directa"><strong>3. Solución directa</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-elementales">1.1.4 Matrices elementales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-inicial">Ejemplo inicial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forma-general-de-las-matrices-elementales">Forma general de las matrices elementales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-calculo-de-inversa-de-una-matriz-por-el-metodo-de-la-matriz-aumentada-a-mid-i">Ejemplo de calculo de inversa de una matriz por el método de la matriz aumentada <span class="math notranslate nohighlight">\( [A \mid I] \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demostracion-formal">Demostración formal</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Johnnatan Sandoval Arrayga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1018 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.5 Base y dimensión de un espacio vectorial &#8212; Algebra Lineal</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_EspaciosVectoriales_05';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3.6 Propiedades de las matrices" href="03_EspaciosVectoriales_06.html" />
+    <link rel="prev" title="3.4 Vectores linealmente dependientes e independientes" href="03_EspaciosVectoriales_04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/escudo.png" class="logo__image only-light" alt="Algebra Lineal - Home"/>
+    <script>document.write(`<img src="_static/escudo.png" class="logo__image only-dark" alt="Algebra Lineal - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_SistemasDeEcuacionesLineales.html">1 Sistemas de Ecuaciones Lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_01.html">1.1 Metodo De Gauss y Gauss-Jordan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_02.html">1.2 Interpretación Geométrica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_03.html">1.3 Existencia y unicidad de la solución de ecuaciones lineales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_VectoresMatricesYDeterminantes.html">2 Vectores Matrices y Determinantes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_00.html">2.1 El conjunto de permutaciones  <span class="math notranslate nohighlight">\( S_n \)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_01.html">2.2 Definición de determinante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_02.html">2.3 Propiedades y aplicaciones de determinantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_03.html">2.4 Propiedades y aplicaciones de matrices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="03_EspaciosVectoriales.html">3 Espacios vectoriales</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_01.html">3.1 Introducción a los Espacios vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_02.html">3.2 Combinación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_03.html">3.3 Conjunto generador (span)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_04.html">3.4 Vectores linealmente dependientes e independientes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.5 Base y dimensión de un espacio vectorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_06.html">3.6 Propiedades de las matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_07.html">3.7 Cambio de base</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_08.html">3.8 Bases ortonormales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_TransformacionesLineales.html">4 Transformaciones lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_01.html">4.1 Definición de transformación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_02.html">4.2 Representación matricial de una transformación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_03.html">4.3 Algunas transformaciones lineales de aplicación común.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="06_referencias.html">6 Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal/issues/new?title=Issue%20on%20page%20%2F03_EspaciosVectoriales_05.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_EspaciosVectoriales_05.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3.5 Base y dimensión de un espacio vectorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deficion-de-base-de-un-espacio-vectorial">3.5.1 Defición de Base de un espacio vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">Ejemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">Ejemplo 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-3-una-base-no-estandar-en-mathbb-r-3">Ejemplo 3: Una base no estándar en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-4-una-base-en-el-espacio-de-los-polinomios-de-grado-menor-o-igual-a-2">Ejemplo 4: Una base en el espacio de los polinomios de grado menor o igual a 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-5-una-base-en-el-espacio-de-matrices-simetricas-2-times2">Ejemplo 5: Una base en el espacio de matrices simétricas <span class="math notranslate nohighlight">\(2\times2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-6-una-base-en-el-espacio-de-funciones">Ejemplo 6: Una base en el espacio de funciones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encontrar-una-base-de-un-conjunto-de-vectores">3.5.2 Encontrar una base de un conjunto de vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-para-conseguir-una-base-a-partir-de-un-conjunto-de-vectores">Pasos para conseguir una base a partir de un conjunto de vectores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-filas">Ejemplo con filas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-columnas">Ejemplo con columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usamos-la-primera-columna-como-pivote-y-la-fila-1-como-fila-pivote">1. Usamos la <strong>primera columna</strong> como pivote y la fila 1 como fila pivote.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pivote-en-la-columna-4-en-la-fila-2">2. Pivote en la columna 4 (en la fila 2):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hacemos-ceros-arriba-del-pivote-en-la-columna-5">3. Hacemos ceros arriba del pivote en la columna 5.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-dimension">3.5.3 Definición de dimensión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-reemplazo-de-steinitz">Teorema de Reemplazo de Steinitz</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-base-m-0">Caso base: <span class="math notranslate nohighlight">\(m = 0\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-inductivo-supon-cierto-para-m-1-demuestra-para-m">Paso inductivo: Supón cierto para <span class="math notranslate nohighlight">\(m-1\)</span>, demuestra para <span class="math notranslate nohighlight">\(m\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-dimension-esta-bien-definida">La dimensión está bien definida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-ejemplo-de-el-mismo-espacio-de-dimension-2-en-mathbb-r-3-generado-por-2-bases-distintas">Un ejemplo de el mismo espacio de dimensión 2 en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> generado por 2 bases distintas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-estandar">Base estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otra-base-distinta">Otra base distinta</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="base-y-dimension-de-un-espacio-vectorial">
+<h1>3.5 Base y dimensión de un espacio vectorial<a class="headerlink" href="#base-y-dimension-de-un-espacio-vectorial" title="Link to this heading">#</a></h1>
+<section id="deficion-de-base-de-un-espacio-vectorial">
+<h2>3.5.1 Defición de Base de un espacio vectorial<a class="headerlink" href="#deficion-de-base-de-un-espacio-vectorial" title="Link to this heading">#</a></h2>
+<p>Una <strong>base</strong> de un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre un campo <span class="math notranslate nohighlight">\(K\)</span> es un conjunto ordenado de vectores <span class="math notranslate nohighlight">\(B = \{v_1, v_2, \ldots, v_n\}\)</span> tal que:</p>
+<ol class="arabic simple">
+<li><p>Los vectores de <span class="math notranslate nohighlight">\(B\)</span> son <strong>linealmente independientes</strong>.</p></li>
+<li><p>Los vectores de <span class="math notranslate nohighlight">\(B\)</span> <strong>generan</strong> todo el espacio vectorial <span class="math notranslate nohighlight">\(V\)</span>; es decir, cualquier vector en <span class="math notranslate nohighlight">\(V\)</span> se puede escribir como combinación lineal de los vectores en <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+</ol>
+<p>En otras palabras, una base es el “conjunto mínimo” necesario de vectores que permite describir cualquier elemento del espacio vectorial mediante combinaciones lineales únicas.</p>
+<section id="ejemplo-1">
+<h3>Ejemplo 1<a class="headerlink" href="#ejemplo-1" title="Link to this heading">#</a></h3>
+<p>En <span class="math notranslate nohighlight">\( \mathbb{R}^2 \)</span>, el conjunto <span class="math notranslate nohighlight">\( \{ (1,0),\; (0,1) \} \)</span> es una base.<br />
+Cualquier vector <span class="math notranslate nohighlight">\( (a, b) \in \mathbb{R}^2 \)</span> puede escribirse como <span class="math notranslate nohighlight">\( a(1,0) + b(0,1) \)</span> y estos vectores son linealmente independientes.</p>
+</section>
+<section id="ejemplo-2">
+<h3>Ejemplo 2<a class="headerlink" href="#ejemplo-2" title="Link to this heading">#</a></h3>
+<p>En <span class="math notranslate nohighlight">\( \mathbb{R}^3 \)</span>, el conjunto <span class="math notranslate nohighlight">\( \{ (1,0,0),\; (0,1,0),\; (0,0,1) \} \)</span> es una base.<br />
+Cualquier vector <span class="math notranslate nohighlight">\( (a, b, c) \in \mathbb{R}^3 \)</span> se escribe de forma única como <span class="math notranslate nohighlight">\( a(1,0,0) + b(0,1,0) + c(0,0,1) \)</span>.</p>
+</section>
+<section id="ejemplo-3-una-base-no-estandar-en-mathbb-r-3">
+<h3>Ejemplo 3: Una base no estándar en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span><a class="headerlink" href="#ejemplo-3-una-base-no-estandar-en-mathbb-r-3" title="Link to this heading">#</a></h3>
+<p>Considera los vectores:
+$<span class="math notranslate nohighlight">\(
+u_1 = (1, 1, 0),\quad u_2 = (0, 1, 1),\quad u_3 = (1, 0, 1)
+\)</span>$</p>
+<p>Podemos comprobar que estos tres vectores son linealmente independientes y que cualquier vector <span class="math notranslate nohighlight">\((a, b, c) \in \mathbb{R}^3\)</span> se puede expresar de manera única como combinación lineal de ellos.<br />
+Por lo tanto, <span class="math notranslate nohighlight">\(\{u_1, u_2, u_3\}\)</span> es <strong>una base alternativa</strong> de <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
+</section>
+<section id="ejemplo-4-una-base-en-el-espacio-de-los-polinomios-de-grado-menor-o-igual-a-2">
+<h3>Ejemplo 4: Una base en el espacio de los polinomios de grado menor o igual a 2<a class="headerlink" href="#ejemplo-4-una-base-en-el-espacio-de-los-polinomios-de-grado-menor-o-igual-a-2" title="Link to this heading">#</a></h3>
+<p>Considera el espacio <span class="math notranslate nohighlight">\(P_2\)</span> de todos los polinomios reales de grado a lo sumo 2. Una base estándar es <span class="math notranslate nohighlight">\(\{1, x, x^2\}\)</span>.<br />
+Sin embargo, el conjunto <span class="math notranslate nohighlight">\(\{x^2 - x, x - 1, 1\}\)</span> también es base de <span class="math notranslate nohighlight">\(P_2\)</span>, ya que los tres polinomios son linealmente independientes y cualquier polinomio de <span class="math notranslate nohighlight">\(P_2\)</span> puede escribirse como combinación lineal de ellos.</p>
+</section>
+<section id="ejemplo-5-una-base-en-el-espacio-de-matrices-simetricas-2-times2">
+<h3>Ejemplo 5: Una base en el espacio de matrices simétricas <span class="math notranslate nohighlight">\(2\times2\)</span><a class="headerlink" href="#ejemplo-5-una-base-en-el-espacio-de-matrices-simetricas-2-times2" title="Link to this heading">#</a></h3>
+<p>El conjunto de matrices simétricas reales <span class="math notranslate nohighlight">\(2\times2\)</span> forma un espacio vectorial.<br />
+Una base de este espacio es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S = \left\{
+\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{pmatrix},
+\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix},
+\begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}
+\right\}
+\end{split}\]</div>
+<p>Cualquier matriz simétrica <span class="math notranslate nohighlight">\(A = \begin{pmatrix} a &amp; b \\ b &amp; c \end{pmatrix}\)</span> se puede escribir de forma única como <span class="math notranslate nohighlight">\(a\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + b\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} + c\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\)</span>.</p>
+</section>
+<section id="ejemplo-6-una-base-en-el-espacio-de-funciones">
+<h3>Ejemplo 6: Una base en el espacio de funciones<a class="headerlink" href="#ejemplo-6-una-base-en-el-espacio-de-funciones" title="Link to this heading">#</a></h3>
+<p>El conjunto de funciones <span class="math notranslate nohighlight">\(f: \mathbb{R} \to \mathbb{R}\)</span> de la forma <span class="math notranslate nohighlight">\(f(x) = a e^x + b e^{2x}\)</span>, donde <span class="math notranslate nohighlight">\(a, b \in \mathbb{R}\)</span>, es un espacio vectorial de dimensión 2.<br />
+El conjunto <span class="math notranslate nohighlight">\(\{e^x,\, e^{2x}\}\)</span> es una base de este espacio.</p>
+</section>
+</section>
+<section id="encontrar-una-base-de-un-conjunto-de-vectores">
+<h2>3.5.2 Encontrar una base de un conjunto de vectores<a class="headerlink" href="#encontrar-una-base-de-un-conjunto-de-vectores" title="Link to this heading">#</a></h2>
+<section id="pasos-para-conseguir-una-base-a-partir-de-un-conjunto-de-vectores">
+<h3>Pasos para conseguir una base a partir de un conjunto de vectores<a class="headerlink" href="#pasos-para-conseguir-una-base-a-partir-de-un-conjunto-de-vectores" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Reúne tu conjunto de vectores:</strong><br />
+Ten a la mano todos los vectores que forman el conjunto original.</p></li>
+<li><p><strong>Escribe los vectores como filas o columnas de una matriz:</strong><br />
+Esto facilita aplicar métodos como la reducción por filas (Gauss-Jordan).</p></li>
+<li><p><strong>Aplica reducción por filas (escalonamiento):</strong><br />
+Utiliza operaciones elementales para llevar la matriz a su forma escalonada.</p></li>
+<li><p><strong>Identifica los vectores linealmente independientes:</strong><br />
+Aquellos vectores que corresponden a las filas no nulas en la forma escalonada son linealmente independientes.</p></li>
+<li><p><strong>Extrae una base:</strong><br />
+El subconjunto de vectores linealmente independientes encontrado en el paso anterior es una base del subespacio generado por el conjunto original.</p></li>
+</ol>
+</section>
+<section id="ejemplo-con-filas">
+<h3>Ejemplo con filas<a class="headerlink" href="#ejemplo-con-filas" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Reúne tu conjunto de vectores:</strong><br />
+Supongamos los siguientes vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+v_1 &amp;= (1, 2, 3, 4) \\
+v_2 &amp;= (2, 4, 6, 8) \\
+v_3 &amp;= (3, 6, 9, 12) \\
+v_4 &amp;= (0, 0, 0, 0) \\
+v_5 &amp;= (1, 0, 1, 0) \\
+\end{aligned}
+\)</span>$</p></li>
+<li><p><strong>Escribe los vectores como filas de una matriz:</strong><br />
+$<span class="math notranslate nohighlight">\(
+M = 
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 \\
+2 &amp; 4 &amp; 6 &amp; 8 \\
+3 &amp; 6 &amp; 9 &amp; 12 \\
+0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 0 \\
+\end{pmatrix}
+\)</span>$</p></li>
+<li><p><strong>Aplica reducción por filas (Gauss-Jordan):</strong></p>
+<ul>
+<li><p><strong>Paso 1:</strong> La primera fila ya tiene un 1 en la primera posición (pivote).<br />
+Restamos 2 veces la primera fila a la segunda y 3 veces la primera fila a la tercera:</p>
+<p>Segunda fila: <span class="math notranslate nohighlight">\( (2,4,6,8) - 2(1,2,3,4) = (0,0,0,0) \)</span><br />
+Tercera fila: <span class="math notranslate nohighlight">\( (3,6,9,12) - 3(1,2,3,4) = (0,0,0,0) \)</span></p>
+<p>La matriz queda:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \begin{pmatrix}
+     1 &amp; 2 &amp; 3 &amp; 4 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     1 &amp; 0 &amp; 1 &amp; 0 \\
+     \end{pmatrix}
+     \end{split}\]</div>
+</li>
+<li><p><strong>Paso 2:</strong> Restamos la primera fila a la quinta fila para eliminar el 1 en la primera columna:</p>
+<p>Quinta fila: <span class="math notranslate nohighlight">\( (1,0,1,0) - (1,2,3,4) = (0, -2, -2, -4) \)</span></p>
+<p>Ahora la matriz es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \begin{pmatrix}
+     1 &amp; 2 &amp; 3 &amp; 4 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; -2 &amp; -2 &amp; -4 \\
+     \end{pmatrix}
+     \end{split}\]</div>
+</li>
+<li><p><strong>Paso 3:</strong> Divide la última fila entre <span class="math notranslate nohighlight">\(-2\)</span> para hacer el pivote igual a 1:</p>
+<p>Quinta fila: <span class="math notranslate nohighlight">\( (0, -2, -2, -4)/(-2) = (0, 1, 1, 2) \)</span></p>
+<p>La matriz final escalonada es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \begin{pmatrix}
+     1 &amp; 2 &amp; 3 &amp; 4 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 0 &amp; 0 &amp; 0 \\
+     0 &amp; 1 &amp; 1 &amp; 2 \\
+     \end{pmatrix}
+     \end{split}\]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Identifica los vectores linealmente independientes:</strong><br />
+Las filas <strong>no nulas</strong> en la matriz escalonada corresponden a los vectores linealmente independientes.</p>
+<p>Es decir, los siguientes vectores forman una <strong>base</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \left\{ (1,2,3,4),\; (0,1,1,2) \right\}
+   \]</div>
+</li>
+</ol>
+<p>Por lo tanto, a partir de los 5 vectores iniciales en <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>, hemos encontrado una base con 2 vectores que generan el mismo subespacio generado, utilizando el método de Gauss-Jordan paso a paso.</p>
+</section>
+<section id="ejemplo-con-columnas">
+<h3>Ejemplo con columnas<a class="headerlink" href="#ejemplo-con-columnas" title="Link to this heading">#</a></h3>
+<p>Considera los vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+v_1 &amp;= (1, 2, 3, 4) \\
+v_2 &amp;= (2, 4, 6, 8) \\
+v_3 &amp;= (3, 6, 9, 12) \\
+v_4 &amp;= (0, 0, 0, 0) \\
+v_5 &amp;= (1, 0, 1, 0)
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Paso 1:</strong> Forma la matriz <span class="math notranslate nohighlight">\(A\)</span> poniendo los vectores como columnas:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A = 
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 \\
+2 &amp; 4 &amp; 6 &amp; 0 &amp; 0 \\
+3 &amp; 6 &amp; 9 &amp; 0 &amp; 1 \\
+4 &amp; 8 &amp; 12 &amp; 0 &amp; 0 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p><strong>Paso 2:</strong> Aplica reducción por filas (Gauss-Jordan).<br />
+Vamos a llevar la matriz <span class="math notranslate nohighlight">\(A\)</span> a su forma escalonada reducida:</p>
+<ul class="simple">
+<li><p>Resta <span class="math notranslate nohighlight">\(2\)</span> veces la columna 1 a la columna 2, <span class="math notranslate nohighlight">\(3\)</span> veces a la columna 3, y la columna 1 a la columna 5 (como filas, simplemente seguimos el proceso estándar de reducción):</p></li>
+</ul>
+<section id="usamos-la-primera-columna-como-pivote-y-la-fila-1-como-fila-pivote">
+<h4>1. Usamos la <strong>primera columna</strong> como pivote y la fila 1 como fila pivote.<a class="headerlink" href="#usamos-la-primera-columna-como-pivote-y-la-fila-1-como-fila-pivote" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Fila 2:</strong> <span class="math notranslate nohighlight">\(F_2 - 2 F_1\)</span> <span class="math notranslate nohighlight">\(\to\)</span> <span class="math notranslate nohighlight">\([2-2\cdot1,\ 4-2\cdot2,\ 6-2\cdot3,\ 0-2\cdot4,\ 0-2\cdot1] = [0,0,0,-8,-2]\)</span></p></li>
+<li><p><strong>Fila 3:</strong> <span class="math notranslate nohighlight">\(F_3 - 3 F_1\)</span> <span class="math notranslate nohighlight">\(\to\)</span> <span class="math notranslate nohighlight">\([3-3\cdot1,\ 6-3\cdot2,\ 9-3\cdot3,\ 0-3\cdot4,\ 1-3\cdot1] = [0,0,0,-12,-2]\)</span></p></li>
+<li><p><strong>Fila 4:</strong> <span class="math notranslate nohighlight">\(F_4 - 4 F_1\)</span> <span class="math notranslate nohighlight">\(\to\)</span> <span class="math notranslate nohighlight">\([4-4\cdot1,\ 8-4\cdot2,\ 12-4\cdot3,\ 0-4\cdot4,\ 0-4\cdot1] = [0,0,0,-16,-4]\)</span></p></li>
+</ul>
+<p>La matriz es ahora:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; -8 &amp; -2 \\
+0 &amp; 0 &amp; 0 &amp; -12 &amp; -2 \\
+0 &amp; 0 &amp; 0 &amp; -16 &amp; -4 \\
+\end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="pivote-en-la-columna-4-en-la-fila-2">
+<h4>2. Pivote en la columna 4 (en la fila 2):<a class="headerlink" href="#pivote-en-la-columna-4-en-la-fila-2" title="Link to this heading">#</a></h4>
+<p>Divide la fila 2 entre <span class="math notranslate nohighlight">\(-8\)</span> para tener un 1 en la columna 4, fila 2:</p>
+<ul class="simple">
+<li><p>Fila 2: <span class="math notranslate nohighlight">\((0,0,0,-8,-2)/(-8) = (0,0,0,1,0.25)\)</span></p></li>
+</ul>
+<p>Ahora, haz ceros debajo y arriba usando la nueva fila 2.</p>
+<ul class="simple">
+<li><p><strong>Fila 3:</strong> <span class="math notranslate nohighlight">\(F_3 - (-12)F_2 = F_3 + 12F_2\)</span><br />
+<span class="math notranslate nohighlight">\([0,0,0,-12,-2] + 12\cdot(0,0,0,1,0.25) = [0,0,0,0,1]\)</span></p></li>
+<li><p><strong>Fila 4:</strong> <span class="math notranslate nohighlight">\(F_4 - (-16)F_2 = F_4 + 16F_2\)</span><br />
+<span class="math notranslate nohighlight">\([0,0,0,-16,-4] + 16\cdot(0,0,0,1,0.25) = [0,0,0,0,0]\)</span></p></li>
+</ul>
+<p>Ahora la matriz es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0.25 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+\end{pmatrix}
+\end{split}\]</div>
+</section>
+<section id="hacemos-ceros-arriba-del-pivote-en-la-columna-5">
+<h4>3. Hacemos ceros arriba del pivote en la columna 5.<a class="headerlink" href="#hacemos-ceros-arriba-del-pivote-en-la-columna-5" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Fila 2:</strong> <span class="math notranslate nohighlight">\(F_2 - 0.25 F_3 = (0,0,0,1,0.25)-(0,0,0,0,0.25) = (0,0,0,1,0)\)</span></p></li>
+<li><p><strong>Fila 1:</strong> <span class="math notranslate nohighlight">\(F_1 - F_5 = (1,2,3,0,1)-(0,0,0,0,1) = (1,2,3,0,0)\)</span></p></li>
+</ul>
+<p>Ahora la matriz reducida es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p><strong>Interpretación:</strong></p>
+<ul class="simple">
+<li><p>Hay <strong>tres filas no nulas</strong>, es decir, el rango es <strong>3</strong>.</p></li>
+<li><p>Hay <strong>dos variables libres</strong> (las columnas 2 y 3 no tienen pivote).</p></li>
+<li><p>Las columnas <strong>1, 4 y 5</strong> tienen pivotes y por lo tanto los vectores <span class="math notranslate nohighlight">\(v_1\)</span>, <span class="math notranslate nohighlight">\(v_4\)</span> (pero <span class="math notranslate nohighlight">\(v_4\)</span> es el cero, así que se omite), y <span class="math notranslate nohighlight">\(v_5\)</span> forman una base del subespacio columna generado por el conjunto original (en este caso <span class="math notranslate nohighlight">\(v_1\)</span> y <span class="math notranslate nohighlight">\(v_5\)</span> ya que <span class="math notranslate nohighlight">\(v_4\)</span> es nulo).</p></li>
+</ul>
+<p><strong>Conclusión:</strong><br />
+El subespacio generado tiene <strong>2</strong> vectores independientes son <span class="math notranslate nohighlight">\((1,2,3,4)\)</span> y <span class="math notranslate nohighlight">\((1,0,1,0)\)</span>.</p>
+</section>
+</section>
+</section>
+<section id="definicion-de-dimension">
+<h2>3.5.3 Definición de dimensión<a class="headerlink" href="#definicion-de-dimension" title="Link to this heading">#</a></h2>
+<p>La <strong>dimensión</strong> de un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre un campo <span class="math notranslate nohighlight">\(K\)</span> se define como el número de vectores que contiene cualquier base de <span class="math notranslate nohighlight">\(V\)</span>.<br />
+Formalmente, si <span class="math notranslate nohighlight">\(B = \{v_1, v_2, \ldots, v_n\}\)</span> es una base de <span class="math notranslate nohighlight">\(V\)</span>, entonces la dimensión de <span class="math notranslate nohighlight">\(V\)</span> es <span class="math notranslate nohighlight">\(n\)</span> y se denota como <span class="math notranslate nohighlight">\(\dim(V) = n\)</span>.</p>
+<p>Pero, si tenemos 2 Bases ¿Cómo podemos probar que las 2 bases tienen que tener el mismo tamaño?. Es decir, que <span class="math notranslate nohighlight">\(\dim(V)\)</span> esta bien definida.</p>
+<section id="teorema-de-reemplazo-de-steinitz">
+<h3>Teorema de Reemplazo de Steinitz<a class="headerlink" href="#teorema-de-reemplazo-de-steinitz" title="Link to this heading">#</a></h3>
+<p><strong>Enunciado:</strong><br />
+Sea <span class="math notranslate nohighlight">\(V\)</span> un espacio vectorial sobre un campo <span class="math notranslate nohighlight">\(K\)</span>.<br />
+Supón que <span class="math notranslate nohighlight">\(S = \{v_1, ..., v_n\}\)</span> es un conjunto generador de <span class="math notranslate nohighlight">\(V\)</span> y <span class="math notranslate nohighlight">\(L = \{w_1, ..., w_m\}\)</span> es un conjunto linealmente independiente de <span class="math notranslate nohighlight">\(V\)</span>.<br />
+Entonces <span class="math notranslate nohighlight">\(m \leq n\)</span> y, además, es posible reemplazar <span class="math notranslate nohighlight">\(m\)</span> de los <span class="math notranslate nohighlight">\(v_j\)</span> por los <span class="math notranslate nohighlight">\(w_i\)</span> para obtener un nuevo conjunto generador de <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p><strong>Paso 1.</strong><br />
+Procedemos por inducción sobre <span class="math notranslate nohighlight">\(m\)</span>, el número de vectores en <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<section id="caso-base-m-0">
+<h4>Caso base: <span class="math notranslate nohighlight">\(m = 0\)</span><a class="headerlink" href="#caso-base-m-0" title="Link to this heading">#</a></h4>
+<p>El conjunto vacío es linealmente independiente y no hay nada que demostrar.</p>
+</section>
+<section id="paso-inductivo-supon-cierto-para-m-1-demuestra-para-m">
+<h4>Paso inductivo: Supón cierto para <span class="math notranslate nohighlight">\(m-1\)</span>, demuestra para <span class="math notranslate nohighlight">\(m\)</span><a class="headerlink" href="#paso-inductivo-supon-cierto-para-m-1-demuestra-para-m" title="Link to this heading">#</a></h4>
+<p>Supón que <span class="math notranslate nohighlight">\(w_1, ..., w_m\)</span> son linealmente independientes y <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> generan <span class="math notranslate nohighlight">\(V\)</span>.<br />
+Por hipótesis de inducción, <span class="math notranslate nohighlight">\(m-1 \leq n\)</span> y se puede reemplazar <span class="math notranslate nohighlight">\(m-1\)</span> de los <span class="math notranslate nohighlight">\(v_j\)</span> por <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span>, de modo que el nuevo conjunto todavía genera <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p>Así que, <strong>podemos suponer</strong> que ya hemos reemplazado <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span> por <span class="math notranslate nohighlight">\(v_1, ..., v_{m-1}\)</span> y tenemos el conjunto<br />
+$<span class="math notranslate nohighlight">\(
+\mathcal{S}' = \{w_1, ..., w_{m-1}, v_{m}, ..., v_n\}
+\)</span><span class="math notranslate nohighlight">\(
+que genera \)</span>V$.</p>
+<p><strong>Paso 3.</strong><br />
+Como <span class="math notranslate nohighlight">\(w_m \in V\)</span> y <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> genera <span class="math notranslate nohighlight">\(V\)</span>, <span class="math notranslate nohighlight">\(w_m\)</span> puede escribirse como combinación lineal de los elementos de <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+w_m = a_1 w_1 + ... + a_{m-1} w_{m-1} + b_{m} v_{m} + ... + b_n v_n
+\]</div>
+<p>Supón que todos los coeficientes <span class="math notranslate nohighlight">\(b_j\)</span> son cero.<br />
+Entonces <span class="math notranslate nohighlight">\(w_m\)</span> sería combinación lineal de <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span>,<br />
+lo que contradice que <span class="math notranslate nohighlight">\(w_1, ..., w_m\)</span> sean linealmente independientes.<br />
+Por lo tanto, <strong>existe al menos un <span class="math notranslate nohighlight">\(b_j \neq 0\)</span></strong>, digamos <span class="math notranslate nohighlight">\(b_r \neq 0\)</span> para algún <span class="math notranslate nohighlight">\(r \in \{m, ..., n\}\)</span>.</p>
+<p><strong>Paso 4.</strong><br />
+Despeja <span class="math notranslate nohighlight">\(v_r\)</span> en términos de <span class="math notranslate nohighlight">\(w_m\)</span>, <span class="math notranslate nohighlight">\(w_1, ..., w_{m-1}\)</span> y los <span class="math notranslate nohighlight">\(v_j\)</span> restantes:</p>
+<div class="math notranslate nohighlight">
+\[
+b_r v_r = w_m - a_1 w_1 - ... - a_{m-1} w_{m-1} - \sum_{j \neq r,\, j \geq m} b_j v_j
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+v_r = \frac{1}{b_r} w_m - \frac{a_1}{b_r} w_1 - ... - \frac{a_{m-1}}{b_r} w_{m-1} - \sum_{j \neq r,\, j \geq m} \frac{b_j}{b_r} v_j
+\]</div>
+<p><strong>Paso 5.</strong><br />
+Reemplaza <span class="math notranslate nohighlight">\(v_r\)</span> por <span class="math notranslate nohighlight">\(w_m\)</span> en <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span>:</p>
+<p>El conjunto
+$<span class="math notranslate nohighlight">\(
+\mathcal{S}'' = \{w_1, ..., w_{m-1}, w_m, v_m, ..., v_{r-1}, v_{r+1}, ..., v_n\}
+\)</span><span class="math notranslate nohighlight">\(
+(tiene los mismos elementos que \)</span>\mathcal{S}’<span class="math notranslate nohighlight">\( pero \)</span>v_r<span class="math notranslate nohighlight">\( es reemplazado por \)</span>w_m<span class="math notranslate nohighlight">\()
+**genera \)</span>V<span class="math notranslate nohighlight">\(**.  
+Se puede verificar que \)</span>\mathcal{S}’’<span class="math notranslate nohighlight">\( genera \)</span>V<span class="math notranslate nohighlight">\( porque cualquier \)</span>v_r$ puede ser expresado como combinación lineal de los nuevos generadores, como se mostró arriba.</p>
+<p><strong>Paso 6.</strong><br />
+Esto completa el paso inductivo: hemos reemplazado uno de los <span class="math notranslate nohighlight">\(v_j\)</span> por <span class="math notranslate nohighlight">\(w_m\)</span> y mantenido la propiedad de ser un conjunto generador.</p>
+<p><strong>Conclusión:</strong><br />
+Por inducción, podemos reemplazar todos los <span class="math notranslate nohighlight">\(w_i\)</span> por <span class="math notranslate nohighlight">\(m\)</span> de los <span class="math notranslate nohighlight">\(v_j\)</span>, y siempre <span class="math notranslate nohighlight">\(m \leq n\)</span>.</p>
+<p>Por lo tanto: <strong>el número de vectores linealmente independientes nunca puede exceder el número de generadores en un espacio vectorial finito</strong>,<br />
+y que es posible intercambiar (sustituir) los <span class="math notranslate nohighlight">\(w_i\)</span> por algunos de los <span class="math notranslate nohighlight">\(v_j\)</span> sin perder la propiedad generadora.</p>
+</section>
+</section>
+<section id="la-dimension-esta-bien-definida">
+<h3>La dimensión está bien definida<a class="headerlink" href="#la-dimension-esta-bien-definida" title="Link to this heading">#</a></h3>
+<p><strong>Enunciado:</strong><br />
+Si <span class="math notranslate nohighlight">\(B = \{v_1, v_2, \ldots, v_n\}\)</span> y <span class="math notranslate nohighlight">\(B' = \{w_1, w_2, \ldots, w_m\}\)</span> son dos bases de un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre un campo <span class="math notranslate nohighlight">\(K\)</span>, entonces <span class="math notranslate nohighlight">\(n = m\)</span>.</p>
+<p><strong>Paso 1.</strong><br />
+<span class="math notranslate nohighlight">\(B\)</span> es una base, así que es linealmente independiente y genera <span class="math notranslate nohighlight">\(V\)</span>.<br />
+<span class="math notranslate nohighlight">\(B'\)</span> es otra base, así que también es linealmente independiente y genera <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<p><strong>Paso 2.</strong><br />
+Aplicamos el <strong>Teorema de Reemplazo de Steinitz</strong>:<br />
+<em>Si tienes un conjunto de <span class="math notranslate nohighlight">\(n\)</span> vectores que generan <span class="math notranslate nohighlight">\(V\)</span> y otro conjunto de <span class="math notranslate nohighlight">\(m\)</span> vectores linealmente independientes, entonces <span class="math notranslate nohighlight">\(m \leq n\)</span>.</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(B\)</span> tiene <span class="math notranslate nohighlight">\(n\)</span> vectores y genera <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B'\)</span> tiene <span class="math notranslate nohighlight">\(m\)</span> vectores y es linealmente independiente.</p></li>
+<li><p>Por el teorema: <span class="math notranslate nohighlight">\(m \leq n\)</span>.</p></li>
+</ul>
+<p><strong>Paso 3.</strong><br />
+Intercambiamos los papeles de <span class="math notranslate nohighlight">\(B\)</span> y <span class="math notranslate nohighlight">\(B'\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(B'\)</span> tiene <span class="math notranslate nohighlight">\(m\)</span> vectores y genera <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> tiene <span class="math notranslate nohighlight">\(n\)</span> vectores y es linealmente independiente.</p></li>
+<li><p>Por el mismo teorema: <span class="math notranslate nohighlight">\(n \leq m\)</span>.</p></li>
+</ul>
+<p><strong>Paso 4.</strong><br />
+De <span class="math notranslate nohighlight">\(m \leq n\)</span> y <span class="math notranslate nohighlight">\(n \leq m\)</span> se concluye que <span class="math notranslate nohighlight">\(n = m\)</span>.</p>
+<p><strong>Conclusión:</strong><br />
+El número de elementos de cualquier base de <span class="math notranslate nohighlight">\(V\)</span> es siempre el mismo.<br />
+Por eso, <strong>la dimensión de un espacio vectorial está bien definida</strong> y se define como el número de elementos de cualquiera de sus bases.</p>
+</section>
+<section id="un-ejemplo-de-el-mismo-espacio-de-dimension-2-en-mathbb-r-3-generado-por-2-bases-distintas">
+<h3>Un ejemplo de el mismo espacio de dimensión 2 en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> generado por 2 bases distintas<a class="headerlink" href="#un-ejemplo-de-el-mismo-espacio-de-dimension-2-en-mathbb-r-3-generado-por-2-bases-distintas" title="Link to this heading">#</a></h3>
+<p>Considera el subespacio <span class="math notranslate nohighlight">\(W\)</span> de <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> definido como el plano:</p>
+<div class="math notranslate nohighlight">
+\[
+W = \{ (x, y, 0) \mid x, y \in \mathbb{R} \}
+\]</div>
+<hr class="docutils" />
+<section id="base-estandar">
+<h4>Base estándar<a class="headerlink" href="#base-estandar" title="Link to this heading">#</a></h4>
+<p>Una base natural es:</p>
+<div class="math notranslate nohighlight">
+\[
+B_1 = \{ (1, 0, 0),\ (0, 1, 0) \}
+\]</div>
+<p>Cualquier vector en <span class="math notranslate nohighlight">\(W\)</span> se puede escribir como:
+$<span class="math notranslate nohighlight">\(
+(x, y, 0) = x(1,0,0) + y(0,1,0)
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="otra-base-distinta">
+<h4>Otra base distinta<a class="headerlink" href="#otra-base-distinta" title="Link to this heading">#</a></h4>
+<p>Considera el conjunto:
+$<span class="math notranslate nohighlight">\(
+B_2 = \{ (1,1,0),\ (2,-1,0) \}
+\)</span>$</p>
+<p>Queremos expresar un vector cualquiera <span class="math notranslate nohighlight">\((x, y, 0)\)</span> como combinación lineal de los vectores de <span class="math notranslate nohighlight">\(B_2\)</span>, es decir, encontrar <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{R}\)</span> tales que:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha (1, 1, 0) + \beta (2, -1, 0) = (x, y, 0)
+\]</div>
+<p>Esto da el sistema:
+$<span class="math notranslate nohighlight">\(
+\begin{cases}
+\alpha + 2\beta = x \\
+\alpha - \beta = y
+\end{cases}
+\)</span>$</p>
+<p><strong>Resolución del sistema:</strong></p>
+<ol class="arabic simple">
+<li><p>De la segunda ecuación:<br />
+<span class="math notranslate nohighlight">\(\alpha = y + \beta\)</span></p></li>
+<li><p>Sustituimos en la primera ecuación:<br />
+$<span class="math notranslate nohighlight">\((y + \beta) + 2\beta = x\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(y + 3\beta = x\)</span>$</p></li>
+<li><p>Despejamos <span class="math notranslate nohighlight">\(\beta\)</span>:<br />
+$<span class="math notranslate nohighlight">\(3\beta = x - y \implies \beta = \frac{x - y}{3}\)</span>$</p></li>
+<li><p>Ahora, <span class="math notranslate nohighlight">\(\alpha = y + \beta = y + \frac{x - y}{3} = \frac{3y + x - y}{3} = \frac{x + 2y}{3}\)</span></p></li>
+</ol>
+<p><strong>Por lo tanto:</strong></p>
+<p>Para cualquier <span class="math notranslate nohighlight">\((x, y, 0) \in W\)</span>:
+$<span class="math notranslate nohighlight">\(
+(x, y, 0) = \frac{x + 2y}{3}(1,1,0) + \frac{x - y}{3}(2,-1,0)
+\)</span>$</p>
+<p>Esto muestra <strong>explícitamente</strong> que <span class="math notranslate nohighlight">\(B_2\)</span> también genera <span class="math notranslate nohighlight">\(W\)</span> y es una base alternativa al conjunto estándar.</p>
+<p><strong>Conclusión:</strong><br />
+El mismo subespacio de dimensión 2 puede ser generado por distintas bases, y la forma de escribir cualquier vector usando la base alternativa es constructiva y única.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_EspaciosVectoriales_04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3.4 Vectores linealmente dependientes e independientes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_EspaciosVectoriales_06.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3.6 Propiedades de las matrices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deficion-de-base-de-un-espacio-vectorial">3.5.1 Defición de Base de un espacio vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">Ejemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">Ejemplo 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-3-una-base-no-estandar-en-mathbb-r-3">Ejemplo 3: Una base no estándar en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-4-una-base-en-el-espacio-de-los-polinomios-de-grado-menor-o-igual-a-2">Ejemplo 4: Una base en el espacio de los polinomios de grado menor o igual a 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-5-una-base-en-el-espacio-de-matrices-simetricas-2-times2">Ejemplo 5: Una base en el espacio de matrices simétricas <span class="math notranslate nohighlight">\(2\times2\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-6-una-base-en-el-espacio-de-funciones">Ejemplo 6: Una base en el espacio de funciones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encontrar-una-base-de-un-conjunto-de-vectores">3.5.2 Encontrar una base de un conjunto de vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-para-conseguir-una-base-a-partir-de-un-conjunto-de-vectores">Pasos para conseguir una base a partir de un conjunto de vectores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-filas">Ejemplo con filas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-columnas">Ejemplo con columnas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usamos-la-primera-columna-como-pivote-y-la-fila-1-como-fila-pivote">1. Usamos la <strong>primera columna</strong> como pivote y la fila 1 como fila pivote.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pivote-en-la-columna-4-en-la-fila-2">2. Pivote en la columna 4 (en la fila 2):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hacemos-ceros-arriba-del-pivote-en-la-columna-5">3. Hacemos ceros arriba del pivote en la columna 5.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-dimension">3.5.3 Definición de dimensión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-reemplazo-de-steinitz">Teorema de Reemplazo de Steinitz</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-base-m-0">Caso base: <span class="math notranslate nohighlight">\(m = 0\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-inductivo-supon-cierto-para-m-1-demuestra-para-m">Paso inductivo: Supón cierto para <span class="math notranslate nohighlight">\(m-1\)</span>, demuestra para <span class="math notranslate nohighlight">\(m\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-dimension-esta-bien-definida">La dimensión está bien definida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-ejemplo-de-el-mismo-espacio-de-dimension-2-en-mathbb-r-3-generado-por-2-bases-distintas">Un ejemplo de el mismo espacio de dimensión 2 en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> generado por 2 bases distintas</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-estandar">Base estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#otra-base-distinta">Otra base distinta</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Johnnatan Sandoval Arrayga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

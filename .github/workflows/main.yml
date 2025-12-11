@@ -46,7 +46,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build .
+        jupyter-book build . --path-output _build/html
         echo "Contenido después del build:"
         ls -R .
 

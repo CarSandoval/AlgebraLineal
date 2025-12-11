@@ -1,0 +1,1222 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3.8 Bases ortonormales &#8212; Algebra Lineal</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_EspaciosVectoriales_08';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4 Transformaciones lineales" href="04_TransformacionesLineales.html" />
+    <link rel="prev" title="3.7 Cambio de base" href="03_EspaciosVectoriales_07.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="00_Introduccion.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/escudo.png" class="logo__image only-light" alt="Algebra Lineal - Home"/>
+    <script>document.write(`<img src="_static/escudo.png" class="logo__image only-dark" alt="Algebra Lineal - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_Introduccion.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_SistemasDeEcuacionesLineales.html">1 Sistemas de Ecuaciones Lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_01.html">1.1 Metodo De Gauss y Gauss-Jordan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_02.html">1.2 Interpretación Geométrica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_SistemasDeEcuacionesLineales_03.html">1.3 Existencia y unicidad de la solución de ecuaciones lineales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_VectoresMatricesYDeterminantes.html">2 Vectores Matrices y Determinantes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_00.html">2.1 El conjunto de permutaciones  <span class="math notranslate nohighlight">\( S_n \)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_01.html">2.2 Definición de determinante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_02.html">2.3 Propiedades y aplicaciones de determinantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_VectoresMatricesYDeterminantes_03.html">2.4 Propiedades y aplicaciones de matrices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="03_EspaciosVectoriales.html">3 Espacios vectoriales</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_01.html">3.1 Introducción a los Espacios vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_02.html">3.2 Combinación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_03.html">3.3 Conjunto generador (span)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_04.html">3.4 Vectores linealmente dependientes e independientes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_05.html">3.5 Base y dimensión de un espacio vectorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_06.html">3.6 Propiedades de las matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_EspaciosVectoriales_07.html">3.7 Cambio de base</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.8 Bases ortonormales</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04_TransformacionesLineales.html">4 Transformaciones lineales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_01.html">4.1 Definición de transformación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_02.html">4.2 Representación matricial de una transformación lineal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_TransformacionesLineales_03.html">4.3 Algunas transformaciones lineales de aplicación común.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="06_referencias.html">6 Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/CarSandoval/AlgebraLineal/issues/new?title=Issue%20on%20page%20%2F03_EspaciosVectoriales_08.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_EspaciosVectoriales_08.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3.8 Bases ortonormales</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-punto">3.8.1 Producto punto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significado-geometrico-del-producto-punto">Significado geométrico del producto punto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-en-python-usando-matplotlib-que-lo-muestre">Código en python usando matplotlib que lo muestre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos">Ejemplos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-del-producto-punto">Propiedades del producto punto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norma-de-un-vector">3.8.2 Norma de un vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-general-de-norma">Definición general de norma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-una-norma">Propiedades de una norma</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdad-del-triangulo-invertido-reverse-triangle-inequality">1. Desigualdad del triángulo invertido (reverse triangle inequality)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subaditividad-para-sumas-finitas">2. Subaditividad para sumas finitas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-norma-del-opuesto-es-igual">3. La norma del opuesto es igual</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-norma-en-mathbb-r-n">Definición de la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma">Demostración de que la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> es una norma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizacion-de-vectores">Normalización de vectores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-python">Ejemplo con python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angulo-entre-vectores">3.8.2 Angulo entre vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-formula-del-coseno-de-un-angulo-entre-vectores-usando-proyecciones-y-el-teorema-de-pitagoras">Construcción de la fórmula del coseno de un ángulo entre vectores usando proyecciones y el Teorema de Pitágoras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib">Construcción en python que de apoyo visual a la construcción anterior usando matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n">Definición formal de coseno de un ángulo entre vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-numericos">Ejemplos numéricos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas">Aplicaciones del ángulo entre 2 vectores a diferentes disciplinas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalidad-de-vectores">3.8.3 Ortogonalidad de vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n">Definición de la ortogonalidad entre 2 vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-vectores-ortogonales">Ejemplos de vectores ortogonales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#los-mismos-ejemplos-dibujados-en-matplotlib-usando-python">Los mismos ejemplos dibujados en matplotlib usando python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-ortonormalizacion-de-gramschmidt">3.8.4 Proceso de ortonormalización de GramSchmidt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-un-vector-sobre-otro">Proyección de un vector sobre otro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalizacion-de-2-vectores-usando-la-proyeccion">Ortogonalización de 2 vectores usando la proyección</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalizacion-de-n-vectores-generalizacion">Ortogonalización de <span class="math notranslate nohighlight">\(n\)</span> vectores (generalización)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar">Algoritmo de Gram-Schmidt: ortogonalizar y normalizar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-mathbb-r-3">Ejemplo en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apoyo-visual-usando-matplotlib">Apoyo visual usando matplotlib</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bases-ortonormales">
+<h1>3.8 Bases ortonormales<a class="headerlink" href="#bases-ortonormales" title="Link to this heading">#</a></h1>
+<p>Una <strong>base ortonormal</strong> en un espacio vectorial es una base cuyos vectores son todos de <strong>norma 1</strong> y <strong>mutuamente ortogonales</strong> (el producto punto entre ellos es cero si son diferentes).<br />
+Este tipo de bases simplifica cálculos, permite interpretar coordenadas como proyecciones y es fundamental en álgebra lineal, geometría, análisis de señales, compresión de datos y algoritmos de machine learning.</p>
+<section id="producto-punto">
+<h2>3.8.1 Producto punto<a class="headerlink" href="#producto-punto" title="Link to this heading">#</a></h2>
+<section id="definicion">
+<h3>Definición<a class="headerlink" href="#definicion" title="Link to this heading">#</a></h3>
+<p>Dados dos vectores <span class="math notranslate nohighlight">\(u = (u_1, ..., u_n)\)</span> y <span class="math notranslate nohighlight">\(v = (v_1, ..., v_n)\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>,<br />
+el <strong>producto punto</strong> se define como:
+$<span class="math notranslate nohighlight">\(
+u \cdot v = u_1 v_1 + u_2 v_2 + \cdots + u_n v_n
+\)</span>$</p>
+</section>
+<section id="significado-geometrico-del-producto-punto">
+<h3>Significado geométrico del producto punto<a class="headerlink" href="#significado-geometrico-del-producto-punto" title="Link to this heading">#</a></h3>
+<p>Geométricamente, el producto punto mide <strong>cuánto “apuntan” dos vectores en la misma dirección</strong>.<br />
+Si el producto punto es:</p>
+<ul class="simple">
+<li><p><strong>positivo</strong>, los vectores forman un ángulo agudo;</p></li>
+<li><p><strong>cero</strong>, son ortogonales (perpendiculares);</p></li>
+<li><p><strong>negativo</strong>, forman un ángulo obtuso.</p></li>
+</ul>
+<p>El producto punto también se relaciona con la proyección de un vector sobre otro.</p>
+</section>
+<section id="codigo-en-python-usando-matplotlib-que-lo-muestre">
+<h3>Código en python usando matplotlib que lo muestre<a class="headerlink" href="#codigo-en-python-usando-matplotlib-que-lo-muestre" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">dot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="n">origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">u</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Producto punto: $u </span><span class="se">\\</span><span class="s1">cdot v$ = </span><span class="si">{</span><span class="n">dot</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c0aebe33e8f3adb5f9173eb1a3870ee0597a3861cfcded8159565dfed96f5a2c.png" src="_images/c0aebe33e8f3adb5f9173eb1a3870ee0597a3861cfcded8159565dfed96f5a2c.png" />
+</div>
+</div>
+</section>
+<section id="ejemplos">
+<h3>Ejemplos<a class="headerlink" href="#ejemplos" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(u = (1,2,3)\)</span> y <span class="math notranslate nohighlight">\(v = (4,5,6)\)</span>.
+$<span class="math notranslate nohighlight">\(
+u \cdot v = 1\cdot4 + 2\cdot5 + 3\cdot6 = 4 + 10 + 18 = 32
+\)</span>$</p>
+<p>Sea <span class="math notranslate nohighlight">\(a = (2,0,-1)\)</span> y <span class="math notranslate nohighlight">\(b = (1,3,2)\)</span>.
+$<span class="math notranslate nohighlight">\(
+a \cdot b = 2\cdot1 + 0\cdot3 + (-1)\cdot2 = 2 + 0 - 2 = 0
+\)</span>$</p>
+</section>
+<section id="propiedades-del-producto-punto">
+<h3>Propiedades del producto punto<a class="headerlink" href="#propiedades-del-producto-punto" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(u \cdot v = v \cdot u\)</span> (conmutativo)</p></li>
+<li><p><span class="math notranslate nohighlight">\(u \cdot (v + w) = u \cdot v + u \cdot w\)</span> (distributivo)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\alpha u) \cdot v = \alpha (u \cdot v)\)</span> (compatibilidad con escalares)</p></li>
+<li><p><span class="math notranslate nohighlight">\(u \cdot u \geq 0\)</span>, y <span class="math notranslate nohighlight">\(u \cdot u = 0\)</span> si y solo si <span class="math notranslate nohighlight">\(u = 0\)</span> (positividad)</p></li>
+</ul>
+</section>
+</section>
+<section id="norma-de-un-vector">
+<h2>3.8.2 Norma de un vector<a class="headerlink" href="#norma-de-un-vector" title="Link to this heading">#</a></h2>
+<section id="definicion-general-de-norma">
+<h3>Definición general de norma<a class="headerlink" href="#definicion-general-de-norma" title="Link to this heading">#</a></h3>
+<p>Una <strong>norma</strong> en un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> (o <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>) es una función<br />
+<span class="math notranslate nohighlight">\(\| \cdot \| : V \to \mathbb{R}\)</span> que asigna a cada vector un número real no negativo, y satisface tres propiedades fundamentales para todo <span class="math notranslate nohighlight">\(u, v \in V\)</span> y todo escalar <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
+<ol class="arabic simple">
+<li><p><strong>Positividad:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\|v\| \geq 0, \quad \text{y} \quad \|v\| = 0 \iff v = 0
+\)</span>$</p></li>
+<li><p><strong>Homogeneidad absoluta:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\|\alpha v\| = |\alpha| \, \|v\|
+\)</span>$</p></li>
+<li><p><strong>Desigualdad triangular:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\|u + v\| \leq \|u\| + \|v\|
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="propiedades-de-una-norma">
+<h3>Propiedades de una norma<a class="headerlink" href="#propiedades-de-una-norma" title="Link to this heading">#</a></h3>
+<p>Supón que <span class="math notranslate nohighlight">\(\|\cdot\|\)</span> es una norma sobre un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span>.<br />
+Entonces, a partir de los axiomas, se pueden demostrar las siguientes propiedades:</p>
+<section id="desigualdad-del-triangulo-invertido-reverse-triangle-inequality">
+<h4>1. Desigualdad del triángulo invertido (reverse triangle inequality)<a class="headerlink" href="#desigualdad-del-triangulo-invertido-reverse-triangle-inequality" title="Link to this heading">#</a></h4>
+<p>Para todo <span class="math notranslate nohighlight">\(u, v \in V\)</span>,
+$<span class="math notranslate nohighlight">\(
+|\|u\| - \|v\|| \leq \|u - v\|
+\)</span>$</p>
+<p><strong>Demostración:</strong><br />
+Por la desigualdad triangular,
+$<span class="math notranslate nohighlight">\(
+\|u\| = \|(u - v) + v\| \leq \|u - v\| + \|v\| \implies \|u\| - \|v\| \leq \|u - v\|
+\)</span><span class="math notranslate nohighlight">\(
+Intercambiando \)</span>u<span class="math notranslate nohighlight">\( y \)</span>v<span class="math notranslate nohighlight">\(, también se obtiene
+\)</span><span class="math notranslate nohighlight">\(
+\|v\| - \|u\| \leq \|v - u\| = \|u - v\|
+\)</span><span class="math notranslate nohighlight">\(
+Por lo tanto,
+\)</span><span class="math notranslate nohighlight">\(
+|\|u\| - \|v\|| \leq \|u - v\|
+\)</span>$</p>
+</section>
+<section id="subaditividad-para-sumas-finitas">
+<h4>2. Subaditividad para sumas finitas<a class="headerlink" href="#subaditividad-para-sumas-finitas" title="Link to this heading">#</a></h4>
+<p>Para cualquier colección finita de vectores <span class="math notranslate nohighlight">\(v_1, ..., v_k\)</span> en <span class="math notranslate nohighlight">\(V\)</span>,
+$<span class="math notranslate nohighlight">\(
+\left\|\sum_{i=1}^k v_i \right\| \leq \sum_{i=1}^k \|v_i\|
+\)</span>$</p>
+</section>
+<section id="la-norma-del-opuesto-es-igual">
+<h4>3. La norma del opuesto es igual<a class="headerlink" href="#la-norma-del-opuesto-es-igual" title="Link to this heading">#</a></h4>
+<p>Para cualquier <span class="math notranslate nohighlight">\(v \in V\)</span>,
+$<span class="math notranslate nohighlight">\(
+\| -v \| = \| v \|
+\)</span>$</p>
+</section>
+</section>
+<section id="definicion-de-la-norma-en-mathbb-r-n">
+<h3>Definición de la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-de-la-norma-en-mathbb-r-n" title="Link to this heading">#</a></h3>
+<p>La norma <strong>euclidiana</strong> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> se define, para <span class="math notranslate nohighlight">\(v = (v_1, ..., v_n)\)</span>, como:
+$<span class="math notranslate nohighlight">\(
+\|v\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+\)</span>$</p>
+</section>
+<section id="ejemplo-numerico">
+<h3>Ejemplo numérico<a class="headerlink" href="#ejemplo-numerico" title="Link to this heading">#</a></h3>
+<p>Para <span class="math notranslate nohighlight">\(v = (1,2,2)\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>,
+$<span class="math notranslate nohighlight">\(
+\|v\| = \sqrt{1^2 + 2^2 + 2^2} = \sqrt{1 + 4 + 4} = \sqrt{9} = 3
+\)</span>$</p>
+</section>
+<section id="demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma">
+<h3>Demostración de que la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> es una norma<a class="headerlink" href="#demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma" title="Link to this heading">#</a></h3>
+<p>Verifiquemos las tres propiedades para la norma euclidiana:</p>
+<ol class="arabic simple">
+<li><p><strong>Positividad:</strong><br />
+$<span class="math notranslate nohighlight">\(\|v\| = \sqrt{v_1^2 + \cdots + v_n^2} \geq 0\)</span><span class="math notranslate nohighlight">\(  
+La raíz cuadrada de una suma de cuadrados nunca es negativa, y es cero solo si todos los \)</span>v_i$ son cero.</p></li>
+<li><p><strong>Homogeneidad absoluta:</strong><br />
+Para escalar <span class="math notranslate nohighlight">\(\alpha\)</span>,
+$<span class="math notranslate nohighlight">\(
+\|\alpha v\| = \sqrt{(\alpha v_1)^2 + \cdots + (\alpha v_n)^2} = \sqrt{\alpha^2(v_1^2 + \cdots + v_n^2)} = |\alpha| \sqrt{v_1^2 + \cdots + v_n^2} = |\alpha| \|v\|
+\)</span>$</p></li>
+<li><p><strong>Desigualdad triangular:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\|u + v\|^2 = \sum_{i=1}^n (u_i + v_i)^2 = \sum_{i=1}^n u_i^2 + 2u_iv_i + v_i^2
+\)</span><span class="math notranslate nohighlight">\(
+Usando desigualdad de Cauchy-Schwarz:
+\)</span><span class="math notranslate nohighlight">\(
+\|u+v\| \leq \|u\| + \|v\|
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="normalizacion-de-vectores">
+<h3>Normalización de vectores<a class="headerlink" href="#normalizacion-de-vectores" title="Link to this heading">#</a></h3>
+<p>La <strong>normalización</strong> de un vector <span class="math notranslate nohighlight">\(v \neq 0\)</span> es obtener el vector unitario (norma 1) en la misma dirección:</p>
+<div class="math notranslate nohighlight">
+\[
+u = \frac{v}{\|v\|}
+\]</div>
+</section>
+<section id="id1">
+<h3>Ejemplo numérico<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Para <span class="math notranslate nohighlight">\(v = (3,4)\)</span>,
+$<span class="math notranslate nohighlight">\(
+\|v\| = 5 \\
+u = \frac{(3,4)}{5} = \left(\frac{3}{5}, \frac{4}{5}\right)
+\)</span><span class="math notranslate nohighlight">\(
+Verifica:
+\)</span><span class="math notranslate nohighlight">\(
+\|u\| = \sqrt{(3/5)^2 + (4/5)^2} = \sqrt{9/25 + 16/25} = \sqrt{1} = 1
+\)</span>$</p>
+</section>
+<section id="ejemplo-con-python">
+<h3>Ejemplo con python<a class="headerlink" href="#ejemplo-con-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">norm_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">norm_v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norma de v:&quot;</span><span class="p">,</span> <span class="n">norm_v</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vector normalizado:&quot;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norma del vector normalizado:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Vector original (azul)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v original&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Vector normalizado (rojo, más grueso)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v normalizado (norma 1)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Círculo unitario</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Círculo unitario&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+
+<span class="c1"># Etiquetas de las puntas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Ajustar ejes para ver todo claramente</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">norm_v</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;v original&#39;</span><span class="p">,</span> <span class="s1">&#39;v normalizado (norma 1)&#39;</span><span class="p">,</span> <span class="s1">&#39;Círculo unitario&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Normalización de un vector en $\mathbb</span><span class="si">{R}</span><span class="s2">^2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Norma de v: 5.0
+Vector normalizado: [0.6 0.8]
+Norma del vector normalizado: 1.0
+</pre></div>
+</div>
+<img alt="_images/83ee35eecd90a33b4420574c4cd5366e039ba21afd7e98281e13f87e0c9f94c7.png" src="_images/83ee35eecd90a33b4420574c4cd5366e039ba21afd7e98281e13f87e0c9f94c7.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="angulo-entre-vectores">
+<h2>3.8.2 Angulo entre vectores<a class="headerlink" href="#angulo-entre-vectores" title="Link to this heading">#</a></h2>
+<section id="construccion-de-la-formula-del-coseno-de-un-angulo-entre-vectores-usando-proyecciones-y-el-teorema-de-pitagoras">
+<h3>Construcción de la fórmula del coseno de un ángulo entre vectores usando proyecciones y el Teorema de Pitágoras<a class="headerlink" href="#construccion-de-la-formula-del-coseno-de-un-angulo-entre-vectores-usando-proyecciones-y-el-teorema-de-pitagoras" title="Link to this heading">#</a></h3>
+<p>Sean <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^2\)</span>, ambos distintos de cero, y sea <span class="math notranslate nohighlight">\(\theta\)</span> el ángulo entre ellos.<br />
+Supongamos que colocamos el origen en el inicio de ambos vectores.</p>
+<ol class="arabic simple">
+<li><p><strong>Construcción geométrica:</strong></p>
+<ul class="simple">
+<li><p>Considera el triángulo formado por los puntos <span class="math notranslate nohighlight">\(O\)</span> (origen), <span class="math notranslate nohighlight">\(A\)</span> (punta de <span class="math notranslate nohighlight">\(u\)</span>), y <span class="math notranslate nohighlight">\(B\)</span> (punta de <span class="math notranslate nohighlight">\(v\)</span>).</p></li>
+<li><p>El vector <span class="math notranslate nohighlight">\(u - v\)</span> es el tercer lado de ese triángulo.</p></li>
+</ul>
+</li>
+<li><p><strong>Por la Ley del Coseno tenemos:</strong>
+$<span class="math notranslate nohighlight">\(
+|u - v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
+\)</span>$</p></li>
+<li><p><strong>Pero <span class="math notranslate nohighlight">\(|u - v|^2\)</span> es también el producto punto:</strong>
+$<span class="math notranslate nohighlight">\(
+|u - v|^2 = (u - v) \cdot (u - v) = u \cdot u - 2u \cdot v + v \cdot v = |u|^2 - 2u \cdot v + |v|^2
+\)</span>$</p></li>
+<li><p><strong>Igualando las dos expresiones para <span class="math notranslate nohighlight">\(|u - v|^2\)</span>:</strong>
+$<span class="math notranslate nohighlight">\(
+|u|^2 - 2u \cdot v + |v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
+\)</span>$</p></li>
+<li><p><strong>Se simplifican <span class="math notranslate nohighlight">\(|u|^2\)</span> y <span class="math notranslate nohighlight">\(|v|^2\)</span> de ambos lados:</strong>
+$<span class="math notranslate nohighlight">\(
+-2u \cdot v = -2|u||v|\cos\theta
+\)</span>$</p></li>
+<li><p><strong>Dividiendo entre <span class="math notranslate nohighlight">\(-2\)</span> (y suponiendo que <span class="math notranslate nohighlight">\(u,v \neq 0\)</span>):</strong>
+$<span class="math notranslate nohighlight">\(
+u \cdot v = |u||v|\cos\theta
+\)</span>$
+que es la fórmula buscada.</p></li>
+</ol>
+<p>Por lo tanto,
+$<span class="math notranslate nohighlight">\(
+\cos\theta = \frac{u \cdot v}{|u||v|}
+\)</span>$</p>
+</section>
+<section id="construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib">
+<h3>Construcción en python que de apoyo visual a la construcción anterior usando matplotlib<a class="headerlink" href="#construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Vectores</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Ángulos respecto al eje x</span>
+<span class="n">angle_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">angle_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Asegúrate de que angle_v &gt; angle_u (para el arco)</span>
+<span class="k">if</span> <span class="n">angle_v</span> <span class="o">&lt;</span> <span class="n">angle_u</span><span class="p">:</span>
+    <span class="n">angle_v</span><span class="p">,</span> <span class="n">angle_u</span> <span class="o">=</span> <span class="n">angle_u</span><span class="p">,</span> <span class="n">angle_v</span>
+
+<span class="n">arc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">angle_u</span><span class="p">,</span> <span class="n">angle_v</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">arc_x</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">arc</span><span class="p">)</span>
+<span class="n">arc_y</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">arc</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;u-v&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;$u$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;$v$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span><span class="o">+</span><span class="mf">0.2</span><span class="p">),</span> <span class="s1">&#39;$u-v$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;$O$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Arco del ángulo real entre u y v</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">arc_x</span><span class="p">,</span> <span class="n">arc_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="c1"># Etiqueta para theta (en el medio del arco)</span>
+<span class="n">theta_mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">angle_u</span> <span class="o">+</span> <span class="n">angle_v</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_mid</span><span class="p">),</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_mid</span><span class="p">),</span> <span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;u-v&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Demostración geométrica de $u </span><span class="se">\\</span><span class="s2">cdot v = |u||v|</span><span class="se">\\</span><span class="s2">cos</span><span class="se">\\</span><span class="s2">theta$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d51bb81325ab405eec358066bd15e079149aa1469289fa95b14b9b0b5e8b6c84.png" src="_images/d51bb81325ab405eec358066bd15e079149aa1469289fa95b14b9b0b5e8b6c84.png" />
+</div>
+</div>
+</section>
+<section id="definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n">
+<h3>Definición formal de coseno de un ángulo entre vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n" title="Link to this heading">#</a></h3>
+<p>Dados <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span>, el coseno del ángulo <span class="math notranslate nohighlight">\(\theta\)</span> entre ellos se define como:
+$<span class="math notranslate nohighlight">\(
+\cos\theta = \frac{u \cdot v}{\|u\| \, \|v\|}
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>|u| = \sqrt{u_1^2 + \cdots + u_n^2}$ es la norma euclidiana.</p>
+</section>
+<section id="ejemplos-numericos">
+<h3>Ejemplos numéricos<a class="headerlink" href="#ejemplos-numericos" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(u = (1,0)\)</span> y <span class="math notranslate nohighlight">\(v = (0,1)\)</span>, entonces:
+$<span class="math notranslate nohighlight">\(
+u \cdot v = 0 \\
+\|u\| = 1,\quad \|v\| = 1 \\
+\cos\theta = 0 \implies \theta = 90^\circ
+\)</span>$</p>
+<p>Sea <span class="math notranslate nohighlight">\(a = (1,2)\)</span> y <span class="math notranslate nohighlight">\(b = (2,4)\)</span>, entonces:
+$<span class="math notranslate nohighlight">\(
+a \cdot b = 1\cdot2 + 2\cdot4 = 2 + 8 = 10 \\
+\|a\| = \sqrt{1^2 + 2^2} = \sqrt{5} \\
+\|b\| = \sqrt{2^2 + 4^2} = \sqrt{20} \\
+\cos\theta = \frac{10}{\sqrt{5}\sqrt{20}} = 1 \implies \theta = 0^\circ
+\)</span>$</p>
+</section>
+<section id="aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas">
+<h3>Aplicaciones del ángulo entre 2 vectores a diferentes disciplinas<a class="headerlink" href="#aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Análisis de similitud:</strong> El ángulo entre dos vectores en espacios de alta dimensión se usa como medida de similitud en minería de datos y aprendizaje automático (“cosine similarity”).</p></li>
+<li><p><strong>Física:</strong> En trabajo mecánico y proyección de fuerzas.</p></li>
+<li><p><strong>Estadística:</strong> Para correlación entre variables normalizadas.</p></li>
+<li><p><strong>Procesamiento de imágenes:</strong> Detección de orientación y patrones.</p></li>
+</ul>
+</section>
+</section>
+<section id="ortogonalidad-de-vectores">
+<h2>3.8.3 Ortogonalidad de vectores<a class="headerlink" href="#ortogonalidad-de-vectores" title="Link to this heading">#</a></h2>
+<section id="definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n">
+<h3>Definición de la ortogonalidad entre 2 vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n" title="Link to this heading">#</a></h3>
+<p>Dos vectores <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span> son <strong>ortogonales</strong> si su producto punto es cero:
+$<span class="math notranslate nohighlight">\(
+u \cdot v = 0
+\)</span>$</p>
+</section>
+<section id="ejemplos-de-vectores-ortogonales">
+<h3>Ejemplos de vectores ortogonales<a class="headerlink" href="#ejemplos-de-vectores-ortogonales" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(u = (1,2,1)\)</span> y <span class="math notranslate nohighlight">\(v = (2,-1,0)\)</span>.
+$<span class="math notranslate nohighlight">\(
+u \cdot v = 1\cdot2 + 2\cdot(-1) + 1\cdot0 = 2 - 2 + 0 = 0
+\)</span><span class="math notranslate nohighlight">\(
+Así, \)</span>u<span class="math notranslate nohighlight">\( y \)</span>v$ son ortogonales.</p>
+</section>
+<section id="los-mismos-ejemplos-dibujados-en-matplotlib-usando-python">
+<h3>Los mismos ejemplos dibujados en matplotlib usando python<a class="headerlink" href="#los-mismos-ejemplos-dibujados-en-matplotlib-usando-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">u</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$u$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="n">origin</span><span class="p">,</span> <span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$v$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vectores ortogonales ($u </span><span class="se">\\</span><span class="s2">cdot v = 0$)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73e454801fd8f7358e079ca458e4bf98aa3580e187ac8e34d11e1ddbef0f1f8e.png" src="_images/73e454801fd8f7358e079ca458e4bf98aa3580e187ac8e34d11e1ddbef0f1f8e.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="proceso-de-ortonormalizacion-de-gramschmidt">
+<h2>3.8.4 Proceso de ortonormalización de GramSchmidt<a class="headerlink" href="#proceso-de-ortonormalizacion-de-gramschmidt" title="Link to this heading">#</a></h2>
+<p>El proceso de Gram-Schmidt permite transformar un conjunto de vectores linealmente independientes en un conjunto ortonormal que genera el mismo subespacio vectorial.<br />
+Esto es esencial para simplificar problemas en álgebra lineal, análisis numérico y muchas aplicaciones en ciencia e ingeniería.</p>
+<section id="proyeccion-de-un-vector-sobre-otro">
+<h3>Proyección de un vector sobre otro<a class="headerlink" href="#proyeccion-de-un-vector-sobre-otro" title="Link to this heading">#</a></h3>
+<p>Dados <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> (<span class="math notranslate nohighlight">\(u \neq 0\)</span>), la <strong>proyección</strong> de <span class="math notranslate nohighlight">\(v\)</span> sobre <span class="math notranslate nohighlight">\(u\)</span> es:
+$<span class="math notranslate nohighlight">\(
+\text{proj}_u(v) = \frac{v \cdot u}{u \cdot u} \, u
+\)</span>$</p>
+<p><strong>¿Por qué es así?</strong><br />
+Buscamos un escalar <span class="math notranslate nohighlight">\(\lambda\)</span> tal que <span class="math notranslate nohighlight">\(w = \lambda u\)</span> sea el “punto más cercano” a <span class="math notranslate nohighlight">\(v\)</span> en la recta generada por <span class="math notranslate nohighlight">\(u\)</span>.<br />
+La diferencia <span class="math notranslate nohighlight">\(v - \lambda u\)</span> debe ser ortogonal a <span class="math notranslate nohighlight">\(u\)</span>:
+$<span class="math notranslate nohighlight">\(
+(v - \lambda u) \cdot u = 0 \implies v \cdot u - \lambda (u \cdot u) = 0 \implies \lambda = \frac{v \cdot u}{u \cdot u}
+\)</span><span class="math notranslate nohighlight">\(
+Por lo tanto,
+\)</span><span class="math notranslate nohighlight">\(
+\text{proj}_u(v) = \lambda u = \frac{v \cdot u}{u \cdot u} u
+\)</span>$</p>
+</section>
+<section id="ortogonalizacion-de-2-vectores-usando-la-proyeccion">
+<h3>Ortogonalización de 2 vectores usando la proyección<a class="headerlink" href="#ortogonalizacion-de-2-vectores-usando-la-proyeccion" title="Link to this heading">#</a></h3>
+<p>Sean <span class="math notranslate nohighlight">\(v_1, v_2 \in \mathbb{R}^n\)</span> linealmente independientes.</p>
+<ol class="arabic simple">
+<li><p>Sea <span class="math notranslate nohighlight">\(u_1 = v_1\)</span>.</p></li>
+<li><p>Proyecta <span class="math notranslate nohighlight">\(v_2\)</span> sobre <span class="math notranslate nohighlight">\(u_1\)</span>: <span class="math notranslate nohighlight">\(\text{proj}_{u_1}(v_2) = \frac{v_2 \cdot u_1}{u_1 \cdot u_1} u_1\)</span>.</p></li>
+<li><p>Resta la proyección: <span class="math notranslate nohighlight">\(u_2 = v_2 - \text{proj}_{u_1}(v_2)\)</span>.</p></li>
+</ol>
+<p>Ahora <span class="math notranslate nohighlight">\(u_1\)</span> y <span class="math notranslate nohighlight">\(u_2\)</span> son ortogonales.</p>
+</section>
+<section id="ortogonalizacion-de-n-vectores-generalizacion">
+<h3>Ortogonalización de <span class="math notranslate nohighlight">\(n\)</span> vectores (generalización)<a class="headerlink" href="#ortogonalizacion-de-n-vectores-generalizacion" title="Link to this heading">#</a></h3>
+<p>Dado <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> linealmente independientes en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Sea <span class="math notranslate nohighlight">\(u_1 = v_1\)</span>.</p></li>
+<li><p>Para <span class="math notranslate nohighlight">\(k = 2, ..., n\)</span>:
+$<span class="math notranslate nohighlight">\(
+u_k = v_k - \sum_{j=1}^{k-1} \text{proj}_{u_j}(v_k)
+= v_k - \sum_{j=1}^{k-1} \frac{v_k \cdot u_j}{u_j \cdot u_j} u_j
+\)</span>$</p></li>
+<li><p>Los vectores <span class="math notranslate nohighlight">\(u_1, ..., u_n\)</span> así construidos son ortogonales.</p></li>
+</ol>
+</section>
+<section id="algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar">
+<h3>Algoritmo de Gram-Schmidt: ortogonalizar y normalizar<a class="headerlink" href="#algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar" title="Link to this heading">#</a></h3>
+<p>El <strong>algoritmo completo</strong> de Gram-Schmidt produce una base ortonormal:</p>
+<ul class="simple">
+<li><p>Para cada <span class="math notranslate nohighlight">\(k = 1, ..., n\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Calcula el vector ortogonal <span class="math notranslate nohighlight">\(u_k\)</span> como arriba.</p></li>
+<li><p>Normaliza:<br />
+$<span class="math notranslate nohighlight">\(
+e_k = \frac{u_k}{\|u_k\|}
+\)</span>$</p></li>
+</ol>
+</li>
+<li><p>El conjunto <span class="math notranslate nohighlight">\(\{e_1, ..., e_n\}\)</span> es una <strong>base ortonormal</strong> del subespacio generado.</p></li>
+</ul>
+</section>
+<section id="ejemplo-en-mathbb-r-3">
+<h3>Ejemplo en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span><a class="headerlink" href="#ejemplo-en-mathbb-r-3" title="Link to this heading">#</a></h3>
+<p>Sea
+$<span class="math notranslate nohighlight">\(
+v_1 = (1,1,0),\quad v_2 = (1,0,1),\quad v_3 = (0,1,1)
+\)</span>$</p>
+<p><strong>Paso 1:</strong><br />
+$<span class="math notranslate nohighlight">\(
+u_1 = v_1 = (1,1,0)
+\)</span>$</p>
+<p><strong>Paso 2:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\text{proj}_{u_1}(v_2) = \frac{v_2 \cdot u_1}{u_1 \cdot u_1} u_1 = \frac{1\cdot1 + 0\cdot1 + 1\cdot0}{1^2+1^2+0^2} (1,1,0) = \frac{1}{2}(1,1,0) = (0.5,0.5,0)
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+u_2 = v_2 - \text{proj}_{u_1}(v_2) = (1,0,1) - (0.5,0.5,0) = (0.5, -0.5, 1)
+\)</span>$</p>
+<p><strong>Paso 3:</strong><br />
+$<span class="math notranslate nohighlight">\(
+\text{proj}_{u_1}(v_3) = \frac{v_3 \cdot u_1}{u_1 \cdot u_1} u_1 = \frac{0\cdot1 + 1\cdot1 + 1\cdot0}{2}(1,1,0) = \frac{1}{2}(1,1,0) = (0.5,0.5,0)
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\text{proj}_{u_2}(v_3) = \frac{v_3 \cdot u_2}{u_2 \cdot u_2} u_2
+\)</span><span class="math notranslate nohighlight">\(
+Calculemos \)</span>v_3 \cdot u_2 = 0.5\cdot0 + 1\cdot(-0.5) + 1\cdot1 = 0 - 0.5 + 1 = 0.5<span class="math notranslate nohighlight">\(  
+\)</span>u_2 \cdot u_2 = 0.5^2 + (-0.5)^2 + 1^2 = 0.25 + 0.25 + 1 = 1.5$</p>
+<div class="math notranslate nohighlight">
+\[
+\text{proj}_{u_2}(v_3) = \frac{0.5}{1.5}(0.5, -0.5, 1) = (\frac{1}{6}, -\frac{1}{6}, \frac{1}{3})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+u_3 = v_3 - \text{proj}_{u_1}(v_3) - \text{proj}_{u_2}(v_3)
+= (0,1,1) - (0.5,0.5,0) - (\frac{1}{6}, -\frac{1}{6}, \frac{1}{3})
+= (-\frac{2}{3}, \frac{2}{3}, \frac{2}{3})
+\]</div>
+<p><strong>Ortonormalizando:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(e_1 = u_1 / \|u_1\| = (1/\sqrt{2}, 1/\sqrt{2}, 0)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e_2 = u_2 / \|u_2\| = (1/\sqrt{6}, -1/\sqrt{6}, 2/\sqrt{6})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e_3 = u_3 / \|u_3\| = (-1/\sqrt{3}, 1/\sqrt{3}, 1/\sqrt{3})\)</span></p></li>
+</ul>
+</section>
+<section id="apoyo-visual-usando-matplotlib">
+<h3>Apoyo visual usando matplotlib<a class="headerlink" href="#apoyo-visual-usando-matplotlib" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
+
+<span class="c1"># Vectores originales</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">v3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">u1</span> <span class="o">=</span> <span class="n">v1</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span>
+<span class="n">proj_v2_u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span> <span class="o">*</span> <span class="n">u1</span>
+<span class="n">u2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">-</span> <span class="n">proj_v2_u1</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
+<span class="n">proj_v3_u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u1</span><span class="p">)</span> <span class="o">*</span> <span class="n">u1</span>
+<span class="n">proj_v3_u2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v3</span><span class="p">,</span> <span class="n">u2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u2</span><span class="p">,</span> <span class="n">u2</span><span class="p">)</span> <span class="o">*</span> <span class="n">u2</span>
+<span class="n">u3</span> <span class="o">=</span> <span class="n">v3</span> <span class="o">-</span> <span class="n">proj_v3_u1</span> <span class="o">-</span> <span class="n">proj_v3_u2</span>
+<span class="n">e3</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">u3</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="c1"># Vectores originales (gris translúcido)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v1 original&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v2 original&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v3</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v3</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;v3 original&#39;</span><span class="p">)</span>
+
+<span class="c1"># Vectores ortonormales</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;e1 ortonormal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;e2 ortonormal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;e3 ortonormal&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="n">e1</span><span class="p">,</span> <span class="s1">&#39;e1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="n">e2</span><span class="p">,</span> <span class="s1">&#39;e2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="n">e3</span><span class="p">,</span> <span class="s1">&#39;e3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Gram-Schmidt en $\mathbb</span><span class="si">{R}</span><span class="s1">^3$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13de1a0eed6edb69421d8bbc4eaedfc275fb989f52a468e03b07a0efcefdfc0c.png" src="_images/13de1a0eed6edb69421d8bbc4eaedfc275fb989f52a468e03b07a0efcefdfc0c.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_EspaciosVectoriales_07.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3.7 Cambio de base</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_TransformacionesLineales.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4 Transformaciones lineales</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-punto">3.8.1 Producto punto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significado-geometrico-del-producto-punto">Significado geométrico del producto punto</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-en-python-usando-matplotlib-que-lo-muestre">Código en python usando matplotlib que lo muestre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos">Ejemplos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-del-producto-punto">Propiedades del producto punto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norma-de-un-vector">3.8.2 Norma de un vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-general-de-norma">Definición general de norma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-una-norma">Propiedades de una norma</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdad-del-triangulo-invertido-reverse-triangle-inequality">1. Desigualdad del triángulo invertido (reverse triangle inequality)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subaditividad-para-sumas-finitas">2. Subaditividad para sumas finitas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-norma-del-opuesto-es-igual">3. La norma del opuesto es igual</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-norma-en-mathbb-r-n">Definición de la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma">Demostración de que la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> es una norma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizacion-de-vectores">Normalización de vectores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo numérico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-con-python">Ejemplo con python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#angulo-entre-vectores">3.8.2 Angulo entre vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-formula-del-coseno-de-un-angulo-entre-vectores-usando-proyecciones-y-el-teorema-de-pitagoras">Construcción de la fórmula del coseno de un ángulo entre vectores usando proyecciones y el Teorema de Pitágoras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib">Construcción en python que de apoyo visual a la construcción anterior usando matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n">Definición formal de coseno de un ángulo entre vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-numericos">Ejemplos numéricos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas">Aplicaciones del ángulo entre 2 vectores a diferentes disciplinas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalidad-de-vectores">3.8.3 Ortogonalidad de vectores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n">Definición de la ortogonalidad entre 2 vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-vectores-ortogonales">Ejemplos de vectores ortogonales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#los-mismos-ejemplos-dibujados-en-matplotlib-usando-python">Los mismos ejemplos dibujados en matplotlib usando python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-ortonormalizacion-de-gramschmidt">3.8.4 Proceso de ortonormalización de GramSchmidt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-un-vector-sobre-otro">Proyección de un vector sobre otro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalizacion-de-2-vectores-usando-la-proyeccion">Ortogonalización de 2 vectores usando la proyección</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ortogonalizacion-de-n-vectores-generalizacion">Ortogonalización de <span class="math notranslate nohighlight">\(n\)</span> vectores (generalización)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar">Algoritmo de Gram-Schmidt: ortogonalizar y normalizar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-mathbb-r-3">Ejemplo en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apoyo-visual-usando-matplotlib">Apoyo visual usando matplotlib</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carlos Johnnatan Sandoval Arrayga
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -454,30 +454,32 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="cambio-de-base">
 <h1>3.7 Cambio de base<a class="headerlink" href="#cambio-de-base" title="Link to this heading">#</a></h1>
 <p><strong>Base Canonica</strong></p>
-<p>En <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, la <strong>base canónica</strong> es el conjunto formado por los vectores estándar:
-$<span class="math notranslate nohighlight">\(
+<p>En <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, la <strong>base canónica</strong> es el conjunto formado por los vectores estándar:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathcal{B}_{\text{can}} = \{ e_1, e_2, \dots, e_n \}
-\)</span><span class="math notranslate nohighlight">\(
-donde \)</span>e_i<span class="math notranslate nohighlight">\( es el vector que tiene un \)</span>1<span class="math notranslate nohighlight">\( en la posición \)</span>i<span class="math notranslate nohighlight">\( y ceros en las demás.  
-Por ejemplo, en \)</span>\mathbb{R}^3<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(e_i\)</span> es el vector que tiene un <span class="math notranslate nohighlight">\(1\)</span> en la posición <span class="math notranslate nohighlight">\(i\)</span> y ceros en las demás.<br />
+Por ejemplo, en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 e_1 = (1,0,0), \quad e_2 = (0,1,0), \quad e_3 = (0,0,1)
-\)</span>$
-La base canónica tiene la propiedad de que las coordenadas de un vector respecto a ella son sus componentes usuales.</p>
+\]</div>
+<p>La base canónica tiene la propiedad de que las coordenadas de un vector respecto a ella son sus componentes usuales.</p>
 <p><strong>Cambio de Base</strong></p>
 <p>Un <strong>cambio de base</strong> es el proceso mediante el cual representamos un mismo vector o transformación lineal en diferentes bases de un espacio vectorial.<br />
 El objetivo principal es traducir las coordenadas de un vector desde una base original <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a una base nueva <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>.<br />
 Esto es fundamental en álgebra lineal porque algunas bases hacen que ciertos problemas sean más fáciles de resolver o interpretar.</p>
-<p><strong>Notación de cambio de base</strong></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="notacion-de-cambio-de-base">
 <h1>Notación de cambio de base<a class="headerlink" href="#notacion-de-cambio-de-base" title="Link to this heading">#</a></h1>
 <ul>
 <li><p>Si <span class="math notranslate nohighlight">\([x]_{\mathcal{B}}\)</span> son las coordenadas del vector <span class="math notranslate nohighlight">\(x\)</span> en la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, y <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'}\)</span> son sus coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>, entonces el <strong>cambio de base</strong> de <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span> se representa usando una <strong>matriz de cambio de base</strong> <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{B}}\)</span>.</p></li>
-<li><p>La relación es:
-$<span class="math notranslate nohighlight">\(
-[x]_{\mathcal{B}'} = P_{\mathcal{B}' \leftarrow \mathcal{B}} [x]_{\mathcal{B}}
-\)</span>$</p>
+<li><p>La relación es:</p>
+<div class="math notranslate nohighlight">
+\[
+  [x]_{\mathcal{B}'} = P_{\mathcal{B}' \leftarrow \mathcal{B}} [x]_{\mathcal{B}}
+  \]</div>
 <p>donde <span class="math notranslate nohighlight">\(P_{\mathcal{B}' \leftarrow \mathcal{B}}\)</span> es la matriz que lleva coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a coordenadas en la base <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span>.</p>
 </li>
 <li><p><strong>Si quieres expresar el cambio de coordenadas de una base cualquiera <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> a la base canónica</strong>, la matriz de cambio de base se denota como:</p>
@@ -503,8 +505,9 @@ $<span class="math notranslate nohighlight">\(
 \[
 x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n
 \]</div>
-<p>El vector de coordenadas de <span class="math notranslate nohighlight">\(x\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> se denota como:
-$<span class="math notranslate nohighlight">\(
+<p>El vector de coordenadas de <span class="math notranslate nohighlight">\(x\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> se denota como:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 [x]_{\mathcal{B}} = 
 \begin{pmatrix}
 a_1 \\
@@ -512,7 +515,7 @@ a_2 \\
 \vdots \\
 a_n
 \end{pmatrix}
-\)</span>$</p>
+\end{split}\]</div>
 <section id="explicacion">
 <h3>Explicación.<a class="headerlink" href="#explicacion" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -525,21 +528,24 @@ a_n
 <h3>Unicidad de la representación en coordenadas respecto a una base<a class="headerlink" href="#unicidad-de-la-representacion-en-coordenadas-respecto-a-una-base" title="Link to this heading">#</a></h3>
 <p><strong>Enunciado:</strong><br />
 Si <span class="math notranslate nohighlight">\(\mathcal{B} = \{v_1, v_2, ..., v_n\}\)</span> es una base de un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> y <span class="math notranslate nohighlight">\(x \in V\)</span>,<br />
-entonces <strong>existe una única</strong> manera de expresar <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>:
-$<span class="math notranslate nohighlight">\(
+entonces <strong>existe una única</strong> manera de expresar <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n
-\)</span><span class="math notranslate nohighlight">\(
-con \)</span>a_1, …, a_n$ únicos.</p>
+\]</div>
+<p>con <span class="math notranslate nohighlight">\(a_1, ..., a_n\)</span> únicos.</p>
 <p><strong>Demostración:</strong></p>
-<p>Supón que existen dos formas de escribir <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de la base:
-$<span class="math notranslate nohighlight">\(
+<p>Supón que existen dos formas de escribir <span class="math notranslate nohighlight">\(x\)</span> como combinación lineal de los vectores de la base:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 x = a_1 v_1 + a_2 v_2 + \cdots + a_n v_n \\
 x = b_1 v_1 + b_2 v_2 + \cdots + b_n v_n
-\)</span>$</p>
-<p>Restando ambas igualdades:
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Restando ambas igualdades:</p>
+<div class="math notranslate nohighlight">
+\[
 0 = (a_1 - b_1)v_1 + (a_2 - b_2)v_2 + \cdots + (a_n - b_n)v_n
-\)</span>$</p>
+\]</div>
 <p>Pero los vectores <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> son <strong>linealmente independientes</strong> (por ser base),<br />
 así que la única combinación lineal que da el vector cero es aquella donde <strong>todos los coeficientes son cero</strong>:</p>
 <div class="math notranslate nohighlight">
@@ -556,26 +562,29 @@ Las coordenadas de cualquier vector respecto a una base están <strong>bien defi
 <section id="ejemplo">
 <h3>Ejemplo:<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
 <p>Sea <span class="math notranslate nohighlight">\(\mathcal{B} = \{(1,1),\, (2,1)\}\)</span> una base de <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> y <span class="math notranslate nohighlight">\(x = (5, 3)\)</span>.<br />
-Queremos <span class="math notranslate nohighlight">\(a_1, a_2\)</span> tales que:
-$<span class="math notranslate nohighlight">\(
+Queremos <span class="math notranslate nohighlight">\(a_1, a_2\)</span> tales que:</p>
+<div class="math notranslate nohighlight">
+\[
 (5,3) = a_1 (1,1) + a_2 (2,1)
-\)</span>$</p>
-<p>Resolviendo:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Resolviendo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{cases}
 a_1 + 2a_2 = 5 \\
 a_1 + a_2 = 3
 \end{cases}
-\)</span>$</p>
+\end{split}\]</div>
 <p>Obtenemos <span class="math notranslate nohighlight">\(a_2 = 2\)</span>, <span class="math notranslate nohighlight">\(a_1 = 1\)</span>.</p>
-<p>Por lo tanto,<br />
-$<span class="math notranslate nohighlight">\(
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 [x]_{\mathcal{B}} = 
 \begin{pmatrix}
 1 \\
 2
 \end{pmatrix}
-\)</span>$</p>
+\end{split}\]</div>
 </section>
 </section>
 <section id="de-canonica-a-no-canonica">
@@ -618,59 +627,67 @@ P_{\mathcal{E}' \leftarrow \mathcal{B}'} [x]_{\mathcal{B}'} = [x]_{\mathcal{E}}
 <h3>Ejemplo numérico<a class="headerlink" href="#ejemplo-numerico" title="Link to this heading">#</a></h3>
 <p>Sea <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span> y <span class="math notranslate nohighlight">\(x = (5, 3) = [x]_{\mathcal{E}}\)</span>.</p>
 <ol class="arabic">
-<li><p>La matriz de cambio de base es:
-$<span class="math notranslate nohighlight">\(
-P_{\mathcal{E} \leftarrow \mathcal{B}'} = 
-\begin{pmatrix}
-1 &amp; 2 \\
-1 &amp; 1
-\end{pmatrix}
-\)</span>$</p></li>
-<li><h1 class="rubric" id="su-inversa-es-p-mathcal-b-leftarrow-mathcal-e-begin-pmatrix-1-2-1-1-end-pmatrix-1">Su inversa es:
-$$
-P_{\mathcal{B}’ \leftarrow \mathcal{E}} =
-\begin{pmatrix}
-1 &amp; 2 \
-1 &amp; 1
-\end{pmatrix}^{-1}</h1>
-<p>\begin{pmatrix}
--1 &amp; 2 \
-1 &amp; -1
-\end{pmatrix}
-$$</p>
+<li><p>La matriz de cambio de base es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   P_{\mathcal{E} \leftarrow \mathcal{B}'} = 
+   \begin{pmatrix}
+   1 &amp; 2 \\
+   1 &amp; 1
+   \end{pmatrix}
+   \end{split}\]</div>
 </li>
-<li><h1 class="rubric" id="multiplicamos-x-mathcal-b-p-mathcal-b-leftarrow-mathcal-e-x-mathcal-e">Multiplicamos:
-$$
-[x]<em>{\mathcal{B}’} = P</em>{\mathcal{B}’ \leftarrow \mathcal{E}} \ [x]_{\mathcal{E}}</h1>
-<p>\begin{pmatrix}
--1 &amp; 2 \
-1 &amp; -1
-\end{pmatrix}
-\begin{pmatrix}
-5 \
-3
-\end{pmatrix}
-$<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-= \begin{pmatrix}
--1 \cdot 5 + 2 \cdot 3 \\
-1 \cdot 5 - 1 \cdot 3
-\end{pmatrix}
-= \begin{pmatrix}
--5 + 6 \\
-5 - 3
-\end{pmatrix}
-= \begin{pmatrix}
-1 \\
-2
-\end{pmatrix}
-\)</span>$</p>
+<li><p>Su inversa es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   P_{\mathcal{B}' \leftarrow \mathcal{E}} =
+   \begin{pmatrix}
+   1 &amp; 2 \\
+   1 &amp; 1
+   \end{pmatrix}^{-1}
+   =
+   \begin{pmatrix}
+   -1 &amp; 2 \\
+   1 &amp; -1
+   \end{pmatrix}
+   \end{split}\]</div>
+</li>
+<li><p>Multiplicamos:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   [x]_{\mathcal{B}'} = P_{\mathcal{B}' \leftarrow \mathcal{E}} \ [x]_{\mathcal{E}}
+   =
+   \begin{pmatrix}
+   -1 &amp; 2 \\
+   1 &amp; -1
+   \end{pmatrix}
+   \begin{pmatrix}
+   5 \\
+   3
+   \end{pmatrix}
+   \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   = \begin{pmatrix}
+   -1 \cdot 5 + 2 \cdot 3 \\
+   1 \cdot 5 - 1 \cdot 3
+   \end{pmatrix}
+   = \begin{pmatrix}
+   -5 + 6 \\
+   5 - 3
+   \end{pmatrix}
+   = \begin{pmatrix}
+   1 \\
+   2
+   \end{pmatrix}
+   \end{split}\]</div>
 </li>
 </ol>
-<p>Por lo tanto,
-$<span class="math notranslate nohighlight">\(
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
 [x]_{\mathcal{B}'} = (1, 2)
-\)</span>$</p>
+\]</div>
 </section>
 <section id="ejemplo-con-python-usando-matplotlib">
 <h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#ejemplo-con-python-usando-matplotlib" title="Link to this heading">#</a></h3>
@@ -731,7 +748,7 @@ P_{B&#39; &lt;- E} =
 [x]_{B&#39;} = [1. 2.]
 </pre></div>
 </div>
-<img alt="_images/390b3a1a34d3c0d409d733e297643c964422aec9a26c5043715f4307186be15c.png" src="_images/390b3a1a34d3c0d409d733e297643c964422aec9a26c5043715f4307186be15c.png" />
+<img alt="_images/233f89cc9c635ca7d53e503f94a01d41a5e1f89a2265b38deeb9899c160a5e4e.png" src="_images/233f89cc9c635ca7d53e503f94a01d41a5e1f89a2265b38deeb9899c160a5e4e.png" />
 </div>
 </div>
 </section>
@@ -746,21 +763,24 @@ P_{B&#39; &lt;- E} =
 <li><p>Coordenadas <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'} = (a_1, ..., a_n)\)</span> respecto a <span class="math notranslate nohighlight">\(\mathcal{B}'\)</span></p></li>
 </ul>
 <p><strong>Pasos:</strong></p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Forma la matriz de cambio de base <span class="math notranslate nohighlight">\(P_{\mathcal{E} \leftarrow \mathcal{B}'} = [v_1\ v_2\ \ldots\ v_n]\)</span> (cada <span class="math notranslate nohighlight">\(v_i\)</span> como columna).</p></li>
-<li><p>Calcula el vector en la base canónica:
-$<span class="math notranslate nohighlight">\(
-[x]_{\mathcal{E}} = P_{\mathcal{E} \leftarrow \mathcal{B}'} \cdot [x]_{\mathcal{B}'}
-\)</span>$</p></li>
+<li><p>Calcula el vector en la base canónica:</p>
+<div class="math notranslate nohighlight">
+\[
+   [x]_{\mathcal{E}} = P_{\mathcal{E} \leftarrow \mathcal{B}'} \cdot [x]_{\mathcal{B}'}
+   \]</div>
+</li>
 </ol>
 </section>
 <section id="id2">
 <h3>Ejemplo numérico<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Sea <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span> y <span class="math notranslate nohighlight">\([x]_{\mathcal{B}'} = (1, 2)\)</span>.</p>
-<p>Entonces:
-$<span class="math notranslate nohighlight">\(
+<p>Entonces:</p>
+<div class="math notranslate nohighlight">
+\[
 [x]_{\mathcal{E}} = P_{\mathcal{E} \leftarrow \mathcal{B}'} \cdot [x]_{\mathcal{B}'} = 1 \cdot (1,1) + 2 \cdot (2,1) = (1+4,\ 1+2) = (5, 3)
-\)</span>$</p>
+\]</div>
 </section>
 <section id="id3">
 <h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
@@ -797,7 +817,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector en la base canónica: [5 3]
 </pre></div>
 </div>
-<img alt="_images/077a835c287855a9bbb98663619d076e623ff996d806d383577f538b87c190a2.png" src="_images/077a835c287855a9bbb98663619d076e623ff996d806d383577f538b87c190a2.png" />
+<img alt="_images/6e4903b8d97fd21186b02c584066053ebbe7c4d3a539fbd1d0971916829b5eeb.png" src="_images/6e4903b8d97fd21186b02c584066053ebbe7c4d3a539fbd1d0971916829b5eeb.png" />
 </div>
 </div>
 </section>
@@ -823,19 +843,21 @@ $<span class="math notranslate nohighlight">\(
 <p>Sean <span class="math notranslate nohighlight">\(\mathcal{B} = \{ (1,0), (0,2) \}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{B}' = \{ (1,1), (2,1) \}\)</span>, <span class="math notranslate nohighlight">\(a = (3,2)\)</span>.</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(x = Q a = 3 \cdot (1,0) + 2 \cdot (0,2) = (3, 4)\)</span></p></li>
-<li><p>Busca <span class="math notranslate nohighlight">\(b_1, b_2\)</span> tales que:
-$<span class="math notranslate nohighlight">\(
-(3,4) = b_1(1,1) + b_2(2,1) = (b_1 + 2b_2,\, b_1 + b_2)
-\)</span>$</p></li>
+<li><p>Busca <span class="math notranslate nohighlight">\(b_1, b_2\)</span> tales que:</p></li>
 </ol>
-<p>Sistema:
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[
+(3,4) = b_1(1,1) + b_2(2,1) = (b_1 + 2b_2,\, b_1 + b_2)
+\]</div>
+<p>Sistema:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{cases}
 b_1 + 2b_2 = 3 \\
 b_1 + b_2 = 4
 \end{cases}
-\)</span><span class="math notranslate nohighlight">\(
-Restando: \)</span>b_2 = -1<span class="math notranslate nohighlight">\(, \)</span>b_1 = 5$.</p>
+\end{split}\]</div>
+<p>Restando: <span class="math notranslate nohighlight">\(b_2 = -1\)</span>, <span class="math notranslate nohighlight">\(b_1 = 5\)</span>.</p>
 </section>
 <section id="id6">
 <h3>Ejemplo con python usando matplotlib<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
@@ -879,7 +901,7 @@ Restando: \)</span>b_2 = -1<span class="math notranslate nohighlight">\(, \)</sp
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordenadas en la base destino: [ 5. -1.]
 </pre></div>
 </div>
-<img alt="_images/0fbcb823468073fecbce29de9a9e6da724c373c611384633ba4f7859389cc5bc.png" src="_images/0fbcb823468073fecbce29de9a9e6da724c373c611384633ba4f7859389cc5bc.png" />
+<img alt="_images/a80b87282a2ce1bdecb7a6d1f20280c91155688dd8732577f265c53cf7f619c8.png" src="_images/a80b87282a2ce1bdecb7a6d1f20280c91155688dd8732577f265c53cf7f619c8.png" />
 </div>
 </div>
 </section>

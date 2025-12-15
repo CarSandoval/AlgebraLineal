@@ -478,10 +478,11 @@ Este tipo de bases simplifica cálculos, permite interpretar coordenadas como pr
 <section id="definicion">
 <h3>Definición<a class="headerlink" href="#definicion" title="Link to this heading">#</a></h3>
 <p>Dados dos vectores <span class="math notranslate nohighlight">\(u = (u_1, ..., u_n)\)</span> y <span class="math notranslate nohighlight">\(v = (v_1, ..., v_n)\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>,<br />
-el <strong>producto punto</strong> se define como:
-$<span class="math notranslate nohighlight">\(
+el <strong>producto punto</strong> se define como:</p>
+<div class="math notranslate nohighlight">
+\[
 u \cdot v = u_1 v_1 + u_2 v_2 + \cdots + u_n v_n
-\)</span>$</p>
+\]</div>
 </section>
 <section id="significado-geometrico-del-producto-punto">
 <h3>Significado geométrico del producto punto<a class="headerlink" href="#significado-geometrico-del-producto-punto" title="Link to this heading">#</a></h3>
@@ -550,19 +551,25 @@ a \cdot b = 2\cdot1 + 0\cdot3 + (-1)\cdot2 = 2 + 0 - 2 = 0
 <h3>Definición general de norma<a class="headerlink" href="#definicion-general-de-norma" title="Link to this heading">#</a></h3>
 <p>Una <strong>norma</strong> en un espacio vectorial <span class="math notranslate nohighlight">\(V\)</span> sobre <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> (o <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>) es una función<br />
 <span class="math notranslate nohighlight">\(\| \cdot \| : V \to \mathbb{R}\)</span> que asigna a cada vector un número real no negativo, y satisface tres propiedades fundamentales para todo <span class="math notranslate nohighlight">\(u, v \in V\)</span> y todo escalar <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
-<ol class="arabic simple">
-<li><p><strong>Positividad:</strong><br />
-$<span class="math notranslate nohighlight">\(
-\|v\| \geq 0, \quad \text{y} \quad \|v\| = 0 \iff v = 0
-\)</span>$</p></li>
-<li><p><strong>Homogeneidad absoluta:</strong><br />
-$<span class="math notranslate nohighlight">\(
-\|\alpha v\| = |\alpha| \, \|v\|
-\)</span>$</p></li>
-<li><p><strong>Desigualdad triangular:</strong><br />
-$<span class="math notranslate nohighlight">\(
-\|u + v\| \leq \|u\| + \|v\|
-\)</span>$</p></li>
+<ol class="arabic">
+<li><p><strong>Positividad:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \|v\| \geq 0, \quad \text{y} \quad \|v\| = 0 \iff v = 0
+   \]</div>
+</li>
+<li><p><strong>Homogeneidad absoluta:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \|\alpha v\| = |\alpha| \, \|v\|
+   \]</div>
+</li>
+<li><p><strong>Desigualdad triangular:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \|u + v\| \leq \|u\| + \|v\|
+   \]</div>
+</li>
 </ol>
 </section>
 <section id="propiedades-de-una-norma">
@@ -571,23 +578,27 @@ $<span class="math notranslate nohighlight">\(
 Entonces, a partir de los axiomas, se pueden demostrar las siguientes propiedades:</p>
 <section id="desigualdad-del-triangulo-invertido-reverse-triangle-inequality">
 <h4>1. Desigualdad del triángulo invertido (reverse triangle inequality)<a class="headerlink" href="#desigualdad-del-triangulo-invertido-reverse-triangle-inequality" title="Link to this heading">#</a></h4>
-<p>Para todo <span class="math notranslate nohighlight">\(u, v \in V\)</span>,
-$<span class="math notranslate nohighlight">\(
+<p>Para todo <span class="math notranslate nohighlight">\(u, v \in V\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
 |\|u\| - \|v\|| \leq \|u - v\|
-\)</span>$</p>
+\]</div>
 <p><strong>Demostración:</strong><br />
-Por la desigualdad triangular,
-$<span class="math notranslate nohighlight">\(
+Por la desigualdad triangular,</p>
+<div class="math notranslate nohighlight">
+\[
 \|u\| = \|(u - v) + v\| \leq \|u - v\| + \|v\| \implies \|u\| - \|v\| \leq \|u - v\|
-\)</span><span class="math notranslate nohighlight">\(
-Intercambiando \)</span>u<span class="math notranslate nohighlight">\( y \)</span>v<span class="math notranslate nohighlight">\(, también se obtiene
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Intercambiando <span class="math notranslate nohighlight">\(u\)</span> y <span class="math notranslate nohighlight">\(v\)</span>, también se obtiene</p>
+<div class="math notranslate nohighlight">
+\[
 \|v\| - \|u\| \leq \|v - u\| = \|u - v\|
-\)</span><span class="math notranslate nohighlight">\(
-Por lo tanto,
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
 |\|u\| - \|v\|| \leq \|u - v\|
-\)</span>$</p>
+\]</div>
 </section>
 <section id="subaditividad-para-sumas-finitas">
 <h4>2. Subaditividad para sumas finitas<a class="headerlink" href="#subaditividad-para-sumas-finitas" title="Link to this heading">#</a></h4>
@@ -598,46 +609,54 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="la-norma-del-opuesto-es-igual">
 <h4>3. La norma del opuesto es igual<a class="headerlink" href="#la-norma-del-opuesto-es-igual" title="Link to this heading">#</a></h4>
-<p>Para cualquier <span class="math notranslate nohighlight">\(v \in V\)</span>,
-$<span class="math notranslate nohighlight">\(
+<p>Para cualquier <span class="math notranslate nohighlight">\(v \in V\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
 \| -v \| = \| v \|
-\)</span>$</p>
+\]</div>
 </section>
 </section>
 <section id="definicion-de-la-norma-en-mathbb-r-n">
 <h3>Definición de la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-de-la-norma-en-mathbb-r-n" title="Link to this heading">#</a></h3>
-<p>La norma <strong>euclidiana</strong> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> se define, para <span class="math notranslate nohighlight">\(v = (v_1, ..., v_n)\)</span>, como:
-$<span class="math notranslate nohighlight">\(
+<p>La norma <strong>euclidiana</strong> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> se define, para <span class="math notranslate nohighlight">\(v = (v_1, ..., v_n)\)</span>, como:</p>
+<div class="math notranslate nohighlight">
+\[
 \|v\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
-\)</span>$</p>
+\]</div>
 </section>
 <section id="ejemplo-numerico">
 <h3>Ejemplo numérico<a class="headerlink" href="#ejemplo-numerico" title="Link to this heading">#</a></h3>
-<p>Para <span class="math notranslate nohighlight">\(v = (1,2,2)\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>,
-$<span class="math notranslate nohighlight">\(
+<p>Para <span class="math notranslate nohighlight">\(v = (1,2,2)\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
 \|v\| = \sqrt{1^2 + 2^2 + 2^2} = \sqrt{1 + 4 + 4} = \sqrt{9} = 3
-\)</span>$</p>
+\]</div>
 </section>
 <section id="demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma">
 <h3>Demostración de que la norma en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> es una norma<a class="headerlink" href="#demostracion-de-que-la-norma-en-mathbb-r-n-es-una-norma" title="Link to this heading">#</a></h3>
 <p>Verifiquemos las tres propiedades para la norma euclidiana:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>Positividad:</strong><br />
 $<span class="math notranslate nohighlight">\(\|v\| = \sqrt{v_1^2 + \cdots + v_n^2} \geq 0\)</span><span class="math notranslate nohighlight">\(  
 La raíz cuadrada de una suma de cuadrados nunca es negativa, y es cero solo si todos los \)</span>v_i$ son cero.</p></li>
 <li><p><strong>Homogeneidad absoluta:</strong><br />
-Para escalar <span class="math notranslate nohighlight">\(\alpha\)</span>,
-$<span class="math notranslate nohighlight">\(
-\|\alpha v\| = \sqrt{(\alpha v_1)^2 + \cdots + (\alpha v_n)^2} = \sqrt{\alpha^2(v_1^2 + \cdots + v_n^2)} = |\alpha| \sqrt{v_1^2 + \cdots + v_n^2} = |\alpha| \|v\|
-\)</span>$</p></li>
-<li><p><strong>Desigualdad triangular:</strong><br />
-$<span class="math notranslate nohighlight">\(
-\|u + v\|^2 = \sum_{i=1}^n (u_i + v_i)^2 = \sum_{i=1}^n u_i^2 + 2u_iv_i + v_i^2
-\)</span><span class="math notranslate nohighlight">\(
-Usando desigualdad de Cauchy-Schwarz:
-\)</span><span class="math notranslate nohighlight">\(
-\|u+v\| \leq \|u\| + \|v\|
-\)</span>$</p></li>
+Para escalar <span class="math notranslate nohighlight">\(\alpha\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+   \|\alpha v\| = \sqrt{(\alpha v_1)^2 + \cdots + (\alpha v_n)^2} = \sqrt{\alpha^2(v_1^2 + \cdots + v_n^2)} = |\alpha| \sqrt{v_1^2 + \cdots + v_n^2} = |\alpha| \|v\|
+   \]</div>
+</li>
+<li><p><strong>Desigualdad triangular:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \|u + v\|^2 = \sum_{i=1}^n (u_i + v_i)^2 = \sum_{i=1}^n u_i^2 + 2u_iv_i + v_i^2
+   \]</div>
+<p>Usando desigualdad de Cauchy-Schwarz:</p>
+<div class="math notranslate nohighlight">
+\[
+   \|u+v\| \leq \|u\| + \|v\|
+   \]</div>
+</li>
 </ol>
 </section>
 <section id="normalizacion-de-vectores">
@@ -650,15 +669,17 @@ u = \frac{v}{\|v\|}
 </section>
 <section id="id1">
 <h3>Ejemplo numérico<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Para <span class="math notranslate nohighlight">\(v = (3,4)\)</span>,
-$<span class="math notranslate nohighlight">\(
+<p>Para <span class="math notranslate nohighlight">\(v = (3,4)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \|v\| = 5 \\
 u = \frac{(3,4)}{5} = \left(\frac{3}{5}, \frac{4}{5}\right)
-\)</span><span class="math notranslate nohighlight">\(
-Verifica:
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Verifica:</p>
+<div class="math notranslate nohighlight">
+\[
 \|u\| = \sqrt{(3/5)^2 + (4/5)^2} = \sqrt{9/25 + 16/25} = \sqrt{1} = 1
-\)</span>$</p>
+\]</div>
 </section>
 <section id="ejemplo-con-python">
 <h3>Ejemplo con python<a class="headerlink" href="#ejemplo-con-python" title="Link to this heading">#</a></h3>
@@ -719,39 +740,50 @@ Norma del vector normalizado: 1.0
 <h3>Construcción de la fórmula del coseno de un ángulo entre vectores usando proyecciones y el Teorema de Pitágoras<a class="headerlink" href="#construccion-de-la-formula-del-coseno-de-un-angulo-entre-vectores-usando-proyecciones-y-el-teorema-de-pitagoras" title="Link to this heading">#</a></h3>
 <p>Sean <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^2\)</span>, ambos distintos de cero, y sea <span class="math notranslate nohighlight">\(\theta\)</span> el ángulo entre ellos.<br />
 Supongamos que colocamos el origen en el inicio de ambos vectores.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>Construcción geométrica:</strong></p>
 <ul class="simple">
 <li><p>Considera el triángulo formado por los puntos <span class="math notranslate nohighlight">\(O\)</span> (origen), <span class="math notranslate nohighlight">\(A\)</span> (punta de <span class="math notranslate nohighlight">\(u\)</span>), y <span class="math notranslate nohighlight">\(B\)</span> (punta de <span class="math notranslate nohighlight">\(v\)</span>).</p></li>
 <li><p>El vector <span class="math notranslate nohighlight">\(u - v\)</span> es el tercer lado de ese triángulo.</p></li>
 </ul>
 </li>
-<li><p><strong>Por la Ley del Coseno tenemos:</strong>
-$<span class="math notranslate nohighlight">\(
-|u - v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
-\)</span>$</p></li>
-<li><p><strong>Pero <span class="math notranslate nohighlight">\(|u - v|^2\)</span> es también el producto punto:</strong>
-$<span class="math notranslate nohighlight">\(
-|u - v|^2 = (u - v) \cdot (u - v) = u \cdot u - 2u \cdot v + v \cdot v = |u|^2 - 2u \cdot v + |v|^2
-\)</span>$</p></li>
-<li><p><strong>Igualando las dos expresiones para <span class="math notranslate nohighlight">\(|u - v|^2\)</span>:</strong>
-$<span class="math notranslate nohighlight">\(
-|u|^2 - 2u \cdot v + |v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
-\)</span>$</p></li>
-<li><p><strong>Se simplifican <span class="math notranslate nohighlight">\(|u|^2\)</span> y <span class="math notranslate nohighlight">\(|v|^2\)</span> de ambos lados:</strong>
-$<span class="math notranslate nohighlight">\(
--2u \cdot v = -2|u||v|\cos\theta
-\)</span>$</p></li>
-<li><p><strong>Dividiendo entre <span class="math notranslate nohighlight">\(-2\)</span> (y suponiendo que <span class="math notranslate nohighlight">\(u,v \neq 0\)</span>):</strong>
-$<span class="math notranslate nohighlight">\(
-u \cdot v = |u||v|\cos\theta
-\)</span>$
-que es la fórmula buscada.</p></li>
+<li><p><strong>Por la Ley del Coseno tenemos:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   |u - v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
+   \]</div>
+</li>
+<li><p><strong>Pero <span class="math notranslate nohighlight">\(|u - v|^2\)</span> es también el producto punto:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   |u - v|^2 = (u - v) \cdot (u - v) = u \cdot u - 2u \cdot v + v \cdot v = |u|^2 - 2u \cdot v + |v|^2
+   \]</div>
+</li>
+<li><p><strong>Igualando las dos expresiones para <span class="math notranslate nohighlight">\(|u - v|^2\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   |u|^2 - 2u \cdot v + |v|^2 = |u|^2 + |v|^2 - 2|u||v|\cos\theta
+   \]</div>
+</li>
+<li><p><strong>Se simplifican <span class="math notranslate nohighlight">\(|u|^2\)</span> y <span class="math notranslate nohighlight">\(|v|^2\)</span> de ambos lados:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   -2u \cdot v = -2|u||v|\cos\theta
+   \]</div>
+</li>
+<li><p><strong>Dividiendo entre <span class="math notranslate nohighlight">\(-2\)</span> (y suponiendo que <span class="math notranslate nohighlight">\(u,v \neq 0\)</span>):</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   u \cdot v = |u||v|\cos\theta
+   \]</div>
+<p>que es la fórmula buscada.</p>
+</li>
 </ol>
-<p>Por lo tanto,
-$<span class="math notranslate nohighlight">\(
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
 \cos\theta = \frac{u \cdot v}{|u||v|}
-\)</span>$</p>
+\]</div>
 </section>
 <section id="construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib">
 <h3>Construcción en python que de apoyo visual a la construcción anterior usando matplotlib<a class="headerlink" href="#construccion-en-python-que-de-apoyo-visual-a-la-construccion-anterior-usando-matplotlib" title="Link to this heading">#</a></h3>
@@ -810,27 +842,30 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n">
 <h3>Definición formal de coseno de un ángulo entre vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-formal-de-coseno-de-un-angulo-entre-vectores-en-mathbb-r-n" title="Link to this heading">#</a></h3>
-<p>Dados <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span>, el coseno del ángulo <span class="math notranslate nohighlight">\(\theta\)</span> entre ellos se define como:
-$<span class="math notranslate nohighlight">\(
+<p>Dados <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span>, el coseno del ángulo <span class="math notranslate nohighlight">\(\theta\)</span> entre ellos se define como:</p>
+<div class="math notranslate nohighlight">
+\[
 \cos\theta = \frac{u \cdot v}{\|u\| \, \|v\|}
-\)</span><span class="math notranslate nohighlight">\(
-donde \)</span>|u| = \sqrt{u_1^2 + \cdots + u_n^2}$ es la norma euclidiana.</p>
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\|u\| = \sqrt{u_1^2 + \cdots + u_n^2}\)</span> es la norma euclidiana.</p>
 </section>
 <section id="ejemplos-numericos">
 <h3>Ejemplos numéricos<a class="headerlink" href="#ejemplos-numericos" title="Link to this heading">#</a></h3>
-<p>Sea <span class="math notranslate nohighlight">\(u = (1,0)\)</span> y <span class="math notranslate nohighlight">\(v = (0,1)\)</span>, entonces:
-$<span class="math notranslate nohighlight">\(
+<p>Sea <span class="math notranslate nohighlight">\(u = (1,0)\)</span> y <span class="math notranslate nohighlight">\(v = (0,1)\)</span>, entonces:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 u \cdot v = 0 \\
 \|u\| = 1,\quad \|v\| = 1 \\
 \cos\theta = 0 \implies \theta = 90^\circ
-\)</span>$</p>
-<p>Sea <span class="math notranslate nohighlight">\(a = (1,2)\)</span> y <span class="math notranslate nohighlight">\(b = (2,4)\)</span>, entonces:
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Sea <span class="math notranslate nohighlight">\(a = (1,2)\)</span> y <span class="math notranslate nohighlight">\(b = (2,4)\)</span>, entonces:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 a \cdot b = 1\cdot2 + 2\cdot4 = 2 + 8 = 10 \\
 \|a\| = \sqrt{1^2 + 2^2} = \sqrt{5} \\
 \|b\| = \sqrt{2^2 + 4^2} = \sqrt{20} \\
 \cos\theta = \frac{10}{\sqrt{5}\sqrt{20}} = 1 \implies \theta = 0^\circ
-\)</span>$</p>
+\end{split}\]</div>
 </section>
 <section id="aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas">
 <h3>Aplicaciones del ángulo entre 2 vectores a diferentes disciplinas<a class="headerlink" href="#aplicaciones-del-angulo-entre-2-vectores-a-diferentes-disciplinas" title="Link to this heading">#</a></h3>
@@ -846,18 +881,20 @@ a \cdot b = 1\cdot2 + 2\cdot4 = 2 + 8 = 10 \\
 <h2>3.8.3 Ortogonalidad de vectores<a class="headerlink" href="#ortogonalidad-de-vectores" title="Link to this heading">#</a></h2>
 <section id="definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n">
 <h3>Definición de la ortogonalidad entre 2 vectores en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span><a class="headerlink" href="#definicion-de-la-ortogonalidad-entre-2-vectores-en-mathbb-r-n" title="Link to this heading">#</a></h3>
-<p>Dos vectores <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span> son <strong>ortogonales</strong> si su producto punto es cero:
-$<span class="math notranslate nohighlight">\(
+<p>Dos vectores <span class="math notranslate nohighlight">\(u, v \in \mathbb{R}^n\)</span> son <strong>ortogonales</strong> si su producto punto es cero:</p>
+<div class="math notranslate nohighlight">
+\[
 u \cdot v = 0
-\)</span>$</p>
+\]</div>
 </section>
 <section id="ejemplos-de-vectores-ortogonales">
 <h3>Ejemplos de vectores ortogonales<a class="headerlink" href="#ejemplos-de-vectores-ortogonales" title="Link to this heading">#</a></h3>
-<p>Sea <span class="math notranslate nohighlight">\(u = (1,2,1)\)</span> y <span class="math notranslate nohighlight">\(v = (2,-1,0)\)</span>.
-$<span class="math notranslate nohighlight">\(
+<p>Sea <span class="math notranslate nohighlight">\(u = (1,2,1)\)</span> y <span class="math notranslate nohighlight">\(v = (2,-1,0)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
 u \cdot v = 1\cdot2 + 2\cdot(-1) + 1\cdot0 = 2 - 2 + 0 = 0
-\)</span><span class="math notranslate nohighlight">\(
-Así, \)</span>u<span class="math notranslate nohighlight">\( y \)</span>v$ son ortogonales.</p>
+\]</div>
+<p>Así, <span class="math notranslate nohighlight">\(u\)</span> y <span class="math notranslate nohighlight">\(v\)</span> son ortogonales.</p>
 </section>
 <section id="los-mismos-ejemplos-dibujados-en-matplotlib-usando-python">
 <h3>Los mismos ejemplos dibujados en matplotlib usando python<a class="headerlink" href="#los-mismos-ejemplos-dibujados-en-matplotlib-usando-python" title="Link to this heading">#</a></h3>
@@ -894,20 +931,23 @@ Así, \)</span>u<span class="math notranslate nohighlight">\( y \)</span>v$ son 
 Esto es esencial para simplificar problemas en álgebra lineal, análisis numérico y muchas aplicaciones en ciencia e ingeniería.</p>
 <section id="proyeccion-de-un-vector-sobre-otro">
 <h3>Proyección de un vector sobre otro<a class="headerlink" href="#proyeccion-de-un-vector-sobre-otro" title="Link to this heading">#</a></h3>
-<p>Dados <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> (<span class="math notranslate nohighlight">\(u \neq 0\)</span>), la <strong>proyección</strong> de <span class="math notranslate nohighlight">\(v\)</span> sobre <span class="math notranslate nohighlight">\(u\)</span> es:
-$<span class="math notranslate nohighlight">\(
+<p>Dados <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(u\)</span> en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> (<span class="math notranslate nohighlight">\(u \neq 0\)</span>), la <strong>proyección</strong> de <span class="math notranslate nohighlight">\(v\)</span> sobre <span class="math notranslate nohighlight">\(u\)</span> es:</p>
+<div class="math notranslate nohighlight">
+\[
 \text{proj}_u(v) = \frac{v \cdot u}{u \cdot u} \, u
-\)</span>$</p>
+\]</div>
 <p><strong>¿Por qué es así?</strong><br />
 Buscamos un escalar <span class="math notranslate nohighlight">\(\lambda\)</span> tal que <span class="math notranslate nohighlight">\(w = \lambda u\)</span> sea el “punto más cercano” a <span class="math notranslate nohighlight">\(v\)</span> en la recta generada por <span class="math notranslate nohighlight">\(u\)</span>.<br />
-La diferencia <span class="math notranslate nohighlight">\(v - \lambda u\)</span> debe ser ortogonal a <span class="math notranslate nohighlight">\(u\)</span>:
-$<span class="math notranslate nohighlight">\(
+La diferencia <span class="math notranslate nohighlight">\(v - \lambda u\)</span> debe ser ortogonal a <span class="math notranslate nohighlight">\(u\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 (v - \lambda u) \cdot u = 0 \implies v \cdot u - \lambda (u \cdot u) = 0 \implies \lambda = \frac{v \cdot u}{u \cdot u}
-\)</span><span class="math notranslate nohighlight">\(
-Por lo tanto,
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
 \text{proj}_u(v) = \lambda u = \frac{v \cdot u}{u \cdot u} u
-\)</span>$</p>
+\]</div>
 </section>
 <section id="ortogonalizacion-de-2-vectores-usando-la-proyeccion">
 <h3>Ortogonalización de 2 vectores usando la proyección<a class="headerlink" href="#ortogonalizacion-de-2-vectores-usando-la-proyeccion" title="Link to this heading">#</a></h3>
@@ -922,27 +962,31 @@ Por lo tanto,
 <section id="ortogonalizacion-de-n-vectores-generalizacion">
 <h3>Ortogonalización de <span class="math notranslate nohighlight">\(n\)</span> vectores (generalización)<a class="headerlink" href="#ortogonalizacion-de-n-vectores-generalizacion" title="Link to this heading">#</a></h3>
 <p>Dado <span class="math notranslate nohighlight">\(v_1, ..., v_n\)</span> linealmente independientes en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Sea <span class="math notranslate nohighlight">\(u_1 = v_1\)</span>.</p></li>
-<li><p>Para <span class="math notranslate nohighlight">\(k = 2, ..., n\)</span>:
-$<span class="math notranslate nohighlight">\(
-u_k = v_k - \sum_{j=1}^{k-1} \text{proj}_{u_j}(v_k)
-= v_k - \sum_{j=1}^{k-1} \frac{v_k \cdot u_j}{u_j \cdot u_j} u_j
-\)</span>$</p></li>
+<li><p>Para <span class="math notranslate nohighlight">\(k = 2, ..., n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   u_k = v_k - \sum_{j=1}^{k-1} \text{proj}_{u_j}(v_k)
+   = v_k - \sum_{j=1}^{k-1} \frac{v_k \cdot u_j}{u_j \cdot u_j} u_j
+   \]</div>
+</li>
 <li><p>Los vectores <span class="math notranslate nohighlight">\(u_1, ..., u_n\)</span> así construidos son ortogonales.</p></li>
 </ol>
 </section>
 <section id="algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar">
 <h3>Algoritmo de Gram-Schmidt: ortogonalizar y normalizar<a class="headerlink" href="#algoritmo-de-gram-schmidt-ortogonalizar-y-normalizar" title="Link to this heading">#</a></h3>
 <p>El <strong>algoritmo completo</strong> de Gram-Schmidt produce una base ortonormal:</p>
-<ul class="simple">
+<ul>
 <li><p>Para cada <span class="math notranslate nohighlight">\(k = 1, ..., n\)</span>:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Calcula el vector ortogonal <span class="math notranslate nohighlight">\(u_k\)</span> como arriba.</p></li>
-<li><p>Normaliza:<br />
-$<span class="math notranslate nohighlight">\(
-e_k = \frac{u_k}{\|u_k\|}
-\)</span>$</p></li>
+<li><p>Normaliza:</p>
+<div class="math notranslate nohighlight">
+\[
+     e_k = \frac{u_k}{\|u_k\|}
+     \]</div>
+</li>
 </ol>
 </li>
 <li><p>El conjunto <span class="math notranslate nohighlight">\(\{e_1, ..., e_n\}\)</span> es una <strong>base ortonormal</strong> del subespacio generado.</p></li>
@@ -950,30 +994,36 @@ e_k = \frac{u_k}{\|u_k\|}
 </section>
 <section id="ejemplo-en-mathbb-r-3">
 <h3>Ejemplo en <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span><a class="headerlink" href="#ejemplo-en-mathbb-r-3" title="Link to this heading">#</a></h3>
-<p>Sea
-$<span class="math notranslate nohighlight">\(
+<p>Sea</p>
+<div class="math notranslate nohighlight">
+\[
 v_1 = (1,1,0),\quad v_2 = (1,0,1),\quad v_3 = (0,1,1)
-\)</span>$</p>
-<p><strong>Paso 1:</strong><br />
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>Paso 1:</strong></p>
+<div class="math notranslate nohighlight">
+\[
 u_1 = v_1 = (1,1,0)
-\)</span>$</p>
-<p><strong>Paso 2:</strong><br />
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>Paso 2:</strong></p>
+<div class="math notranslate nohighlight">
+\[
 \text{proj}_{u_1}(v_2) = \frac{v_2 \cdot u_1}{u_1 \cdot u_1} u_1 = \frac{1\cdot1 + 0\cdot1 + 1\cdot0}{1^2+1^2+0^2} (1,1,0) = \frac{1}{2}(1,1,0) = (0.5,0.5,0)
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 u_2 = v_2 - \text{proj}_{u_1}(v_2) = (1,0,1) - (0.5,0.5,0) = (0.5, -0.5, 1)
-\)</span>$</p>
-<p><strong>Paso 3:</strong><br />
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p><strong>Paso 3:</strong></p>
+<div class="math notranslate nohighlight">
+\[
 \text{proj}_{u_1}(v_3) = \frac{v_3 \cdot u_1}{u_1 \cdot u_1} u_1 = \frac{0\cdot1 + 1\cdot1 + 1\cdot0}{2}(1,1,0) = \frac{1}{2}(1,1,0) = (0.5,0.5,0)
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \text{proj}_{u_2}(v_3) = \frac{v_3 \cdot u_2}{u_2 \cdot u_2} u_2
-\)</span><span class="math notranslate nohighlight">\(
-Calculemos \)</span>v_3 \cdot u_2 = 0.5\cdot0 + 1\cdot(-0.5) + 1\cdot1 = 0 - 0.5 + 1 = 0.5<span class="math notranslate nohighlight">\(  
-\)</span>u_2 \cdot u_2 = 0.5^2 + (-0.5)^2 + 1^2 = 0.25 + 0.25 + 1 = 1.5$</p>
+\]</div>
+<p>Calculemos <span class="math notranslate nohighlight">\(v_3 \cdot u_2 = 0.5\cdot0 + 1\cdot(-0.5) + 1\cdot1 = 0 - 0.5 + 1 = 0.5\)</span><br />
+<span class="math notranslate nohighlight">\(u_2 \cdot u_2 = 0.5^2 + (-0.5)^2 + 1^2 = 0.25 + 0.25 + 1 = 1.5\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \text{proj}_{u_2}(v_3) = \frac{0.5}{1.5}(0.5, -0.5, 1) = (\frac{1}{6}, -\frac{1}{6}, \frac{1}{3})

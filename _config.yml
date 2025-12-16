@@ -30,3 +30,10 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+sphinx:
+  config:
+    html_theme_options:
+      show_navbar_depth: 2
+      collapse_navbar: true
+

@@ -178,8 +178,13 @@
 <li class="toctree-l1"><a class="reference internal" href="02_VectoresMatricesYDeterminantes.html">2 Vectores Matrices y Determinantes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_EspaciosVectoriales.html">3 Espacios vectoriales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_TransformacionesLineales.html">4 Transformaciones lineales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a></li>
-
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios.html">5 Valores propios y vectores propios</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1 Definición de valores propios y vectores propios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios_02.html">5.2 Polinomio característico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios_03.html">5.3 Diagonalización de matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_ValoresPropiosYVectoresPropios_04.html">5.4 Aplicaciones</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="06_referencias.html">6 Referencias</a></li>
 </ul>
 
@@ -397,10 +402,10 @@ A =
 1 &amp; 0 &amp; 2
 \end{pmatrix}.
 \end{split}\]</div>
-<p>Notamos que <strong>la suma de cada renglón es 3</strong>, así que es razonable probar $<span class="math notranslate nohighlight">\(\lambda = 3\)</span><span class="math notranslate nohighlight">\( como candidato a valor propio
-(asociado al vector \)</span><span class="math notranslate nohighlight">\(\mathbf{1}=(1,1,1)^T\)</span>$). Verifiquémoslo formalmente.</p>
+<p>Notamos que <strong>la suma de cada renglón es 3</strong>, así que es razonable probar <span class="math notranslate nohighlight">\(\lambda = 3\)</span> como candidato a valor propio
+(asociado al vector <span class="math notranslate nohighlight">\(\mathbf{1}=(1,1,1)^T\)</span>). Verifiquémoslo formalmente.</p>
 <ol class="arabic simple">
-<li><p>Construir ( A - \lambda I ) con ( \lambda = 3 )</p></li>
+<li><p>Construir <span class="math notranslate nohighlight">\( A - \lambda I \)</span> con <span class="math notranslate nohighlight">\( \lambda = 3 \)</span></p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -473,14 +478,14 @@ M =
 =
 \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}.
 \end{split}\]</div>
-<p>De la primera ecuación: ( -x + y = 0 \Rightarrow y = x ).<br />
-De la segunda: ( -y + z = 0 \Rightarrow z = y = x ).<br />
+<p>De la primera ecuación: <span class="math notranslate nohighlight">\( -x + y = 0 \Rightarrow y = x \)</span>.<br />
+De la segunda: <span class="math notranslate nohighlight">\( -y + z = 0 \Rightarrow z = y = x \)</span>.<br />
 La tercera queda satisfecha automáticamente. Por tanto, una familia de autovectores es</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 v = \begin{pmatrix} x \\ x \\ x \end{pmatrix} = x \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix},\quad x \neq 0.
 \end{split}\]</div>
-<p>Verificación directa con ( v = (1,1,1)^T ):</p>
+<p>Verificación directa con <span class="math notranslate nohighlight">\( v = (1,1,1)^T \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A v =
@@ -494,7 +499,7 @@ A v =
 \begin{pmatrix} 3 \\ 3 \\ 3 \end{pmatrix}
 = 3 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = 3v.
 \end{split}\]</div>
-<p><strong>Conclusión:</strong> ( \lambda = 3 ) es valor propio entero de ( A ), que tiene entradas enteras, y un vector propio asociado es ( (1,1,1)^T ).</p>
+<p><strong>Conclusión:</strong> <span class="math notranslate nohighlight">\( \lambda = 3 \)</span> es valor propio entero de <span class="math notranslate nohighlight">\( A \)</span>, que tiene entradas enteras, y un vector propio asociado es <span class="math notranslate nohighlight">\( (1,1,1)^T \)</span>.</p>
 <ol class="arabic simple" start="5">
 <li><p><strong>Polinomio característico:</strong><br />
 La expresión</p></li>
@@ -508,7 +513,7 @@ Sus <strong>raíces</strong> (contando multiplicidades) son exactamente los <str
 </section>
 <section id="formula-final-ecuacion-caracteristica">
 <h3>Fórmula final (ecuación característica)<a class="headerlink" href="#formula-final-ecuacion-caracteristica" title="Link to this heading">#</a></h3>
-<p>Para hallar los valores propios de <span class="math notranslate nohighlight">\( A \in \mathbb{R}^{n \times n} \)</span> se resuelve <span class="math notranslate nohighlight">\(\det(A - \lambda I) = 0\)</span>.</p>
+<p>Para hallar los valores propios de <span class="math notranslate nohighlight">\( A \in \mathbb{R}^{n \times n} \)</span> se resuelve <span class="math notranslate nohighlight">\( \det(A - \lambda I) = 0 \)</span>.</p>
 </section>
 </section>
 </section>

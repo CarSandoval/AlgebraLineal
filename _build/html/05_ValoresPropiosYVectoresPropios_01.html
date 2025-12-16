@@ -337,7 +337,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-valores-y-vectores-propios">5.1.1 Definición de valores y vectores propios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-valores-propios-en-mathbb-r-n">5.1.2 Cálculo de valores propios en <span class="math notranslate nohighlight">\( \mathbb{R}^n \)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-final-ecuacion-caracteristica">Fórmula final (ecuación característica)</a></li>
 </ul>
 </li>
 </ul>
@@ -403,7 +402,7 @@ A =
 \end{pmatrix}.
 \end{split}\]</div>
 <p>Notamos que <strong>la suma de cada renglón es 3</strong>, así que es razonable probar <span class="math notranslate nohighlight">\(\lambda = 3\)</span> como candidato a valor propio
-(asociado al vector <span class="math notranslate nohighlight">\(\mathbf{1}=(1,1,1)^T\)</span>). Verifiquémoslo formalmente.</p>
+, asociado al vector <span class="math notranslate nohighlight">\(\mathbf{1}=(1,1,1)^T\)</span> (¿porqué?). Verifiquémoslo formalmente.</p>
 <ol class="arabic simple">
 <li><p>Construir <span class="math notranslate nohighlight">\( A - \lambda I \)</span> con <span class="math notranslate nohighlight">\( \lambda = 3 \)</span></p></li>
 </ol>
@@ -441,7 +440,7 @@ M =
 \det(M)
 = (-1)\,\det\!\begin{pmatrix}-1 &amp; 1 \\ 0 &amp; -1\end{pmatrix}
 \;-\; (1)\,\det\!\begin{pmatrix}0 &amp; 1 \\ 1 &amp; -1\end{pmatrix}
-\;+\; 0\cdot(\cdots).
+\;+\; (0)\, \det\!\begin{pmatrix}0 &amp; -1 \\ 1 &amp; 0\end{pmatrix}
 \end{split}\]</div>
 <p>Calculamos los determinantes <span class="math notranslate nohighlight">\( 2\times 2 \)</span>:</p>
 <ul>
@@ -455,7 +454,7 @@ M =
 <p>Sustituyendo:</p>
 <div class="math notranslate nohighlight">
 \[
-\det(M) = (-1)\cdot 1 \;-\; (1)\cdot(-1) = -1 + 1 = 0.
+\det(M) = (-1)\cdot 1 \;-\; (1)\cdot(-1) + 0 = -1 + 1 + 0 = 0.
 \]</div>
 <p>Como</p>
 <div class="math notranslate nohighlight">
@@ -500,20 +499,6 @@ A v =
 = 3 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} = 3v.
 \end{split}\]</div>
 <p><strong>Conclusión:</strong> <span class="math notranslate nohighlight">\( \lambda = 3 \)</span> es valor propio entero de <span class="math notranslate nohighlight">\( A \)</span>, que tiene entradas enteras, y un vector propio asociado es <span class="math notranslate nohighlight">\( (1,1,1)^T \)</span>.</p>
-<ol class="arabic simple" start="5">
-<li><p><strong>Polinomio característico:</strong><br />
-La expresión</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-p_A(\lambda) \;=\; \det(A - \lambda I)
-\]</div>
-<p>es un polinomio real de grado <span class="math notranslate nohighlight">\( n \)</span> llamado <strong>polinomio característico</strong> de <span class="math notranslate nohighlight">\( A \)</span>.<br />
-Sus <strong>raíces</strong> (contando multiplicidades) son exactamente los <strong>valores propios</strong> de <span class="math notranslate nohighlight">\( A \)</span>.</p>
-</section>
-<section id="formula-final-ecuacion-caracteristica">
-<h3>Fórmula final (ecuación característica)<a class="headerlink" href="#formula-final-ecuacion-caracteristica" title="Link to this heading">#</a></h3>
-<p>Para hallar los valores propios de <span class="math notranslate nohighlight">\( A \in \mathbb{R}^{n \times n} \)</span> se resuelve <span class="math notranslate nohighlight">\( \det(A - \lambda I) = 0 \)</span>.</p>
 </section>
 </section>
 </section>
@@ -585,7 +570,6 @@ Sus <strong>raíces</strong> (contando multiplicidades) son exactamente los <str
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-valores-y-vectores-propios">5.1.1 Definición de valores y vectores propios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-valores-propios-en-mathbb-r-n">5.1.2 Cálculo de valores propios en <span class="math notranslate nohighlight">\( \mathbb{R}^n \)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formula-final-ecuacion-caracteristica">Fórmula final (ecuación característica)</a></li>
 </ul>
 </li>
 </ul>

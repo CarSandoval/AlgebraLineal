@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '05_ValoresPropiosYVectoresPropios_02';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -332,16 +334,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-polinomio-caracteristico">5.2.1 Definición de Polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-del-calculo-del-polinomio-caracteristico">5.2.2 Algoritmo del cálculo del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-del-calculo-del-polinomio-caracteristico">5.2.3 Ejemplo númerico del cálculo del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-del-calculo-de-los-valores-principales-a-partir-del-polinomio-caracteristico">5.2.4 Ejemplo númerico del cálculo de los valores principales a partir del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-calculo-de-vectores-principales">5.2.5 Ejemplo de cálculo de vectores principales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-propio-asociado-a-lambda-3">Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-propio-asociado-a-lambda-1">Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 1\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-con-python">5.2.6 Aplicaciones con Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-simbolico-con-sympy">Cálculo simbólico con SymPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-numerico-con-sympy">Cálculo númerico con SymPy</a></li>
 </ul>
 </li>
 </ul>
@@ -357,22 +361,287 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="polinomio-caracteristico">
 <h1>5.2 Polinomio característico<a class="headerlink" href="#polinomio-caracteristico" title="Link to this heading">#</a></h1>
-<section id="punto-1">
-<h2>punto 1<a class="headerlink" href="#punto-1" title="Link to this heading">#</a></h2>
-<section id="punto-1-1">
-<h3>punto 1.1<a class="headerlink" href="#punto-1-1" title="Link to this heading">#</a></h3>
+<p>En el capítulo anterior estudiamos los <strong>valores propios</strong> y <strong>vectores propios</strong> de una matriz, así como su significado algebraico y geométrico. En este capítulo introducimos una herramienta central para su cálculo sistemático: el <strong>polinomio característico</strong>.</p>
+<section id="definicion-de-polinomio-caracteristico">
+<h2>5.2.1 Definición de Polinomio característico<a class="headerlink" href="#definicion-de-polinomio-caracteristico" title="Link to this heading">#</a></h2>
+<p>Sea <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> (o <span class="math notranslate nohighlight">\(\mathbb{C}^{n \times n}\)</span>) una matriz cuadrada. El <strong>polinomio característico</strong> de la matriz <span class="math notranslate nohighlight">\(A\)</span> se define como</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = \det(A - \lambda I),
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\lambda\)</span> es una variable escalar e <span class="math notranslate nohighlight">\(I\)</span> es la matriz identidad de orden <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>El polinomio característico es un polinomio de grado <span class="math notranslate nohighlight">\(n\)</span> y sus raíces coinciden exactamente con los <strong>valores propios</strong> de la matriz <span class="math notranslate nohighlight">\(A\)</span>. Por esta razón, el estudio espectral de una matriz se reduce, en muchos casos, al análisis de este polinomio.</p>
+<p>Desde el punto de vista de las transformaciones lineales, el polinomio característico describe los valores de <span class="math notranslate nohighlight">\(\lambda\)</span> para los cuales la transformación <span class="math notranslate nohighlight">\(A - \lambda I\)</span> <strong>no es invertible</strong>, es decir, cuando existen vectores no nulos que satisfacen</p>
+<div class="math notranslate nohighlight">
+\[
+(A - \lambda I)\mathbf{v} = \mathbf{0}.
+\]</div>
+</section>
+<section id="algoritmo-del-calculo-del-polinomio-caracteristico">
+<h2>5.2.2 Algoritmo del cálculo del polinomio característico<a class="headerlink" href="#algoritmo-del-calculo-del-polinomio-caracteristico" title="Link to this heading">#</a></h2>
+<p>Para calcular el polinomio característico de una matriz <span class="math notranslate nohighlight">\(A\)</span>, se siguen los siguientes pasos:</p>
+<ol class="arabic simple">
+<li><p>Se construye la matriz <span class="math notranslate nohighlight">\(A - \lambda I\)</span>.</p></li>
+<li><p>Se calcula el determinante de dicha matriz.</p></li>
+<li><p>El determinante obtenido es el polinomio característico <span class="math notranslate nohighlight">\(p_A(\lambda)\)</span>.</p></li>
+</ol>
+<p>Si</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}
+\end{pmatrix},
+\end{split}\]</div>
+<p>entonces</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - \lambda I =
+\begin{pmatrix}
+a_{11} - \lambda &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} - \lambda &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} - \lambda
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El determinante de esta matriz da lugar a un polinomio en la variable <span class="math notranslate nohighlight">\(\lambda\)</span>, cuyo grado coincide con la dimensión del espacio.</p>
+</section>
+<section id="ejemplo-numerico-del-calculo-del-polinomio-caracteristico">
+<h2>5.2.3 Ejemplo númerico del cálculo del polinomio característico<a class="headerlink" href="#ejemplo-numerico-del-calculo-del-polinomio-caracteristico" title="Link to this heading">#</a></h2>
+<p>Consideremos la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+2 &amp; 1 \\
+1 &amp; 2
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Primero calculamos <span class="math notranslate nohighlight">\(A - \lambda I\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - \lambda I =
+\begin{pmatrix}
+2 - \lambda &amp; 1 \\
+1 &amp; 2 - \lambda
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Ahora calculamos su determinante:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+p_A(\lambda)
+&amp;= \det(A - \lambda I) \\
+&amp;= (2 - \lambda)(2 - \lambda) - 1 \\
+&amp;= (2 - \lambda)^2 - 1 \\
+&amp;= \lambda^2 - 4\lambda + 3.
+\end{aligned}
+\end{split}\]</div>
+<p>El polinomio característico es</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = \lambda^2 - 4\lambda + 3.
+\]</div>
+</section>
+<section id="ejemplo-numerico-del-calculo-de-los-valores-principales-a-partir-del-polinomio-caracteristico">
+<h2>5.2.4 Ejemplo númerico del cálculo de los valores principales a partir del polinomio característico<a class="headerlink" href="#ejemplo-numerico-del-calculo-de-los-valores-principales-a-partir-del-polinomio-caracteristico" title="Link to this heading">#</a></h2>
+<p>Para encontrar los <strong>valores propios</strong> (también llamados <strong>valores principales</strong>), se resuelve la ecuación característica</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = 0.
+\]</div>
+<p>Es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda^2 - 4\lambda + 3 = 0.
+\]</div>
+<p>Este polinomio puede factorizarse como</p>
+<div class="math notranslate nohighlight">
+\[
+(\lambda - 3)(\lambda - 1) = 0.
+\]</div>
+<p>Por lo tanto, las soluciones son</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 = 3, \qquad \lambda_2 = 1.
+\]</div>
+<p>Estos valores son los <strong>valores propios de la matriz <span class="math notranslate nohighlight">\(A\)</span></strong>. Cada valor propio representa un factor de escala asociado a una dirección invariante de la transformación lineal definida por <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</section>
+<section id="ejemplo-de-calculo-de-vectores-principales">
+<h2>5.2.5 Ejemplo de cálculo de vectores principales<a class="headerlink" href="#ejemplo-de-calculo-de-vectores-principales" title="Link to this heading">#</a></h2>
+<p>Una vez obtenidos los valores propios, procedemos a calcular los <strong>vectores propios</strong> (o <strong>vectores principales</strong>) asociados a cada uno de ellos.</p>
+<p>Recordemos que un vector no nulo <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es un vector propio de <span class="math notranslate nohighlight">\(A\)</span> asociado al valor propio <span class="math notranslate nohighlight">\(\lambda\)</span> si satisface</p>
+<div class="math notranslate nohighlight">
+\[
+(A - \lambda I)\mathbf{v} = \mathbf{0}.
+\]</div>
+<section id="vector-propio-asociado-a-lambda-3">
+<h3>Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 3\)</span><a class="headerlink" href="#vector-propio-asociado-a-lambda-3" title="Link to this heading">#</a></h3>
+<p>Sustituimos <span class="math notranslate nohighlight">\(\lambda = 3\)</span> en la expresión anterior:</p>
+<div class="math notranslate nohighlight">
+\[
+(A - 3I)\mathbf{v} = \mathbf{0}.
+\]</div>
+<p>Usando la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+2 &amp; 1 \\
+1 &amp; 2
+\end{pmatrix},
+\end{split}\]</div>
+<p>tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - 3I =
+\begin{pmatrix}
+2 - 3 &amp; 1 \\
+1 &amp; 2 - 3
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1 &amp; 1 \\
+1 &amp; -1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El sistema homogéneo asociado es</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+-1 &amp; 1 \\
+1 &amp; -1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Este sistema se reduce a la ecuación</p>
+<div class="math notranslate nohighlight">
+\[
+-x + y = 0,
+\]</div>
+<p>lo cual implica que <span class="math notranslate nohighlight">\(y = x\)</span>. Por lo tanto, los vectores propios asociados a <span class="math notranslate nohighlight">\(\lambda = 3\)</span> son todos los múltiplos no nulos de</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 =
+\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}.
+\end{split}\]</div>
+</section>
+<section id="vector-propio-asociado-a-lambda-1">
+<h3>Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 1\)</span><a class="headerlink" href="#vector-propio-asociado-a-lambda-1" title="Link to this heading">#</a></h3>
+<p>Ahora sustituimos <span class="math notranslate nohighlight">\(\lambda = 1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+(A - 1I)\mathbf{v} = \mathbf{0}.
+\]</div>
+<p>Calculamos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - I =
+\begin{pmatrix}
+2 - 1 &amp; 1 \\
+1 &amp; 2 - 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 &amp; 1 \\
+1 &amp; 1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El sistema homogéneo correspondiente es</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+1 &amp; 1 \\
+1 &amp; 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Este sistema se reduce a</p>
+<div class="math notranslate nohighlight">
+\[
+x + y = 0,
+\]</div>
+<p>por lo que <span class="math notranslate nohighlight">\(y = -x\)</span>. Así, los vectores propios asociados a <span class="math notranslate nohighlight">\(\lambda = 1\)</span> son todos los múltiplos no nulos de</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_2 =
+\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}.
+\end{split}\]</div>
 </section>
 </section>
-<section id="punto-2">
-<h2>punto 2<a class="headerlink" href="#punto-2" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>punto 1.1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="aplicaciones-con-python">
+<h2>5.2.6 Aplicaciones con Python<a class="headerlink" href="#aplicaciones-con-python" title="Link to this heading">#</a></h2>
+<section id="calculo-simbolico-con-sympy">
+<h3>Cálculo simbólico con SymPy<a class="headerlink" href="#calculo-simbolico-con-sympy" title="Link to this heading">#</a></h3>
+<p>Para matrices de mayor tamaño, el cálculo manual del polinomio característico resulta poco práctico. Python ofrece herramientas tanto simbólicas como numéricas para su cálculo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="n">lambda_symbol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;lambda&#39;</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">polinomio</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="n">lambda_symbol</span><span class="p">)</span>
+<span class="n">polinomio</span><span class="o">.</span><span class="n">as_expr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \lambda^{2} - 4 \lambda + 3\]</div>
+</div>
+</div>
 </section>
-</section>
-<section id="punto-3">
-<h2>punto 3<a class="headerlink" href="#punto-3" title="Link to this heading">#</a></h2>
-<section id="id2">
-<h3>punto 1.1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="calculo-numerico-con-sympy">
+<h3>Cálculo númerico con SymPy<a class="headerlink" href="#calculo-numerico-con-sympy" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3., 1.])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -441,16 +710,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-polinomio-caracteristico">5.2.1 Definición de Polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-del-calculo-del-polinomio-caracteristico">5.2.2 Algoritmo del cálculo del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-del-calculo-del-polinomio-caracteristico">5.2.3 Ejemplo númerico del cálculo del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-del-calculo-de-los-valores-principales-a-partir-del-polinomio-caracteristico">5.2.4 Ejemplo númerico del cálculo de los valores principales a partir del polinomio característico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-calculo-de-vectores-principales">5.2.5 Ejemplo de cálculo de vectores principales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-propio-asociado-a-lambda-3">Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-propio-asociado-a-lambda-1">Vector propio asociado a <span class="math notranslate nohighlight">\(\lambda = 1\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-con-python">5.2.6 Aplicaciones con Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-simbolico-con-sympy">Cálculo simbólico con SymPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-numerico-con-sympy">Cálculo númerico con SymPy</a></li>
 </ul>
 </li>
 </ul>

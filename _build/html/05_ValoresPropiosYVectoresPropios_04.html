@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '05_ValoresPropiosYVectoresPropios_04';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -332,16 +334,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-del-polinomio-caracteristico">5.4.1 Aplicaciones del polinomio característico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas-de-markov">Cadenas de Markov</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-cadenas-de-markov-en-el-contexto-de-pagerank">Ejemplo numérico: cadenas de Markov en el contexto de PageRank</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#como-hacerlo-con-python">¿Cómo hacerlo con Python?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-grafos-y-redes">Análisis de grafos y redes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciencia-de-datos-analisis-de-componentes-principales-pca">Ciencia de datos: Análisis de Componentes Principales (PCA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-de-la-diagonalizacion-de-matrices">5.4.2 Aplicaciones de la diagonalización de matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-potencias-de-matrices">Cálculo de potencias de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Análisis de grafos y redes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciencia-de-datos-y-reduccion-de-dimensionalidad">Ciencia de datos y reducción de dimensionalidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
 </li>
 </ul>
@@ -357,22 +365,275 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aplicaciones">
 <h1>5.4 Aplicaciones<a class="headerlink" href="#aplicaciones" title="Link to this heading">#</a></h1>
-<section id="punto-1">
-<h2>punto 1<a class="headerlink" href="#punto-1" title="Link to this heading">#</a></h2>
-<section id="punto-1-1">
-<h3>punto 1.1<a class="headerlink" href="#punto-1-1" title="Link to this heading">#</a></h3>
+<section id="aplicaciones-del-polinomio-caracteristico">
+<h2>5.4.1 Aplicaciones del polinomio característico<a class="headerlink" href="#aplicaciones-del-polinomio-caracteristico" title="Link to this heading">#</a></h2>
+<p>El <strong>polinomio característico</strong> no es únicamente una herramienta algebraica para calcular valores propios; en realidad, constituye un puente fundamental entre el álgebra lineal y múltiples áreas aplicadas. A través de sus raíces (los valores propios), el polinomio característico permite comprender la <strong>dinámica, estabilidad y estructura</strong> de sistemas complejos modelados mediante matrices.</p>
+<p>A continuación se presentan algunas de sus aplicaciones más relevantes.</p>
+<section id="cadenas-de-markov">
+<h3>Cadenas de Markov<a class="headerlink" href="#cadenas-de-markov" title="Link to this heading">#</a></h3>
+<p>Las <strong>cadenas de Markov</strong> modelan sistemas estocásticos que evolucionan en el tiempo, donde el estado futuro depende únicamente del estado actual. Estas cadenas se representan mediante una <strong>matriz de transición</strong> <span class="math notranslate nohighlight">\(P\)</span>, cuyas entradas cumplen:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{ij} \ge 0, \quad \sum_{j} P_{ij} = 1.
+\]</div>
+<p>El comportamiento a largo plazo de la cadena está determinado por los <strong>valores propios de <span class="math notranslate nohighlight">\(P\)</span></strong>, los cuales se obtienen como raíces de su polinomio característico:</p>
+<div class="math notranslate nohighlight">
+\[
+p_P(\lambda) = \det(P - \lambda I).
+\]</div>
+<p>Algunas propiedades clave son:</p>
+<ul class="simple">
+<li><p>El valor propio <span class="math notranslate nohighlight">\(\lambda = 1\)</span> siempre existe. <strong>(¿Por qué?)</strong></p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(\lambda = 1\)</span> tiene multiplicidad algebraica 1 y el resto de los valores propios satisfacen <span class="math notranslate nohighlight">\(|\lambda| &lt; 1\)</span>, la cadena converge a una <strong>distribución estacionaria única</strong>.</p></li>
+<li><p>La rapidez de convergencia depende de la magnitud del segundo valor propio más grande en valor absoluto.</p></li>
+</ul>
+<p>Así, el polinomio característico permite estudiar:</p>
+<ul class="simple">
+<li><p>estabilidad del sistema,</p></li>
+<li><p>existencia de equilibrio,</p></li>
+<li><p>velocidad de mezcla de la cadena.</p></li>
+</ul>
+<p>Estas ideas son fundamentales en:</p>
+<ul class="simple">
+<li><p>modelos económicos,</p></li>
+<li><p>algoritmos de ranking (como PageRank),</p></li>
+<li><p>simulaciones estocásticas.</p></li>
+</ul>
+<section id="ejemplo-numerico-cadenas-de-markov-en-el-contexto-de-pagerank">
+<h4>Ejemplo numérico: cadenas de Markov en el contexto de PageRank<a class="headerlink" href="#ejemplo-numerico-cadenas-de-markov-en-el-contexto-de-pagerank" title="Link to this heading">#</a></h4>
+<p>Imaginemos 3 páginas web: <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> y <span class="math notranslate nohighlight">\(C\)</span>, con los siguientes enlaces:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A \to B\)</span>, <span class="math notranslate nohighlight">\(A \to C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B \to C\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(C \to A\)</span></p></li>
+</ul>
+<p>Si usamos una matriz de transición por “seguir un enlace” (sin teletransportación), cada página reparte probabilidad uniforme entre sus enlaces salientes. En el orden <span class="math notranslate nohighlight">\((A,B,C)\)</span>, la matriz de transición <span class="math notranslate nohighlight">\(P\)</span> queda:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P=
+\begin{pmatrix}
+0 &amp; \tfrac12 &amp; \tfrac12 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>En PageRank se suele usar <strong>factor de amortiguamiento</strong> (teletransportación) <span class="math notranslate nohighlight">\(d\in(0,1)\)</span> (típicamente <span class="math notranslate nohighlight">\(d=0.85\)</span>). Con teletransportación uniforme, la matriz final es:</p>
+<div class="math notranslate nohighlight">
+\[
+G = dP + (1-d)\tfrac{1}{n}\mathbf{1}\mathbf{1}^\top,
+\quad n=3.
+\]</div>
+<p>Con <span class="math notranslate nohighlight">\(d=0.85\)</span> se tiene <span class="math notranslate nohighlight">\((1-d)/3 = 0.05\)</span>, por lo que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+G=
+\begin{pmatrix}
+0.05 &amp; 0.475 &amp; 0.475 \\
+0.05 &amp; 0.05  &amp; 0.90 \\
+0.90 &amp; 0.05  &amp; 0.05
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El <strong>PageRank</strong> es la distribución estacionaria <span class="math notranslate nohighlight">\(\pi\)</span> (vector fila) que satisface:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi = \pi G,
+\qquad
+\pi_A+\pi_B+\pi_C=1.
+\]</div>
+<p>Resolviendo el sistema (equivalentemente, buscando el vector propio asociado a <span class="math notranslate nohighlight">\(\lambda=1\)</span>), se obtiene aproximadamente:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi \approx (0.388,\ 0.215,\ 0.397).
+\]</div>
+<p>Interpretación: en este mini-web, <span class="math notranslate nohighlight">\(C\)</span> y <span class="math notranslate nohighlight">\(A\)</span> quedan con ranking similar (ligeramente mayor <span class="math notranslate nohighlight">\(C\)</span>), y <span class="math notranslate nohighlight">\(B\)</span> más abajo.</p>
+</section>
+<section id="como-hacerlo-con-python">
+<h4>¿Cómo hacerlo con Python?<a class="headerlink" href="#como-hacerlo-con-python" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejemplo 1</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Matriz P (A,B,C)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.85</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">P</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="o">/</span> <span class="n">n</span>
+
+<span class="c1"># Power iteration</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>  <span class="c1"># distribución inicial</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">pi_next</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">@</span> <span class="n">G</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">pi_next</span> <span class="o">-</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-12</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">pi_next</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;G=</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PageRank pi =&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="s2">&quot;  suma=&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G=
+ [[0.05  0.475 0.475]
+ [0.05  0.05  0.9  ]
+ [0.9   0.05  0.05 ]]
+PageRank pi = [0.38778971 0.21481063 0.39739966]   suma= 1.0000000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Ejemplo 2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># (reusa G de arriba)</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># eigen de G^T</span>
+
+<span class="c1"># índice del autovalor más cercano a 1</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">])</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">pi</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>         <span class="c1"># normalizar para que sume 1</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>     <span class="c1"># por estabilidad numérica</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Autovalores:&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PageRank pi =&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="s2">&quot;  suma=&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Autovalores: [ 1.   +0.j    -0.425+0.425j -0.425-0.425j]
+PageRank pi = [0.38778971 0.21481063 0.39739966]   suma= 1.0
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="punto-2">
-<h2>punto 2<a class="headerlink" href="#punto-2" title="Link to this heading">#</a></h2>
+<section id="analisis-de-grafos-y-redes">
+<h3>Análisis de grafos y redes<a class="headerlink" href="#analisis-de-grafos-y-redes" title="Link to this heading">#</a></h3>
+<p>En teoría de grafos, el polinomio característico aparece de forma natural al estudiar el <strong>espectro</strong> de matrices asociadas a un grafo, como la <strong>matriz de adyacencia</strong> <span class="math notranslate nohighlight">\(A\)</span> o la <strong>matriz laplaciana</strong> <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<p>Para un grafo con <span class="math notranslate nohighlight">\(n\)</span> nodos, el polinomio característico se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = \det(A - \lambda I), \quad
+p_L(\lambda) = \det(L - \lambda I).
+\]</div>
+<p>Las raíces de estos polinomios proporcionan información estructural profunda:</p>
+<ul class="simple">
+<li><p>conectividad global del grafo,</p></li>
+<li><p>número de componentes conexas,</p></li>
+<li><p>robustez frente a fallas,</p></li>
+<li><p>patrones de difusión de información.</p></li>
+</ul>
+<p>En particular:</p>
+<ul class="simple">
+<li><p>La multiplicidad del valor propio <span class="math notranslate nohighlight">\(\lambda = 0\)</span> del laplaciano indica el número de componentes conexas.</p></li>
+<li><p>Los valores propios dominantes de la matriz de adyacencia reflejan la presencia de comunidades densamente conectadas.</p></li>
+</ul>
+<p>El polinomio característico permite entonces <strong>clasificar grafos</strong>, comparar redes y estudiar su comportamiento dinámico, con aplicaciones en:</p>
+<ul class="simple">
+<li><p>redes sociales,</p></li>
+<li><p>redes de transporte,</p></li>
+<li><p>redes biológicas y neuronales.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ciencia-de-datos-analisis-de-componentes-principales-pca">
+<h3>Ciencia de datos: Análisis de Componentes Principales (PCA)<a class="headerlink" href="#ciencia-de-datos-analisis-de-componentes-principales-pca" title="Link to this heading">#</a></h3>
+<p>En <strong>ciencia de datos</strong>, el polinomio característico juega un papel central en el <strong>Análisis de Componentes Principales (PCA)</strong>, una técnica fundamental para reducción de dimensionalidad.</p>
+<p>Dado un conjunto de datos, se construye la <strong>matriz de covarianza</strong> <span class="math notranslate nohighlight">\(C\)</span>, que es simétrica. Los valores propios de <span class="math notranslate nohighlight">\(C\)</span> se obtienen resolviendo:</p>
+<div class="math notranslate nohighlight">
+\[
+p_C(\lambda) = \det(C - \lambda I).
+\]</div>
+<p>Cada valor propio mide la <strong>varianza explicada</strong> por su correspondiente componente principal, mientras que los vectores propios determinan las direcciones de máxima variabilidad en los datos.</p>
+<p>Gracias al polinomio característico, el PCA permite:</p>
+<ul class="simple">
+<li><p>identificar variables redundantes,</p></li>
+<li><p>reducir dimensionalidad sin perder información relevante,</p></li>
+<li><p>visualizar datos de alta dimensión,</p></li>
+<li><p>mejorar modelos de aprendizaje automático.</p></li>
+</ul>
+<p>Esta técnica es ampliamente utilizada en:</p>
+<ul class="simple">
+<li><p>análisis exploratorio de datos,</p></li>
+<li><p>visión por computadora,</p></li>
+<li><p>procesamiento de señales,</p></li>
+<li><p>bioinformática.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>El polinomio característico es una herramienta central que conecta el álgebra lineal con aplicaciones modernas en probabilidad, redes complejas y ciencia de datos. A través del estudio de sus raíces, es posible comprender tanto la estructura como la dinámica de sistemas reales, lo que explica su importancia en matemáticas aplicadas, ingeniería y ciencias computacionales.</p>
+</section>
+</section>
+<section id="aplicaciones-de-la-diagonalizacion-de-matrices">
+<h2>5.4.2 Aplicaciones de la diagonalización de matrices<a class="headerlink" href="#aplicaciones-de-la-diagonalizacion-de-matrices" title="Link to this heading">#</a></h2>
+<p>La diagonalización de matrices es una de las herramientas más importantes del álgebra lineal, ya que permite transformar una matriz compleja en una forma simple sin perder información esencial. Cuando una matriz <span class="math notranslate nohighlight">\(A\)</span> es diagonalizable, su comportamiento puede analizarse de manera clara a través de sus valores propios y vectores propios, lo cual tiene numerosas aplicaciones en matemáticas, ciencia y tecnología.</p>
+<section id="calculo-de-potencias-de-matrices">
+<h3>Cálculo de potencias de matrices<a class="headerlink" href="#calculo-de-potencias-de-matrices" title="Link to this heading">#</a></h3>
+<p>Una de las aplicaciones más directas de la diagonalización es el cálculo eficiente de potencias de matrices. Si una matriz <span class="math notranslate nohighlight">\(A\)</span> es diagonalizable, es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1},
+\]</div>
+<p>entonces</p>
+<div class="math notranslate nohighlight">
+\[
+A^k = P D^k P^{-1},
+\]</div>
+<p>para cualquier entero <span class="math notranslate nohighlight">\(k \geq 1\)</span>.</p>
+<p>Como <span class="math notranslate nohighlight">\(D\)</span> es diagonal, calcular <span class="math notranslate nohighlight">\(D^k\)</span> es trivial, ya que basta elevar cada valor propio a la potencia <span class="math notranslate nohighlight">\(k\)</span>. Esta propiedad es fundamental en:</p>
+<ul class="simple">
+<li><p>modelos de crecimiento poblacional,</p></li>
+<li><p>cadenas de Markov,</p></li>
+<li><p>sistemas dinámicos discretos.</p></li>
+</ul>
+<p>**¿Por qué?</p>
+</section>
 <section id="id1">
-<h3>punto 1.1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Análisis de grafos y redes<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>En teoría de grafos, la diagonalización de matrices como la <strong>matriz de adyacencia</strong> o la <strong>matriz laplaciana</strong> permite estudiar propiedades estructurales de redes complejas.</p>
+<p>Los valores propios proporcionan información sobre:</p>
+<ul class="simple">
+<li><p>conectividad del grafo,</p></li>
+<li><p>número de componentes conexas,</p></li>
+<li><p>propagación de información o fallas,</p></li>
+<li><p>detección de comunidades.</p></li>
+</ul>
+<p>Este enfoque es ampliamente utilizado en el análisis de redes sociales, redes de transporte y redes biológicas.</p>
 </section>
+<hr class="docutils" />
+<section id="ciencia-de-datos-y-reduccion-de-dimensionalidad">
+<h3>Ciencia de datos y reducción de dimensionalidad<a class="headerlink" href="#ciencia-de-datos-y-reduccion-de-dimensionalidad" title="Link to this heading">#</a></h3>
+<p>La diagonalización es la base matemática de técnicas fundamentales en ciencia de datos, como el <strong>Análisis de Componentes Principales (PCA)</strong>. En PCA, se diagonaliza la matriz de covarianza de los datos para identificar las direcciones de máxima variabilidad.</p>
+<p>Este procedimiento permite:</p>
+<ul class="simple">
+<li><p>reducir la dimensión de los datos,</p></li>
+<li><p>eliminar redundancia,</p></li>
+<li><p>visualizar datos de alta dimensión,</p></li>
+<li><p>mejorar el rendimiento de modelos de aprendizaje automático.</p></li>
+</ul>
 </section>
-<section id="punto-3">
-<h2>punto 3<a class="headerlink" href="#punto-3" title="Link to this heading">#</a></h2>
-<section id="id2">
-<h3>punto 1.1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="resumen">
+<h3>Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h3>
+<p>La diagonalización de matrices permite:</p>
+<ul class="simple">
+<li><p>simplificar cálculos complejos,</p></li>
+<li><p>comprender la estructura interna de una transformación lineal,</p></li>
+<li><p>analizar estabilidad y comportamiento a largo plazo,</p></li>
+<li><p>desarrollar modelos eficientes en ciencia e ingeniería.</p></li>
+</ul>
+<p>Por estas razones, la diagonalización es una herramienta central en el álgebra lineal moderna y una pieza clave en numerosas aplicaciones contemporáneas.</p>
 </section>
 </section>
 </section>
@@ -441,16 +702,22 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-del-polinomio-caracteristico">5.4.1 Aplicaciones del polinomio característico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cadenas-de-markov">Cadenas de Markov</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico-cadenas-de-markov-en-el-contexto-de-pagerank">Ejemplo numérico: cadenas de Markov en el contexto de PageRank</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#como-hacerlo-con-python">¿Cómo hacerlo con Python?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-grafos-y-redes">Análisis de grafos y redes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciencia-de-datos-analisis-de-componentes-principales-pca">Ciencia de datos: Análisis de Componentes Principales (PCA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicaciones-de-la-diagonalizacion-de-matrices">5.4.2 Aplicaciones de la diagonalización de matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-potencias-de-matrices">Cálculo de potencias de matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Análisis de grafos y redes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ciencia-de-datos-y-reduccion-de-dimensionalidad">Ciencia de datos y reducción de dimensionalidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
 </li>
 </ul>

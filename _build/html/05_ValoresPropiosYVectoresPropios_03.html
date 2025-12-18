@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '05_ValoresPropiosYVectoresPropios_03';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -332,16 +334,37 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-diagonalizacion">5.3.1 Definición de diagonalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justificacion">5.3.2 Justificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-matriz-p">Construcción de la matriz <span class="math notranslate nohighlight">\(P\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-matriz-diagonal-d">Construcción de la matriz diagonal <span class="math notranslate nohighlight">\(D\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-fundamental-ap-pd">Relación fundamental: <span class="math notranslate nohighlight">\(AP = PD\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#despeje-de-la-matriz-a">Despeje de la matriz <span class="math notranslate nohighlight">\(A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-conceptual">Interpretación conceptual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">5.3.3 Ejemplo númerico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-consideraciones">5.3.4 Algunas consideraciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-algebraica">Multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica">Multiplicidad geométrica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-entre-ambas-multiplicidades">Relación entre ambas multiplicidades</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica-menor-a-la-multiplicidad-algebraica">Multiplicidad geométrica menor a la multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-matriz-no-diagonalizable">Ejemplo de matriz no diagonalizable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-graficos-en-python">Ejemplos graficos en python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica-igual-a-multiplicidad-algebraica">Multiplicidad geométrica igual a multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-estudio">Matriz de estudio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-polinomio-caracteristico">Cálculo del polinomio característico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-multiplicidad-geometrica">Cálculo de la multiplicidad geométrica</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-propio-lambda-2">Valor propio <span class="math notranslate nohighlight">\(\lambda = 2\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-propio-lambda-3">Valor propio <span class="math notranslate nohighlight">\(\lambda = 3\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Conclusión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretación conceptual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificacion-con-python">Verificación con Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-grafico-en-python">Ejemplo gráfico en python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
 </li>
 </ul>
@@ -357,22 +380,587 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="diagonalizacion-de-matrices">
 <h1>5.3 Diagonalización de matrices<a class="headerlink" href="#diagonalizacion-de-matrices" title="Link to this heading">#</a></h1>
-<section id="punto-1">
-<h2>punto 1<a class="headerlink" href="#punto-1" title="Link to this heading">#</a></h2>
-<section id="punto-1-1">
-<h3>punto 1.1<a class="headerlink" href="#punto-1-1" title="Link to this heading">#</a></h3>
+<p>El concepto de diagonalización surge en el siglo XIX en el contexto del desarrollo del álgebra lineal y la teoría de ecuaciones diferenciales. Matemáticos como <strong>Augustin-Louis Cauchy</strong>, <strong>Camille Jordan</strong> y <strong>Karl Weierstrass</strong> estudiaron la estructura interna de las transformaciones lineales y la posibilidad de simplificarlas mediante cambios de base.</p>
+<p>La idea central era encontrar una representación de una transformación lineal que facilitara los cálculos, especialmente al resolver sistemas de ecuaciones diferenciales lineales y al estudiar potencias de matrices. Este enfoque condujo naturalmente al estudio de los <strong>valores propios</strong>, <strong>vectores propios</strong> y, posteriormente, a la noción de diagonalización.</p>
+<section id="definicion-de-diagonalizacion">
+<h2>5.3.1 Definición de diagonalización<a class="headerlink" href="#definicion-de-diagonalizacion" title="Link to this heading">#</a></h2>
+<p>Sea <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> una matriz cuadrada. Se dice que <span class="math notranslate nohighlight">\(A\)</span> es <strong>diagonalizable</strong> si existe una matriz invertible <span class="math notranslate nohighlight">\(P\)</span> y una matriz diagonal <span class="math notranslate nohighlight">\(D\)</span> tales que</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1}.
+\]</div>
+<p>La matriz <span class="math notranslate nohighlight">\(D\)</span> contiene en su diagonal los valores propios de <span class="math notranslate nohighlight">\(A\)</span>, mientras que las columnas de <span class="math notranslate nohighlight">\(P\)</span> son vectores propios linealmente independientes asociados a dichos valores propios.</p>
+<p>Equivalentemente, una matriz <span class="math notranslate nohighlight">\(A\)</span> es diagonalizable si y solo si <strong>existe una base del espacio formada por vectores propios de <span class="math notranslate nohighlight">\(A\)</span></strong>.</p>
+</section>
+<section id="justificacion">
+<h2>5.3.2 Justificación<a class="headerlink" href="#justificacion" title="Link to this heading">#</a></h2>
+<p>Recordemos que un vector no nulo <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> es un <strong>vector propio</strong> de la matriz <span class="math notranslate nohighlight">\(A\)</span> asociado al valor propio <span class="math notranslate nohighlight">\(\lambda\)</span> si</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{v} = \lambda \mathbf{v}.
+\]</div>
+<p>Esta ecuación nos dice que la acción de la matriz <span class="math notranslate nohighlight">\(A\)</span> sobre el vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> consiste únicamente en <strong>escalarlo</strong> por el factor <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<section id="construccion-de-la-matriz-p">
+<h3>Construcción de la matriz <span class="math notranslate nohighlight">\(P\)</span><a class="headerlink" href="#construccion-de-la-matriz-p" title="Link to this heading">#</a></h3>
+<p>Supongamos que la matriz <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> tiene <span class="math notranslate nohighlight">\(n\)</span> vectores propios linealmente independientes:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n,
+\]</div>
+<p>con valores propios asociados</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1, \lambda_2, \ldots, \lambda_n.
+\]</div>
+<p>Construimos la matriz <span class="math notranslate nohighlight">\(P\)</span> colocando estos vectores propios como columnas:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P =
+\begin{pmatrix}
+| &amp; | &amp; &amp; | \\
+\mathbf{v}_1 &amp; \mathbf{v}_2 &amp; \cdots &amp; \mathbf{v}_n \\
+| &amp; | &amp; &amp; |
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Debido a que los vectores propios son linealmente independientes, la matriz <span class="math notranslate nohighlight">\(P\)</span> es invertible.</p>
+</section>
+<section id="construccion-de-la-matriz-diagonal-d">
+<h3>Construcción de la matriz diagonal <span class="math notranslate nohighlight">\(D\)</span><a class="headerlink" href="#construccion-de-la-matriz-diagonal-d" title="Link to this heading">#</a></h3>
+<p>Definimos la matriz diagonal <span class="math notranslate nohighlight">\(D\)</span> colocando los valores propios correspondientes en la diagonal principal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D =
+\begin{pmatrix}
+\lambda_1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \lambda_2 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \lambda_n
+\end{pmatrix}.
+\end{split}\]</div>
+</section>
+<section id="relacion-fundamental-ap-pd">
+<h3>Relación fundamental: <span class="math notranslate nohighlight">\(AP = PD\)</span><a class="headerlink" href="#relacion-fundamental-ap-pd" title="Link to this heading">#</a></h3>
+<p>Consideremos el producto <span class="math notranslate nohighlight">\(AP\)</span>. Usando la definición de <span class="math notranslate nohighlight">\(P\)</span>, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+AP =
+\begin{pmatrix}
+A\mathbf{v}_1 &amp; A\mathbf{v}_2 &amp; \cdots &amp; A\mathbf{v}_n
+\end{pmatrix}.
+\]</div>
+<p>Como cada <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> es un vector propio,</p>
+<div class="math notranslate nohighlight">
+\[
+A\mathbf{v}_i = \lambda_i \mathbf{v}_i.
+\]</div>
+<p>Por lo tanto,</p>
+<div class="math notranslate nohighlight">
+\[
+AP =
+\begin{pmatrix}
+\lambda_1 \mathbf{v}_1 &amp; \lambda_2 \mathbf{v}_2 &amp; \cdots &amp; \lambda_n \mathbf{v}_n
+\end{pmatrix}.
+\]</div>
+<p>Este producto puede escribirse de forma matricial como</p>
+<div class="math notranslate nohighlight">
+\[
+AP = P D.
+\]</div>
+<p>Esta igualdad es el <strong>paso clave</strong> de toda la diagonalización.</p>
+</section>
+<section id="despeje-de-la-matriz-a">
+<h3>Despeje de la matriz <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#despeje-de-la-matriz-a" title="Link to this heading">#</a></h3>
+<p>A partir de la relación</p>
+<div class="math notranslate nohighlight">
+\[
+AP = P D,
+\]</div>
+<p>multiplicamos ambos lados por <span class="math notranslate nohighlight">\(P^{-1}\)</span> por la derecha:</p>
+<div class="math notranslate nohighlight">
+\[
+AP P^{-1} = P D P^{-1}.
+\]</div>
+<p>Como <span class="math notranslate nohighlight">\(P P^{-1} = I\)</span>, se obtiene finalmente</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1}.
+\]</div>
+</section>
+<section id="interpretacion-conceptual">
+<h3>Interpretación conceptual<a class="headerlink" href="#interpretacion-conceptual" title="Link to this heading">#</a></h3>
+<p>La expresión</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1}
+\]</div>
+<p>puede interpretarse de la siguiente manera:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P^{-1}\)</span> cambia las coordenadas al sistema definido por los vectores propios.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D\)</span> aplica un escalamiento simple en cada dirección propia.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> regresa al sistema de coordenadas original.</p></li>
+</ul>
+<p>Es decir, <strong>la matriz <span class="math notranslate nohighlight">\(A\)</span> actúa como una transformación complicada en la base estándar, pero como una transformación simple (diagonal) en la base de vectores propios</strong>.</p>
+</section>
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>La diagonalización es posible precisamente porque los vectores propios forman una base del espacio. En ese caso, la matriz <span class="math notranslate nohighlight">\(A\)</span> puede descomponerse como</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1},
+\]</div>
+<p>lo que simplifica notablemente su análisis algebraico, geométrico y computacional.</p>
 </section>
 </section>
-<section id="punto-2">
-<h2>punto 2<a class="headerlink" href="#punto-2" title="Link to this heading">#</a></h2>
+<section id="ejemplo-numerico">
+<h2>5.3.3 Ejemplo númerico<a class="headerlink" href="#ejemplo-numerico" title="Link to this heading">#</a></h2>
+<p>Consideremos la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+2 &amp; 1 \\
+1 &amp; 2
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Del análisis previo sabemos que sus valores propios son</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_1 = 3, \qquad \lambda_2 = 1,
+\]</div>
+<p>con vectores propios asociados</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 =
+\begin{pmatrix}
+1 \\
+1
+\end{pmatrix},
+\qquad
+\mathbf{v}_2 =
+\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Estos vectores son linealmente independientes, por lo que forman una base de <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>. Definimos entonces</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P =
+\begin{pmatrix}
+1 &amp; 1 \\
+1 &amp; -1
+\end{pmatrix},
+\qquad
+D =
+\begin{pmatrix}
+3 &amp; 0 \\
+0 &amp; 1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Se verifica que</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1},
+\]</div>
+<p>por lo que la matriz <span class="math notranslate nohighlight">\(A\)</span> es diagonalizable.</p>
+</section>
+<section id="algunas-consideraciones">
+<h2>5.3.4 Algunas consideraciones<a class="headerlink" href="#algunas-consideraciones" title="Link to this heading">#</a></h2>
+<p>Hasta ahora hemos visto que una matriz <span class="math notranslate nohighlight">\(A\)</span> es diagonalizable cuando existe una base del espacio formada por <strong>vectores propios</strong>. Sin embargo, esta condición no siempre se cumple. En esta sección analizamos qué ocurre cuando los vectores propios <strong>no son suficientes</strong> o cuando un valor propio aparece con <strong>multiplicidad mayor que uno</strong>.</p>
+<section id="multiplicidad-algebraica">
+<h3>Multiplicidad algebraica<a class="headerlink" href="#multiplicidad-algebraica" title="Link to this heading">#</a></h3>
+<p>Sea <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> y sea <span class="math notranslate nohighlight">\(\lambda\)</span> un valor propio de <span class="math notranslate nohighlight">\(A\)</span>. La <strong>multiplicidad algebraica</strong> de <span class="math notranslate nohighlight">\(\lambda\)</span> se define como el número de veces que <span class="math notranslate nohighlight">\(\lambda\)</span> aparece como raíz del polinomio característico</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = \det(A - \lambda I).
+\]</div>
+<p>Por ejemplo, si</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = (\lambda - 2)^2(\lambda - 1),
+\]</div>
+<p>entonces el valor propio <span class="math notranslate nohighlight">\(\lambda = 2\)</span> tiene multiplicidad algebraica <span class="math notranslate nohighlight">\(2\)</span>, mientras que <span class="math notranslate nohighlight">\(\lambda = 1\)</span> tiene multiplicidad algebraica <span class="math notranslate nohighlight">\(1\)</span>.</p>
+</section>
+<section id="multiplicidad-geometrica">
+<h3>Multiplicidad geométrica<a class="headerlink" href="#multiplicidad-geometrica" title="Link to this heading">#</a></h3>
+<p>La <strong>multiplicidad geométrica</strong> de un valor propio <span class="math notranslate nohighlight">\(\lambda\)</span> se define como la dimensión del subespacio de vectores propios asociado a <span class="math notranslate nohighlight">\(\lambda\)</span>, es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{dim}(\ker(A - \lambda I)).
+\]</div>
+<p>Este subespacio se denomina <strong>espacio propio</strong> asociado a <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</section>
+<section id="relacion-entre-ambas-multiplicidades">
+<h3>Relación entre ambas multiplicidades<a class="headerlink" href="#relacion-entre-ambas-multiplicidades" title="Link to this heading">#</a></h3>
+<p>Para cualquier matriz cuadrada <span class="math notranslate nohighlight">\(A\)</span> y cualquier valor propio <span class="math notranslate nohighlight">\(\lambda\)</span>, siempre se cumple que</p>
+<div class="math notranslate nohighlight">
+\[
+1 \leq \text{multiplicidad geométrica}(\lambda)
+\leq \text{multiplicidad algebraica}(\lambda).
+\]</div>
+<p>Sin embargo, ambas multiplicidades no necesariamente coinciden. <strong>¿Por qué?</strong></p>
+</section>
+<section id="multiplicidad-geometrica-menor-a-la-multiplicidad-algebraica">
+<h3>Multiplicidad geométrica menor a la multiplicidad algebraica<a class="headerlink" href="#multiplicidad-geometrica-menor-a-la-multiplicidad-algebraica" title="Link to this heading">#</a></h3>
+<p>Una matriz <span class="math notranslate nohighlight">\(A\)</span> <strong>no es diagonalizable</strong> cuando <strong>no tiene suficientes vectores propios linealmente independientes</strong> para formar una base del espacio.</p>
+<p>Equivalentemente, <span class="math notranslate nohighlight">\(A\)</span> no es diagonalizable si existe al menos un valor propio <span class="math notranslate nohighlight">\(\lambda\)</span> tal que</p>
+<div class="math notranslate nohighlight">
+\[
+\text{multiplicidad geométrica}(\lambda)
+&lt; \text{multiplicidad algebraica}(\lambda).
+\]</div>
+<p>En este caso, no es posible construir una matriz <span class="math notranslate nohighlight">\(P\)</span> invertible cuyas columnas sean vectores propios, y por lo tanto <strong>no existe una descomposición</strong> de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+A = P D P^{-1}.
+\]</div>
+</section>
+<section id="ejemplo-de-matriz-no-diagonalizable">
+<h3>Ejemplo de matriz no diagonalizable<a class="headerlink" href="#ejemplo-de-matriz-no-diagonalizable" title="Link to this heading">#</a></h3>
+<p>Consideremos la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+1 &amp; 1 \\
+0 &amp; 1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Su polinomio característico es</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = (1 - \lambda)^2,
+\]</div>
+<p>por lo que el valor propio <span class="math notranslate nohighlight">\(\lambda = 1\)</span> tiene multiplicidad algebraica <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>Ahora calculamos los vectores propios resolviendo</p>
+<div class="math notranslate nohighlight">
+\[
+(A - I)\mathbf{v} = \mathbf{0}.
+\]</div>
+<p>Se obtiene</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - I =
+\begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El sistema asociado produce una única dirección independiente de vectores propios, por ejemplo</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v} =
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Por lo tanto, la multiplicidad geométrica de <span class="math notranslate nohighlight">\(\lambda = 1\)</span> es <span class="math notranslate nohighlight">\(1\)</span>, menor que su multiplicidad algebraica.</p>
+<p>Esta matriz <strong>no es diagonalizable</strong>.</p>
+<p>Cuando una matriz no es diagonalizable, la transformación lineal asociada <strong>no puede descomponerse completamente en escalamiento independiente de direcciones</strong>. En lugar de ello, aparecen efectos de <em>acoplamiento</em> entre direcciones, como deslizamientos o deformaciones adicionales.</p>
+<p>Geométricamente, esto significa que <strong>no existen suficientes direcciones invariantes</strong> para describir la transformación de manera puramente diagonal.</p>
+</section>
+<section id="ejemplos-graficos-en-python">
+<h3>Ejemplos graficos en python<a class="headerlink" href="#ejemplos-graficos-en-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># -----------------------------</span>
+<span class="c1"># Caso 1: NO diagonalizable (A NO diagonal)</span>
+<span class="c1"># -----------------------------</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Caso 2: NO diagonalizable (mg &lt; ma para λ repetido)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Transformada A·x&quot;</span><span class="p">)</span>
+
+<span class="c1"># Dibujamos direcciones propias numéricas (ojo: para el λ repetido, puede salir 1 sola dirección independiente)</span>
+<span class="c1"># Para hacerlo más claro, dibujamos el eigenspace de λ=1 resolviendo (A-I)v=0 con SVD</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="n">I</span>
+<span class="c1"># vector en el núcleo de M:</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">vh</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.9</span><span class="o">*</span><span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;eigenspace λ=1 (solo 1 dir.)&quot;</span><span class="p">)</span>
+
+<span class="c1"># También dibujamos un eigenvector para λ=2</span>
+<span class="c1"># (tomamos uno de los que devuelve eig)</span>
+<span class="n">idx2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="n">idx2</span><span class="p">])</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.9</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;dir. propia λ=2&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Autovalores =&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0f4b61a1365585779214f0bcb6f28e9365595f4589fd409b02c6f7fed4c4e7ed.png" src="_images/0f4b61a1365585779214f0bcb6f28e9365595f4589fd409b02c6f7fed4c4e7ed.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+ [[1. 1. 0.]
+ [0. 1. 1.]
+ [0. 0. 2.]]
+Autovalores = [1. 1. 2.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiplicidad-geometrica-igual-a-multiplicidad-algebraica">
+<h3>Multiplicidad geométrica igual a multiplicidad algebraica<a class="headerlink" href="#multiplicidad-geometrica-igual-a-multiplicidad-algebraica" title="Link to this heading">#</a></h3>
+<p>Consideremos ahora un ejemplo en el que un valor propio tiene <strong>multiplicidad algebraica mayor o igual a 2</strong>, pero aun así la matriz <strong>sí es diagonalizable</strong>, debido a que la <strong>multiplicidad geométrica coincide</strong> con la algebraica.</p>
+</section>
+<section id="matriz-de-estudio">
+<h3>Matriz de estudio<a class="headerlink" href="#matriz-de-estudio" title="Link to this heading">#</a></h3>
+<p>Sea la matriz</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A =
+\begin{pmatrix}
+2 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 3
+\end{pmatrix}.
+\end{split}\]</div>
+</section>
+<section id="calculo-del-polinomio-caracteristico">
+<h3>Cálculo del polinomio característico<a class="headerlink" href="#calculo-del-polinomio-caracteristico" title="Link to this heading">#</a></h3>
+<p>El polinomio característico se obtiene como</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda) = \det(A - \lambda I).
+\]</div>
+<p>Como <span class="math notranslate nohighlight">\(A\)</span> es diagonal, se tiene directamente</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(\lambda)
+= (2 - \lambda)^2 (3 - \lambda).
+\]</div>
+<p>Por lo tanto:</p>
+<ul class="simple">
+<li><p>el valor propio <span class="math notranslate nohighlight">\(\lambda = 2\)</span> tiene <strong>multiplicidad algebraica 2</strong>,</p></li>
+<li><p>el valor propio <span class="math notranslate nohighlight">\(\lambda = 3\)</span> tiene <strong>multiplicidad algebraica 1</strong>.</p></li>
+</ul>
+</section>
+<section id="calculo-de-la-multiplicidad-geometrica">
+<h3>Cálculo de la multiplicidad geométrica<a class="headerlink" href="#calculo-de-la-multiplicidad-geometrica" title="Link to this heading">#</a></h3>
+<section id="valor-propio-lambda-2">
+<h4>Valor propio <span class="math notranslate nohighlight">\(\lambda = 2\)</span><a class="headerlink" href="#valor-propio-lambda-2" title="Link to this heading">#</a></h4>
+<p>Calculamos el espacio propio resolviendo</p>
+<div class="math notranslate nohighlight">
+\[
+(A - 2I)\mathbf{v} = \mathbf{0}.
+\]</div>
+<p>Se obtiene</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - 2I =
+\begin{pmatrix}
+0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El sistema asociado es</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{cases}
+z = 0.
+\end{cases}
+\]</div>
+<p>Las variables <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(y\)</span> son libres, por lo que el espacio propio está generado por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_1 =
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix},
+\qquad
+\mathbf{v}_2 =
+\begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Así, la <strong>multiplicidad geométrica</strong> de <span class="math notranslate nohighlight">\(\lambda = 2\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\text{dim}(\ker(A - 2I)) = 2.
+\]</div>
+</section>
+<section id="valor-propio-lambda-3">
+<h4>Valor propio <span class="math notranslate nohighlight">\(\lambda = 3\)</span><a class="headerlink" href="#valor-propio-lambda-3" title="Link to this heading">#</a></h4>
+<p>De manera análoga,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+A - 3I =
+\begin{pmatrix}
+-1 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{pmatrix}.
+\end{split}\]</div>
+<p>El sistema conduce a</p>
+<div class="math notranslate nohighlight">
+\[
+x = 0, \quad y = 0,
+\]</div>
+<p>por lo que el espacio propio está generado por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{v}_3 =
+\begin{pmatrix}
+0 \\ 0 \\ 1
+\end{pmatrix}.
+\end{split}\]</div>
+<p>La multiplicidad geométrica de <span class="math notranslate nohighlight">\(\lambda = 3\)</span> es <span class="math notranslate nohighlight">\(1\)</span>.</p>
+</section>
+</section>
 <section id="id1">
-<h3>punto 1.1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Conclusión<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>En este ejemplo se cumple que:</p>
+<ul class="simple">
+<li><p>Para <span class="math notranslate nohighlight">\(\lambda = 2\)</span>:
+$<span class="math notranslate nohighlight">\(
+\text{multiplicidad algebraica} = 2,
+\qquad
+\text{multiplicidad geométrica} = 2.
+\)</span>$</p></li>
+<li><p>Para <span class="math notranslate nohighlight">\(\lambda = 3\)</span>:
+$<span class="math notranslate nohighlight">\(
+\text{multiplicidad algebraica} = 1,
+\qquad
+\text{multiplicidad geométrica} = 1.
+\)</span>$</p></li>
+</ul>
+<p>Como <strong>para todos los valores propios ambas multiplicidades coinciden</strong>, la matriz <span class="math notranslate nohighlight">\(A\)</span> es <strong>diagonalizable</strong>.</p>
 </section>
-</section>
-<section id="punto-3">
-<h2>punto 3<a class="headerlink" href="#punto-3" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>punto 1.1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>Interpretación conceptual<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Este ejemplo muestra que un valor propio repetido <strong>no implica</strong> pérdida de diagonalización. Lo realmente importante es que el espacio propio tenga <strong>suficiente dimensión</strong> para proporcionar una base del espacio.</p>
+<p>En este caso, los vectores propios forman la base canónica de <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, y la matriz ya se encuentra en forma diagonal.</p>
+</section>
+<section id="verificacion-con-python">
+<h3>Verificación con Python<a class="headerlink" href="#verificacion-con-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">valores</span><span class="p">,</span> <span class="n">vectores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">valores</span><span class="p">,</span> <span class="n">vectores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([2., 2., 3.]),
+ array([[1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]]))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo-grafico-en-python">
+<h3>Ejemplo gráfico en python<a class="headerlink" href="#ejemplo-grafico-en-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># -----------------------------</span>
+<span class="c1"># Caso 2: diagonalizable (A NO diagonal)</span>
+<span class="c1"># -----------------------------</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># λ=2 tiene mult. algebraica 2</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">P</span> <span class="o">@</span> <span class="n">D</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>  <span class="c1"># A no diagonal pero diagonalizable</span>
+
+<span class="c1"># Puntos del cubo [-1,1]^3</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Autovalores y autovectores</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># columnas de V son vectores propios</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Caso 1: diagonalizable (mg = ma para λ repetido)&quot;</span><span class="p">)</span>
+
+<span class="c1"># nube original y transformada</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Transformada A·x&quot;</span><span class="p">)</span>
+
+<span class="c1"># dibuja direcciones propias (normalizadas)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.9</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.9</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;v</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Autovalores =&quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f27336db5771e14417df2b86ff9747aa5aaafe55e667edc2f206fb921499201c.png" src="_images/f27336db5771e14417df2b86ff9747aa5aaafe55e667edc2f206fb921499201c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+ [[ 2.   0.   0. ]
+ [-0.5  2.5  0.5]
+ [-0.5  0.5  2.5]]
+Autovalores = [3. 2. 2.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resumen">
+<h3>Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La multiplicidad algebraica cuenta cuántas veces aparece un valor propio en el polinomio característico.</p></li>
+<li><p>La multiplicidad geométrica mide cuántos vectores propios independientes existen.</p></li>
+<li><p>Una matriz es diagonalizable <strong>si y solo si</strong> ambas multiplicidades coinciden para todos los valores propios.</p></li>
+<li><p>Cuando no coinciden, la matriz no es diagonalizable y requiere herramientas más avanzadas para su análisis.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -441,16 +1029,37 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1">punto 1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-1-1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-diagonalizacion">5.3.1 Definición de diagonalización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justificacion">5.3.2 Justificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-matriz-p">Construcción de la matriz <span class="math notranslate nohighlight">\(P\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-la-matriz-diagonal-d">Construcción de la matriz diagonal <span class="math notranslate nohighlight">\(D\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-fundamental-ap-pd">Relación fundamental: <span class="math notranslate nohighlight">\(AP = PD\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#despeje-de-la-matriz-a">Despeje de la matriz <span class="math notranslate nohighlight">\(A\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-conceptual">Interpretación conceptual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-2">punto 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">punto 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-numerico">5.3.3 Ejemplo númerico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-consideraciones">5.3.4 Algunas consideraciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-algebraica">Multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica">Multiplicidad geométrica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacion-entre-ambas-multiplicidades">Relación entre ambas multiplicidades</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica-menor-a-la-multiplicidad-algebraica">Multiplicidad geométrica menor a la multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-matriz-no-diagonalizable">Ejemplo de matriz no diagonalizable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-graficos-en-python">Ejemplos graficos en python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicidad-geometrica-igual-a-multiplicidad-algebraica">Multiplicidad geométrica igual a multiplicidad algebraica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-estudio">Matriz de estudio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-polinomio-caracteristico">Cálculo del polinomio característico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-de-la-multiplicidad-geometrica">Cálculo de la multiplicidad geométrica</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-propio-lambda-2">Valor propio <span class="math notranslate nohighlight">\(\lambda = 2\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-propio-lambda-3">Valor propio <span class="math notranslate nohighlight">\(\lambda = 3\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">punto 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">punto 1.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Conclusión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretación conceptual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verificacion-con-python">Verificación con Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-grafico-en-python">Ejemplo gráfico en python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
 </ul>
 </li>
 </ul>
